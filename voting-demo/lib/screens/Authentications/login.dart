@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:voting_demo/screens/commonWidgets/loader.dart';
+import 'package:voting_demo/screens/Widgets/loader.dart';
 import 'package:voting_demo/screens/Authentications/auth_widgets/header_widget.dart';
-
+import 'package:voting_demo/services/AuthenticationService.dart';
 import 'auth_widgets/formDecor.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  final Function toggleView;
+  const Login({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
@@ -26,7 +27,7 @@ class _LoginState extends State<Login> {
   final double _headerHeight = 250;
 
   /// Instance of the AuthenticationService Class
-  //final AuthenticationService _auth = AuthenticationService();
+  final Authentications _auth = Authentications();
   @override
   Widget build(BuildContext context) {
     return loading ? const Loading() : Scaffold(
@@ -89,15 +90,14 @@ class _LoginState extends State<Login> {
                             // print(email);
                             // print(password);
                           });
-                          //dynamic results = await _auth.signInWithEmailAndPassword(email, password);
-                          //print(results);
-                          // if(results == null){
-                          //   setState((){
-                          //     loading = false;
-                          //     error = 'Enter valid Credentials';
-                          //   });
-
-                          //}
+                          dynamic results = await _auth.signInWithEmailAndPassword(email, password);
+                          // print(results);
+                          if(results == null){
+                            setState((){
+                              loading = false;
+                              error = 'Enter valid Credentials';
+                            });
+                          }
                           },
                         child: const Text('Sign In'),
                       ),
@@ -109,7 +109,7 @@ class _LoginState extends State<Login> {
                       ),
                       const SizedBox(height: 90,),
                       TextButton(onPressed: (){},
-                          child: TextButton.icon(onPressed: (){}, //=> widget.toggleView()
+                          child: TextButton.icon(onPressed: ()=> widget.toggleView(), //
                             icon: const Icon(
                             Icons.person_add_alt_1_outlined,
                             color: Colors.black,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../commonWidgets/loader.dart';
+import 'package:voting_demo/services/AuthenticationService.dart';
+import '../Widgets/loader.dart';
 import 'auth_widgets/formDecor.dart';
 import 'auth_widgets/header_widget.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  final Function toggleView;
+  const Register({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
@@ -25,7 +26,7 @@ class _RegisterState extends State<Register> {
   final double _headerHeight = 250;
 
   /// Instance of the AuthenticationService Class
-  //final AuthenticationService _auth = AuthenticationService();
+  final Authentications _auth = Authentications();
   @override
   Widget build(BuildContext context) {
     return loading ? const Loading() : Scaffold(
@@ -72,33 +73,36 @@ class _RegisterState extends State<Register> {
                                 onChanged: (val){
                                   setState(() {
                                     password = val;
-
                                   });
                                 },
                               ),
                             ],
                           )),
-                      ElevatedButton(
-                        style:ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
-                        ),
-                        onPressed: ()async{
-                          _formkey.currentState?.validate() ?? setState((){
-                            loading = true;
-                            // print(email);
-                            // print(password);
-                          });
-                          //dynamic results = await _auth.registerWithEmailAndPassword(email, password);
-                          //print(results);
-                          // if(results == null){
-                          //   setState((){
-                          //     loading = false;
-                          //     error = 'Enter valid Credentials';
-                          //   });
+                      const SizedBox(height: 20,),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style:ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
+                          ),
+                          onPressed: ()async{
+                            _formkey.currentState?.validate() ?? setState((){
+                              loading = true;
+                              // print(email);
+                              // print(password);
+                            });
+                            dynamic results = await _auth.registerWithEmailAndPassword(email, password);
+                            // print(results);
+                            if(results == null){
+                              setState((){
+                                loading = false;
+                                error = 'Enter valid Credentials';
+                              });
 
-                          //}
-                        },
-                        child: const Text('Register'),
+                            }
+                          },
+                          child: const Text('Register'),
+                        ),
                       ),
                       Text(error,
                         style: const TextStyle(
@@ -108,12 +112,12 @@ class _RegisterState extends State<Register> {
                       ),
                       const SizedBox(height: 90,),
                       TextButton(onPressed: (){},
-                          child: TextButton.icon(onPressed: (){}, //=> widget.toggleView()
+                          child: TextButton.icon(onPressed: ()=> widget.toggleView(),
                               icon: const Icon(
                                 Icons.person_add_alt_1_outlined,
                                 color: Colors.black,
                               ),
-                              label: const Text("Create an account"))
+                              label: const Text("Already Have an Account? Login"))
 
                       )],
                   ),

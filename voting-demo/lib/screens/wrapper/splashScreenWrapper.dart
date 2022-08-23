@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
             color: HexColor('#732424')
         ),
       ),
-      navigator: const Register(),
+      navigator: const MainWrapper(),
       durationInSeconds: 3,
     );
   }
