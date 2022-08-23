@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voting_demo/commonWidgets/loader.dart';
+import 'package:voting_demo/screens/commonWidgets/loader.dart';
 import 'package:voting_demo/screens/Authentications/auth_widgets/header_widget.dart';
 
 import 'auth_widgets/formDecor.dart';
@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
 
   final double _headerHeight = 250;
 
-  // Instance of the AuthenticationService Class
+  /// Instance of the AuthenticationService Class
   //final AuthenticationService _auth = AuthenticationService();
   @override
   Widget build(BuildContext context) {

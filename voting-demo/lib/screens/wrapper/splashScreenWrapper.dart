@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:voting_demo/screens/Authentications/login.dart';
+import 'package:voting_demo/screens/Authentications/register.dart';
 
 import 'mainWrapper.dart';
 
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
             color: HexColor('#732424')
         ),
       ),
-      navigator: const Login(),
+      navigator: const Register(),
       durationInSeconds: 3,
     );
   }
