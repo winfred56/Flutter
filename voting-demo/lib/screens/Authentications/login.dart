@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:voting_demo/screens/Widgets/loader.dart';
 import 'package:voting_demo/screens/Authentications/auth_widgets/header_widget.dart';
@@ -62,6 +63,7 @@ class _LoginState extends State<Login> {
                                 validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
                                 onChanged: (val){
                                   setState(() {
+                                    //print(val);
                                     email = val;
                                   });
                                 },
@@ -73,8 +75,8 @@ class _LoginState extends State<Login> {
                                 validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
                                 onChanged: (val){
                                   setState(() {
+                                    //print(val);
                                     password = val;
-
                                   });
                                 },
                               ),
@@ -91,14 +93,15 @@ class _LoginState extends State<Login> {
                             // print(password);
                           });
                           dynamic results = await _auth.signInWithEmailAndPassword(email, password);
-                          // print(results);
+                          await FirebaseAuth.instance.currentUser?.reload();
+                          print("Printing results from Login.dart");
+                          print(results);
                           if(results == null){
                             setState((){
                               loading = false;
                               error = 'Enter valid Credentials';
                             });
-                          }
-                          },
+                          }},
                         child: const Text('Sign In'),
                       ),
                       Text(error,

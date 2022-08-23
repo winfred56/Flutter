@@ -23,6 +23,5 @@ class _AuthWrapperState extends State<AuthWrapper> {
     }else{
       return Register(toggleView:toggleView);
     }
-
   }
 }

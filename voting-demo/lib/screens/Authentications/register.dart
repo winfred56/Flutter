@@ -98,7 +98,6 @@ class _RegisterState extends State<Register> {
                                 loading = false;
                                 error = 'Enter valid Credentials';
                               });
-
                             }
                           },
                           child: const Text('Register'),

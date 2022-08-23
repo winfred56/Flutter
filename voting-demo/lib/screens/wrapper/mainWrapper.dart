@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:voting_demo/screens/Authentications/auth_wrapper.dart';
-
 import '../home/home.dart';
+import 'package:voting_demo/services/AuthenticationService.dart';
 
 class MainWrapper extends StatelessWidget {
   const MainWrapper({Key? key}) : super(key: key);
@@ -11,6 +11,8 @@ class MainWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
+    print("User from mainWrapper");
+    print(user);
     if (user == null){
       return const AuthWrapper();
     }else{
