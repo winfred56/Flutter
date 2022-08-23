@@ -94,8 +94,8 @@ class _LoginState extends State<Login> {
                           });
                           dynamic results = await _auth.signInWithEmailAndPassword(email, password);
                           await FirebaseAuth.instance.currentUser?.reload();
-                          print("Printing results from Login.dart");
-                          print(results);
+                          // print("Printing results from Login.dart");
+                          // print(results);
                           if(results == null){
                             setState((){
                               loading = false;
@@ -104,7 +104,8 @@ class _LoginState extends State<Login> {
                           }},
                         child: const Text('Sign In'),
                       ),
-                      Text(error,
+                      Text(
+                        error,
                         style: const TextStyle(
                             color: Colors.red,
                             fontSize: 16.0

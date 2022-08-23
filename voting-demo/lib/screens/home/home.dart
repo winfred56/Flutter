@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
                 onStepContinue: () => setState(() {
-                  _currentStep += 1;
+                  _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
                 }),
                 onStepCancel: () => setState(() {
                   _currentStep -=1;
