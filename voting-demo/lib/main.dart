@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:voting_demo/screens/wrapper/splashScreenWrapper.dart';
 import 'package:voting_demo/services/AuthenticationService.dart';
+import 'package:voting_demo/services/getCandidatesService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  print(await getAllCandidates());
   runApp(const MyApp());
 }
 
@@ -24,7 +26,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-
           primarySwatch: Colors.blue,
         ),
         home: const SplashScreen(),
