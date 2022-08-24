@@ -11,8 +11,6 @@ class MainWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
-    print("User from mainWrapper");
-    print(user);
     if (user == null){
       return const AuthWrapper();
     }else{
