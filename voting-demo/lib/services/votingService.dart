@@ -12,7 +12,7 @@ Future<void> voteForCandidate(Candidate candidate) async {
       .doc(candidate.id)
       .get();
 
-  if(!vote.exists){}
+  if(!vote.exists){print('Yo');}
 
   /// Convert vote to Dart
   var updatedVote = Vote.fromJson(vote.data()!);

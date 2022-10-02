@@ -9,7 +9,7 @@ import 'package:voting_demo/services/getCandidatesService.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  print(await getAllCandidates());
+  //print(await getAllCandidates());
   runApp(const MyApp());
 }
 
