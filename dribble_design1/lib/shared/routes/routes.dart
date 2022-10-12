@@ -13,7 +13,7 @@ class Routes{
   static const campaign = '/campaign';
 
   static final Map<String, WidgetBuilder> routes = {
-    Routes.signUp : (BuildContext context) => const SignUp(),
+    Routes.signUp : (BuildContext context) => const SignIn(),
     Routes.notifications: (BuildContext context) => const Notifications(),
     Routes.campaign : (BuildContext context) => const Campaign()
   };
