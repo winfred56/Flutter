@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
                 child: Text(
                     'Sign In',
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
