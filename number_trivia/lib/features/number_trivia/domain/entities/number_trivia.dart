@@ -6,7 +6,7 @@ class NumberTrivia extends Equatable{
   final int number;
 
 
-  const NumberTrivia({
+  NumberTrivia({
     required this.text,
     required this.number
   });
