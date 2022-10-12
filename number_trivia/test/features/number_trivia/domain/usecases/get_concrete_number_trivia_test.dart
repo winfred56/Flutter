@@ -4,39 +4,31 @@ import 'package:number_trivia/features/number_trivia/domain/entities/number_triv
 import 'package:number_trivia/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:number_trivia/features/number_trivia/domain/usecases/get_concrete_number_tivia.dart';
+import 'package:mockito/annotations.dart';
+import './get_concrete_number_trivia_test.mocks.dart';
 
-class MockNumberTriviaRepository extends Mock implements NumberTriviaRepository {}
+@GenerateMocks([NumberTriviaRepository])
 
 void main() {
-  // variables to hold data from the classes
-  late GetConcreteNumberTrivia usecase;
-  late MockNumberTriviaRepository mockNumberTriviaRepository;
-  
-  setUp(() {
-    // Instance of MockNumberTriviaRepository
-    mockNumberTriviaRepository = MockNumberTriviaRepository();
-    // Instance of GetConcreteNumberTrivia
-    usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
-  });
+  var mockNumberTriviaRepository = MockNumberTriviaRepository();
 
-  // test number
-  final tNumber = 1;
-  // test NumberTrivia
-  final tNumberTrivia = NumberTrivia(text: "text", number: tNumber);
+  var tNumber = 1;
+  var tNumberTrivia = NumberTrivia(text: "text", number: tNumber);
+
+  var usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
 
   test(
-    'Should get the trivia for number from the repository',
-    () async{
-      // Arrange
-      // Provide functionality to the Instance of MockNumberTriviaRepository (mockNumberTriviaRepository)
-      when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
-          .thenAnswer((_) async => Right(tNumberTrivia));
-      // Act
-      final result = await usecase.execute(number:tNumber);
-      // Assert
-      expect(result, Right(tNumberTrivia));
-      verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
-      verifyNoMoreInteractions(mockNumberTriviaRepository);
-  },
-  );
+      'Should get the trivia for number from the repository',
+  () async{
+    // Arrange
+    // Provide functionality to the Instance of MockNumberTriviaRepository (mockNumberTriviaRepository)
+    when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
+        .thenAnswer((_) async => Right(tNumberTrivia));
+    // Act
+    final result = await usecase.execute(number:tNumber);
+    // Assert
+    expect(result, Right(tNumberTrivia));
+    verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
+    verifyNoMoreInteractions(mockNumberTriviaRepository);
+  });
 }
