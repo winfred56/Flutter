@@ -1,3 +1,4 @@
+import 'package:dribble_design1/shared/routes/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      routes: Routes.routes,
       title: 'Dribble Design',
       //theme: ThemeData(),
       home: SignUp(),
