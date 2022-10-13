@@ -5,7 +5,7 @@ import 'package:number_trivia/features/number_trivia/domain/repositories/number_
 import 'package:flutter_test/flutter_test.dart';
 import 'package:number_trivia/features/number_trivia/domain/usecases/get_concrete_number_tivia.dart';
 import 'package:mockito/annotations.dart';
-import './get_concrete_number_trivia_test.mocks.dart';
+import './get_number_trivia_test.mocks.dart';
 
 @GenerateMocks([NumberTriviaRepository])
 
@@ -25,7 +25,7 @@ void main() {
     when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
         .thenAnswer((_) async => Right(tNumberTrivia));
     // Act
-    final result = await usecase(number:tNumber);
+    final result = await usecase(Params(number: tNumber));
     // Assert
     expect(result, Right(tNumberTrivia));
     verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
