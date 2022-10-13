@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../pages/campaign.dart';
 import '../../pages/notifications.dart';
-import '../../pages/sign_up.dart';
+import '../../pages/sign_in.dart';
 
 class Routes{
   /// Open [SignUpPage]
