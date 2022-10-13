@@ -69,7 +69,7 @@ class _NotificationsState extends State<Notifications> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 20, 10, 0),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () => Navigator.pushNamed(context, '/campaign'),
                           child: const Text(
                             "View All",
                             style: TextStyle(
