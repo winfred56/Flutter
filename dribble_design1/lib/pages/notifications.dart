@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../widgets/notifications_list_widget.dart';
+
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
 
@@ -9,6 +11,7 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +72,8 @@ class _NotificationsState extends State<Notifications> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 20, 10, 0),
                         child: TextButton(
-                          onPressed: () => Navigator.pushNamed(context, '/campaign'),
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/campaign'),
                           child: const Text(
                             "View All",
                             style: TextStyle(
@@ -102,30 +106,103 @@ class _NotificationsState extends State<Notifications> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(40.0),
+                child: Column(
+                  children:  [
+                  ListTile(
+                    onTap: (){},
+                    tileColor: HexColor('#9ea79e'),
+                    title: const Text("Micheal", style: TextStyle(fontWeight: FontWeight.w500)),
+                    subtitle: const Text("a minute ago"),
+                    leading: const CircleAvatar(
+                      radius: 25  ,
+                      backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNHHLyEZ9gRZICPoedWgX2NXgRI6zUPf7yA&usqp=CAU"),
                     ),
-                    color: HexColor('#FFFFFF'),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                      ),
+                    ),
                   ),
-                  child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: 30,
-                      itemBuilder: (BuildContext context, int index){
-                        return const ListTile(
-                          leading: CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Colors.blue,
-                          ),
-                          title: Text("Bob", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
+                    const NotificationListItem(
+                      title: 'Freda',
+                      time: '3 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZT-bhHh9nNDhSwElZ6IL6GZ1TJjeFHW_bA&usqp=CAU',
+                      read: false,
+                    ),
 
-                          subtitle: Text("2 minutes ago"),
-                        );
-                      }
-                  ),
+                    const NotificationListItem(
+                      title: 'Mike',
+                      time: '4 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2ppBY4_eZFdqWCjhhA3zwdNJsWE_6kwa2Bw&usqp=CAU',
+                      read: false,
+                    ),
+
+                    const NotificationListItem(
+                      title: 'Winfred 💯🙇🕊',
+                      time: '7 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8LgJk9e533KZdnWKFCV3hYdX8Zc7brV5wA&usqp=CAU',
+                      read: false,
+                    ),
+                    const NotificationListItem(
+                      title: 'Kendrick',
+                      time: '17 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4w94yjX_JkENhCFm-E2PB8sYJy_ZNxiUBmg&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Richmond😎😎',
+                      time: '20 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeyRqc0DVHR52-5pTLFz88fjkTelZwuZD6VQ&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Rihanna 👩',
+                      time: '26 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV5bFSOHganMK4QCBmxRUwqwN2_sCZLJbrpPpAt3255UOuepzvxAVn5Er8L13OBeOqino&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Josh 😎',
+                      time: '38 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv6tZgcsS2nrY3ylT4kmU5lGFz-umOs34Xph6Hz29Qm0NbBwk8mgtr2U4NIKZPw_6d9Hs&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Beyonce 🥰',
+                      time: '49 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkVNzIiLnErPad3qJZdipkTd18hdhfPgpzXg&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Ella 💃',
+                      time: '50 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpimuXpLYb6kkpw7QG-Ct7f6pj-J1dWRvteg&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Henry',
+                      time: '56 minutes ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nYUKHA8kkUlIr9DG9woo_y0QtY9m9SGylQ&usqp=CAU',
+                      read: true,
+                    ),
+                    const NotificationListItem(
+                      title: 'Sam',
+                      time: '2 hours ago',
+                      image:
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy8OejYCLmsxArvzRyeGWkh1l_6BYa0cy4YQ&usqp=CAU',
+                      read: true,
+                    ),
+                  ],
                 ),
               ),
             ],
