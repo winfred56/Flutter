@@ -11,7 +11,6 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,22 +106,24 @@ class _NotificationsState extends State<Notifications> {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Column(
-                  children:  [
-                  ListTile(
-                    onTap: (){},
-                    tileColor: HexColor('#9ea79e'),
-                    title: const Text("Micheal", style: TextStyle(fontWeight: FontWeight.w500)),
-                    subtitle: const Text("a minute ago"),
-                    leading: const CircleAvatar(
-                      radius: 25  ,
-                      backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNHHLyEZ9gRZICPoedWgX2NXgRI6zUPf7yA&usqp=CAU"),
-                    ),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
+                  children: [
+                    ListTile(
+                      onTap: () {},
+                      tileColor: HexColor('#9ea79e'),
+                      title: const Text("Micheal",
+                          style: TextStyle(fontWeight: FontWeight.w500)),
+                      subtitle: const Text("a minute ago"),
+                      leading: const CircleAvatar(
+                        radius: 25,
+                        backgroundImage: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNHHLyEZ9gRZICPoedWgX2NXgRI6zUPf7yA&usqp=CAU"),
+                      ),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                        ),
                       ),
                     ),
-                  ),
                     const NotificationListItem(
                       title: 'Freda',
                       time: '3 minutes ago',
@@ -130,7 +131,6 @@ class _NotificationsState extends State<Notifications> {
                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZT-bhHh9nNDhSwElZ6IL6GZ1TJjeFHW_bA&usqp=CAU',
                       read: false,
                     ),
-
                     const NotificationListItem(
                       title: 'Mike',
                       time: '4 minutes ago',
@@ -138,7 +138,6 @@ class _NotificationsState extends State<Notifications> {
                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2ppBY4_eZFdqWCjhhA3zwdNJsWE_6kwa2Bw&usqp=CAU',
                       read: false,
                     ),
-
                     const NotificationListItem(
                       title: 'Winfred 💯🙇🕊',
                       time: '7 minutes ago',
