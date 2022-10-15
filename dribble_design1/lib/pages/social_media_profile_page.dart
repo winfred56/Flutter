@@ -47,7 +47,7 @@ class _SocialMediaProfilePageState extends State<SocialMediaProfilePage> {
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.white24,
+                      color: Colors.white70,
                       child: Column(
                         children: [
                           /// Followers Pictures
@@ -130,7 +130,7 @@ class _SocialMediaProfilePageState extends State<SocialMediaProfilePage> {
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.white24,
+                      color: Colors.white70,
                       child: Column(
                         children: [
                           Row(
@@ -256,19 +256,6 @@ class _SocialMediaProfilePageState extends State<SocialMediaProfilePage> {
               
               const Padding(padding: EdgeInsets.only(top: 40)),
               /// Gallery
-              // Container(
-              //   height: MediaQuery.of(context).size.height * 0.06,
-              //   width: MediaQuery.of(context).size.width * 0.65,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(30),
-              //     color: Colors.black12
-              //   ),
-              //   child: const Center(
-              //       child: Text(
-              //           " Photos & Videos",
-              //         style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-              //       ),),
-              // ),
               const SocialMediaPhotosAndVideos()
 
             ],

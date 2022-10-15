@@ -41,7 +41,7 @@ class _SocialMediaPhotosAndVideosState
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                       child: Row(
@@ -78,7 +78,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -115,7 +115,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -159,7 +159,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -196,7 +196,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -233,7 +233,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -277,7 +277,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -314,7 +314,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -351,7 +351,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -395,7 +395,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -432,7 +432,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
@@ -469,7 +469,7 @@ class _SocialMediaPhotosAndVideosState
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.17,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       borderRadius: BorderRadius.circular(40),
                     ),
                     child: Row(
