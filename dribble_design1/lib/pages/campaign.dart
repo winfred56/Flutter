@@ -56,7 +56,7 @@ class _CampaignState extends State<Campaign> {
                   "Start your\nCampaign now",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 36,
                   fontWeight: FontWeight.w600,
                 ),
               ),
