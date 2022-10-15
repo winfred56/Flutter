@@ -80,7 +80,7 @@ class _CampaignState extends State<Campaign> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.06,
                 child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: () =>  Navigator.pushNamed(context, '/social-media-profile'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black,),
                   ),

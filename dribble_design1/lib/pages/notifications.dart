@@ -16,31 +16,31 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       backgroundColor: HexColor('#688b97'),
       appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: true,
-        backgroundColor: HexColor('#688b97'),
-        title: Align(
-          alignment: Alignment.topRight,
-          child: CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.white,
-            backgroundImage: const NetworkImage(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY6rHUk-UzP-qHRIW3EBWLYLN4wG53DvpKA&usqp=CAU"),
-            child: Stack(
-              children: const [
-                Positioned(
-                  top: 5,
-                  right: 0.1,
-                  child: CircleAvatar(
-                    radius: 5,
-                    backgroundColor: Colors.white,
-                  ),
+      elevation: 0,
+      automaticallyImplyLeading: true,
+      backgroundColor: HexColor('#688b97'),
+      title: Align(
+        alignment: Alignment.topRight,
+        child: CircleAvatar(
+          radius: 25,
+          backgroundColor: Colors.white,
+          backgroundImage: const NetworkImage(
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY6rHUk-UzP-qHRIW3EBWLYLN4wG53DvpKA&usqp=CAU"),
+          child: Stack(
+            children: const [
+              Positioned(
+                top: 5,
+                right: 0.1,
+                child: CircleAvatar(
+                  radius: 5,
+                  backgroundColor: Colors.white,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
+    ),
       body: SafeArea(
         //minimum: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
