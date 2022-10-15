@@ -48,7 +48,7 @@ class _CampaignState extends State<Campaign> {
               /// Svg Picture
               SvgPicture.asset(
                 "assets/svgs/modelling.svg",
-                height: MediaQuery.of(context).size.height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.5,
               ),
 
               /// title text
@@ -63,7 +63,7 @@ class _CampaignState extends State<Campaign> {
 
               /// Subtitle text
               const Padding(
-                padding: EdgeInsets.only(top: 15.0),
+                padding: EdgeInsets.only(top: 30.0),
                 child: Text(
                     "No hidden changes no stealth fees",
                   style: TextStyle(
@@ -73,7 +73,7 @@ class _CampaignState extends State<Campaign> {
                 ),
               ),
 
-              const Padding(padding: EdgeInsets.only(top: 50),),
+              const Padding(padding: EdgeInsets.only(top: 70),),
 
               /// create campaign button
               SizedBox(
