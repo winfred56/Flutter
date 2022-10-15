@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
 
               /// TextFormField
               TextFormField(
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: HexColor('#732424')),
                 decoration: InputDecoration(
                   label: const Text("Email address"),
                   labelStyle: const TextStyle(color: Colors.black),
