@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:number_trivia/core/platform/network_info.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
