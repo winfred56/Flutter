@@ -15,4 +15,11 @@ class WeatherModel extends Weather{
     );
   }
 
+  Map<String, dynamic> toJson(){
+    return {
+      "temp": 28.0,
+      "humidity": 67,
+    };
+  }
+
 }

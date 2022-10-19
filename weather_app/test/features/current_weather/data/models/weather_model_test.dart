@@ -27,4 +27,19 @@ void main() {
       expect(result, tWeatherModel);
     });
   });
+  
+  group('toJson', () {
+    test('should return a JSON map containing the proper data', () async
+    {
+      /// arrange
+      final reuslt = tWeatherModel.toJson();
+
+      /// assert
+      final expectedJsonMap = {
+        "temp": 28.0,
+        "humidity": 67,
+      };
+    }
+    );
+  });
 }
