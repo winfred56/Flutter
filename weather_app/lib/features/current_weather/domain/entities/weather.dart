@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable{
   final double temp;
-  final String main;
+  final int humidity;
 
-  const Weather({required this.temp, required this.main});
+  const Weather({required this.temp, required this.humidity});
 
   @override
   // TODO: implement props
-  List<Object?> get props => [temp, main];
+  List<Object?> get props => [temp, humidity];
 
 }
