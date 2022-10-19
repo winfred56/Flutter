@@ -1,3 +1,4 @@
+import 'package:dribble_design1/pages/account.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../pages/campaign.dart';
@@ -12,6 +13,8 @@ class Routes{
   static const notifications = '/notifications';
   /// Open [CampaignPage]
   static const campaign = '/campaign';
+  /// Open [Accountpage]
+  static const account = '/account';
 
   static const socialMediaProfile = '/social-media-profile';
 
@@ -20,6 +23,7 @@ class Routes{
     Routes.notifications: (BuildContext context) => const Notifications(),
     Routes.campaign : (BuildContext context) => const Campaign(),
     Routes.socialMediaProfile: (BuildContext context) => const SocialMediaProfilePage(),
+    Routes.account : (BuildContext context) => const Account(),
   };
 
 }

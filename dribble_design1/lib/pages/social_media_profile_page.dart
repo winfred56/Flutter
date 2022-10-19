@@ -64,7 +64,7 @@ class _SocialMediaProfilePageState extends State<SocialMediaProfilePage> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           backgroundColor: Colors.orange),
-                      onPressed: () {},
+                      onPressed: () => Navigator.pushNamed(context, '/account'),
                       child: const Text("Follow"),
                     ),
                   ),
