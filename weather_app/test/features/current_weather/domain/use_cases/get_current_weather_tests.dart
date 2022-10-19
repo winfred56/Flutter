@@ -14,7 +14,7 @@ import 'get_current_weather_tests.mocks.dart';
 void main() {
   MockWeatherRepository mockWeatherRepository = MockWeatherRepository();
   var tCity = 'New York';
-  var tWeather = const Weather(temp: 27, main: 'Rain');
+  var tWeather = const Weather(temp: 27, humidity: 40);
   var usecase = GetCurrentWeather(mockWeatherRepository);
   
   test('Should return Weather', () async {
