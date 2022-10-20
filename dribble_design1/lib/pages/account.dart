@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../shared/images/images.dart';
+import '../widgets/transactions.dart';
 
 class Account extends StatefulWidget {
   const Account({Key? key}) : super(key: key);
@@ -257,7 +258,7 @@ class _AccountState extends State<Account> {
                       ),),)
                 ],
               ),
-
+              const Transactions()
             ],
           ),
         ),
