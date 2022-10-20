@@ -48,6 +48,7 @@ class _AccountState extends State<Account> {
             children: [
               Stack(
                 children: [
+                  /// Bottom card
                   Positioned(
                       child: Container(
                         decoration: BoxDecoration(
@@ -203,68 +204,37 @@ class _AccountState extends State<Account> {
                   ),
                 ],
               ),
-
-              /// Visa Card showing Balance
-              // Positioned(
-              //   child: Container(
-              //     height: MediaQuery.of(context).size.height * 0.25,
-              //     decoration: BoxDecoration(
-              //       color: Colors.greenAccent,
-              //       shape: BoxShape.rectangle,
-              //       borderRadius: BorderRadius.circular(30),
-              //     ),
-              //     child: Column(
-              //       children: [
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             /// chip
-              //             Image(
-              //               height: MediaQuery.of(context).size.height * 0.1,
-              //               image: const AssetImage(
-              //                 Images.chip,
-              //               ),
-              //             ),
-              //
-              //             /// Bank Name
-              //             const Padding(
-              //               padding: EdgeInsets.only(right: 10.0),
-              //               child: Text(
-              //                 "DS Bank",
-              //                 style: TextStyle(
-              //                     fontWeight: FontWeight.w500, fontSize: 22),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //         const Padding(
-              //           padding: EdgeInsets.only(right: 250.0, top: 30),
-              //           child: Text(
-              //             "Balance 👁",
-              //             style: TextStyle(
-              //                 fontWeight: FontWeight.w300, fontSize: 18),
-              //           ),
-              //         ),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //           children: [
-              //             const Padding(
-              //               padding: EdgeInsets.only(left: 10.0, top: 10),
-              //               child: Text(
-              //                 "\$24,098.00",
-              //                 style: TextStyle(
-              //                     fontWeight: FontWeight.w600, fontSize: 28),
-              //               ),
-              //             ),
-              //             Image(
-              //                 height: MediaQuery.of(context).size.height * 0.05,
-              //                 image: const AssetImage(Images.visalogo))
-              //           ],
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text("Amount", style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20
+                ),),
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 8),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("500.00 USD", style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 26
+                    ),),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.greenAccent,),
+                    ),
+                    onPressed: (){},
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.black,
+                    ),),
+                ],
+              ),
+              const Divider(height: 40, thickness: 1,),
             ],
           ),
         ),
