@@ -204,7 +204,9 @@ class _AccountState extends State<Account> {
                   ),
                 ],
               ),
+
               const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+
               const Align(
                 alignment: Alignment.topLeft,
                 child: Text("Amount", style: TextStyle(
@@ -212,7 +214,9 @@ class _AccountState extends State<Account> {
                   fontSize: 20
                 ),),
               ),
+
               const Padding(padding: EdgeInsets.symmetric(vertical: 8),),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -234,7 +238,26 @@ class _AccountState extends State<Account> {
                     ),),
                 ],
               ),
-              const Divider(height: 40, thickness: 1,),
+
+              const Divider(height: 20, thickness: 1,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ///Transactions
+                  const Text("Transactions", style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22
+                  ),),
+                  /// View all Buttom
+                  TextButton(onPressed: (){},
+                      child: const Text("View all", style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        //fontSize: 22
+                      ),),)
+                ],
+              ),
+
             ],
           ),
         ),
