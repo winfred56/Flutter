@@ -232,7 +232,7 @@ class _AccountState extends State<Account> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.greenAccent,),
                     ),
-                    onPressed: (){},
+                    onPressed: ()=> Navigator.pushNamed(context, '/settings'),
                     child: const Icon(
                       Icons.arrow_forward,
                       color: Colors.black,
