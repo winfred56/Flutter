@@ -28,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               /// Settings
               const Padding(
-                padding: EdgeInsets.only(top: 30, right: 200),
+                padding: EdgeInsets.only(top: 30, right: 195),
                 child: Text(
                     "Settings",
                   style: TextStyle(

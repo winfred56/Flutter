@@ -22,7 +22,7 @@ class Routes{
   /// Open [SettingsPage]
   static const settings = '/settings';
   /// Open [EditPersonalInfo]
-  static const editPersonalInfo = '/edit-personal-info';
+  static const editPersonalInfo = '/edit_personal_info';
 
   static final Map<String, WidgetBuilder> routes = {
     Routes.signUp : (BuildContext context) => const SignIn(),
