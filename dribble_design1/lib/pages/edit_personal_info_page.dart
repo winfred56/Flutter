@@ -29,7 +29,7 @@ class _EditPersonalInfoState extends State<EditPersonalInfo> {
               color: Colors.blue
             ),
             child: IconButton(
-              onPressed: (){},
+              onPressed: () => Navigator.pushNamed(context, '/otp_verification'),
               icon: const Icon(
                   Icons.done
               ),
