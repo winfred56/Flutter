@@ -15,3 +15,4 @@ class NumberTriviaModel extends NumberTrivia {
     };
   }
 }
+
