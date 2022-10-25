@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'features/number_trivia/presentation/pages/number_trivia_page.dart';
 import 'injection_container.dart' as di;
 
-void main() async {
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(const MyApp());
 }
