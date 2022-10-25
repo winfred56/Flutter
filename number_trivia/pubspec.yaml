@@ -49,8 +49,8 @@ dependencies:
   http: ^0.13.5
   # Local Cache
   shared_preferences: ^2.0.15
-  data_connection_checker: ^0.3.4
-
+  data_connection_checker_nulls: ^0.0.2
+  
 
 dev_dependencies:
   flutter_test:
