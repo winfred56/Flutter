@@ -12,7 +12,7 @@ abstract class WeatherRemoteDataSource {
 class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
   final http.Client client;
 
-  WeatherRemoteDataSourceImpl(this.client);
+  WeatherRemoteDataSourceImpl({required this.client});
 
   @override
   Future<WeatherModel> getWeather(String city) async {
