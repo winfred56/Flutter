@@ -3,14 +3,13 @@ import 'package:equatable/equatable.dart';
 import '../../data/models/weather_model.dart';
 
 class WeatherEntity extends Equatable{
-  //final Coord? coord;
-  //
-  // final List<Weather>? weather;
+  final Coord? coord;
+  final List<dynamic>? weather;
   final String base;
-  //final Main? main;
+  final Main? main;
   final int visibility;
-  //final Wind? wind;
-  //final Clouds? clouds;
+  final Wind? wind;
+  final Clouds? clouds;
   final int dt;
   final Sys sys;
   final int timezone;
@@ -19,13 +18,13 @@ class WeatherEntity extends Equatable{
   final int cod;
 
   WeatherEntity({
-    //this.coord,
-    //this.weather,
+    this.coord,
+    this.weather,
     required this.base,
-    //this.main,
+    this.main,
     required this.visibility,
-    //this.wind,
-    //this.clouds,
+    this.wind,
+    this.clouds,
     required this.dt,
     required this.sys,
     required this.timezone,
@@ -36,13 +35,13 @@ class WeatherEntity extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [
-    //coord,
-    //weather,
+    coord,
+    weather,
     base,
-    //main,
+    main,
     visibility,
-    //wind,
-    //clouds,
+    wind,
+    clouds,
     dt,
     sys,
     timezone,

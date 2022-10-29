@@ -37,7 +37,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
         await failureOrWeather.fold((failure) async {
           emit(Error(message: _mapFailureToMessage(failure)));
-        }, (weather) async => emit(Loaded(weather)));
+        }, (weather) async { 
+          print(weather);
+          emit(Loaded(weather));
+        });
       }
       );
     });
