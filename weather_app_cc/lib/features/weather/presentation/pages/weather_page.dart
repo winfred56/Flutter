@@ -112,11 +112,25 @@ class WeatherDisplay extends StatelessWidget {
             child: Center(
               // Only the trivia "message" part will be scrollable
               child: SingleChildScrollView(
-                child: Text(
-                  '${weather.name} = ${weather.sys.country}',
-                  style: TextStyle(fontSize: 25),
-                  textAlign: TextAlign.center,
-                ),
+                child: Column(
+                  children: [
+                    Text(
+                      '${weather.name}  ${weather.sys.country} ',
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      'Latitude: ${weather.coord?.lat}\nLongitude: ${weather.coord?.lon} ',
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      'Temperature: ${weather.main?.temp}\nHumidity: ${weather.main?.humidity} ',
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                )
               ),
             ),
           )
