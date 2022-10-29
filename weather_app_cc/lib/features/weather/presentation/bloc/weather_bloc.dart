@@ -29,16 +29,15 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
       final city = inputValidation.checkString(event.city);
 
-      city.fold((failure) async {
+      await city.fold((failure) async {
         emit(const Error(message: INVALID_INPUT_FAILURE_MESSAGE));
       }, (string) async {
         emit(Loading());
         final failureOrWeather = await getWeather(Params(city: string));
+
         await failureOrWeather.fold((failure) async {
           emit(Error(message: _mapFailureToMessage(failure)));
-        }, (weather) async {
-          emit(Loaded(weather));
-        });
+        }, (weather) async => emit(Loaded(weather)));
       }
       );
     });
