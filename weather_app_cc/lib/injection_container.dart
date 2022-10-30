@@ -10,7 +10,7 @@ import 'features/weather/presentation/bloc/weather_bloc.dart';
 import 'features/weather/data/data_sources/local_data_sources.dart';
 import 'features/weather/data/data_sources/remote_data_sources.dart';
 import 'features/weather/domain/repositories/weather_repository.dart';
-import 'features/weather/domain/use_cases/getWeather.dart';
+import 'features/weather/domain/use_cases/getSpecificWeather.dart';
 
 final sl = GetIt.instance;
 
@@ -24,7 +24,7 @@ Future<void> init() async {
   ));
 
   // UseCases
-  sl.registerLazySingleton(() => GetWeather(sl()));
+  sl.registerLazySingleton(() => GetSpecificWeather(sl()));
 
   // Repository
   sl.registerLazySingleton<WeatherRepository>(() => WeatherRepositoryImpl(

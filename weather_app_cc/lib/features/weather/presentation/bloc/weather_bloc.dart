@@ -4,7 +4,7 @@ import 'package:weather_app_cc/core/errors/failures.dart';
 import 'package:weather_app_cc/core/utils/input_validations.dart';
 
 import '../../domain/entities/weather.dart';
-import '../../domain/use_cases/getWeather.dart';
+import '../../domain/use_cases/getSpecificWeather.dart';
 
 part 'weather_event.dart';
 part 'weather_state.dart';
@@ -16,7 +16,7 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
-  final GetWeather getWeather;
+  final GetSpecificWeather getWeather;
   final InputValidation inputValidation;
 
   WeatherState get initialState => Empty();
