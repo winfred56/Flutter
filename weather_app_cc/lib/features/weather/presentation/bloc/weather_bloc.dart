@@ -2,9 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:weather_app_cc/core/errors/failures.dart';
 import 'package:weather_app_cc/core/utils/input_validations.dart';
+import 'package:weather_app_cc/core/utils/locationValidation.dart';
 
 import '../../domain/entities/weather.dart';
-import '../../domain/use_cases/getWeather.dart';
+import '../../domain/use_cases/getSpecificWeather.dart';
 
 part 'weather_event.dart';
 part 'weather_state.dart';
@@ -16,14 +17,20 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
-  final GetWeather getWeather;
+  final GetSpecificWeather getWeather;
+
   final InputValidation inputValidation;
+  final LocationValidator locationValidator;
+  //final GetUserLocation getUserLocation;
 
   WeatherState get initialState => Empty();
 
   WeatherBloc({
     required this.getWeather,
+
     required this.inputValidation,
+    required this.locationValidator,
+    //required this.getUserLocation,
   }) : super(Empty()){
     on<GetWeatherForCity>((event, emit) async {
 
@@ -37,43 +44,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
         await failureOrWeather.fold((failure) async {
           emit(Error(message: _mapFailureToMessage(failure)));
-        }, (weather) async { 
-          print(weather);
-          for(int i = 0; i < weather.weather!.length; i++){
-            var trials = weather.weather![i];
-            trials.forEach((k,v) => print('${k}: ${v}'));
-          }
-          emit(Loaded(weather));
-        });
+        }, (weather) async => emit(Loaded(weather)));
       }
       );
     });
+
   }
 
-  // Stream<WeatherState> mapEventToState(
-  //     WeatherEvent event,
-  //     ) async* {
-  //   if (event is GetWeatherForCity) {
-  //     final inputEither =
-  //     inputValidation.checkString(event.city);
-  //
-  //     yield* inputEither.fold(
-  //           (failure) async* {
-  //         yield Error(message: INVALID_INPUT_FAILURE_MESSAGE);
-  //       },
-  //           (string) async* {
-  //         yield Loading();
-  //         final failureOrTrivia = await getWeather(
-  //           Params(city: string),
-  //         );
-  //         yield failureOrTrivia.fold(
-  //               (failure) => Error(message: _mapFailureToMessage(failure)),
-  //               (weather) => Loaded(weather),
-  //         );
-  //       },
-  //     );
-  //   }
-  // }
 
 }
 String _mapFailureToMessage(Failure failure) {

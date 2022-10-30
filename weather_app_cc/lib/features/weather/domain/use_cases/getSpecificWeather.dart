@@ -5,10 +5,10 @@ import 'package:weather_app_cc/core/usecases/usecase.dart';
 import 'package:weather_app_cc/features/weather/domain/entities/weather.dart';
 import 'package:weather_app_cc/features/weather/domain/repositories/weather_repository.dart';
 
-class GetWeather implements UseCase<WeatherEntity, Params> {
+class GetSpecificWeather implements UseCase<WeatherEntity, Params> {
   final WeatherRepository repository;
 
-  GetWeather(this.repository);
+  GetSpecificWeather(this.repository);
 
   @override
   Future<Either<Failure, WeatherEntity>> call(parameter) async {

@@ -2,10 +2,10 @@ import 'package:weather_app_cc/features/weather/domain/entities/weather.dart';
 
 class WeatherModel extends WeatherEntity{
   WeatherModel({
-    required super.coord,
-    required super.main,
+    //required super.coord,
+    //required super.main,
     required super.base,
-    required super.clouds,
+    //required super.clouds,
     required super.cod,
     required super.dt,
     required super.sys,
@@ -13,20 +13,20 @@ class WeatherModel extends WeatherEntity{
     required super.name,
     required super.timezone,
     required super.visibility,
-    required super.weather,
-    required super.wind
+    //required super.weather,
+    //required super.wind
   });
 
   factory WeatherModel.fromJson (Map<String, dynamic> json) {
     return WeatherModel(
-        coord: Coord.fromJson(json['coord']),
+        //coord: Coord.fromJson(json['coord']),
         //     if (json['weather'] != null) {
         //   weather = <Weather>[];
         //   json['weather'].forEach((v) {
         //     weather!.add(new Weather.fromJson(v));
         //   });
         // },
-        main: Main.fromJson(json['main']),
+        //main: Main.fromJson(json['main']),
         base: json['base'],
         //clouds: Clouds.fromJson(json['clouds']),
         cod: json['cod'],
@@ -36,9 +36,8 @@ class WeatherModel extends WeatherEntity{
         name: json['name'],
         timezone: json['timezone'],
         visibility: json['visibility'],
-        weather: json['weather'],
-      clouds: json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null,
-       wind: Wind.fromJson(json['wind'])
+        //weather: json['weather'],
+       // wind: Wind.fromJson(json['wind'])
     );
   }
   //   coord = json['coord'] != null ? new Coord.fromJson(json['coord']) : null;
@@ -52,7 +51,8 @@ class WeatherModel extends WeatherEntity{
   //   main = json['main'] != null ? new Main.fromJson(json['main']) : null;
   //   visibility = json['visibility'];
   //   wind = json['wind'] != null ? new Wind.fromJson(json['wind']) : null;
-
+  //   clouds =
+  //   json['clouds'] != null ? new Clouds.fromJson(json['clouds']) : null;
   //   dt = json['dt'];
   //   sys = json['sys'] != null ? new Sys.fromJson(json['sys']) : null;
   //   timezone = json['timezone'];
@@ -63,9 +63,9 @@ class WeatherModel extends WeatherEntity{
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (coord != null) {
-      data['coord'] = coord!.toJson();
-    }
+    // if (coord != null) {
+    //   data['coord'] = coord!.toJson();
+    // }
     // if (weather != null) {
     //   data['weather'] = weather!.map((v) => v.toJson()).toList();
     // }
@@ -81,7 +81,9 @@ class WeatherModel extends WeatherEntity{
     //   data['clouds'] = clouds!.toJson();
     // }
     data['dt'] = dt;
-    data['sys'] = sys;
+    if (sys != null) {
+      data['sys'] = sys!.toJson();
+    }
     data['timezone'] = timezone;
     data['id'] = id;
     data['name'] = name;
