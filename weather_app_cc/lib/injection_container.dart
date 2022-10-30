@@ -2,7 +2,6 @@ import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather_app_cc/core/location/getCurrentLocation.dart';
 
 import 'core/network_info/network_info.dart';
 import 'core/utils/input_validations.dart';
@@ -23,12 +22,10 @@ Future<void> init() async {
         getWeather: sl(),
         inputValidation: sl(),
         locationValidator: sl(),
-        getLocationWeather: sl(),
       ));
 
   // UseCases
   sl.registerLazySingleton(() => GetSpecificWeather(sl()));
-  sl.registerLazySingleton(() => GetLo(sl()))
 
   // Repository
   sl.registerLazySingleton<WeatherRepository>(() => WeatherRepositoryImpl(
@@ -47,12 +44,10 @@ Future<void> init() async {
   ///! Core
   sl.registerLazySingleton(() => InputValidation());
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
-  sl.registerLazySingleton<GetUserLocation>(() => GetLocationImpl());
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
-  sl.registerLazySingleton(() => GetUserLocation);
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_cc/core/location/getCurrentLocation.dart';
 import 'injection_container.dart' as di;
 
 import 'features/weather/presentation/pages/weather_page.dart';
@@ -7,8 +6,6 @@ import 'features/weather/presentation/pages/weather_page.dart';
 Future<void> main() async{
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await di.init();
-  GetUserLocation;
-  print('$GetUserLocation ---from main');
   runApp(const MyApp());
 }
 

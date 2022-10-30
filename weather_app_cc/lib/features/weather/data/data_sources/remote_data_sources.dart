@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_app_cc/core/location/getCurrentLocation.dart';
 
 import '../../../../core/errors/exceptions.dart';
 import '../models/weather_model.dart';
@@ -9,7 +8,7 @@ import '../models/weather_model.dart';
 abstract class WeatherRemoteDataSource {
   Future<WeatherModel> getWeather(String city);
 
-  Future<WeatherModel> getLocationWeather(double latitude, double longitude);
+
 }
 
 class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
@@ -31,18 +30,6 @@ class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
     }
   }
 
-  @override
-  Future<WeatherModel> getLocationWeather(
-      double latitude, double longitude) async {
-    final response = await client.get(
-        Uri.parse(
-            'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=c330d38488eaacd395107dc72eb0fd5d&lang=en'),
-        headers: {'Content-Type': 'application/json'});
-    if (response.statusCode == 200) {
-      return WeatherModel.fromJson(json.decode(response.body));
-    } else {
-      throw ServerException();
-    }
-  }
 }
 
+//'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=c330d38488eaacd395107dc72eb0fd5d&lang=en'),

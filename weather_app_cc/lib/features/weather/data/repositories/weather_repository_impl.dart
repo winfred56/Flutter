@@ -39,26 +39,5 @@ class WeatherRepositoryImpl implements WeatherRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, WeatherEntity>> getLocationWeather(double latitude,
-      double longitude) async {
-    if (await network_info.isConnected()) {
-      try {
-        final remoteWeather = await remoteDataSource.getLocationWeather(
-            latitude, longitude);
-        localDataSource.cacheWeather(remoteWeather);
-        return Right(remoteWeather);
-      } on ServerException {
-        return Left(ServerFailure());
-      }
-    }else{
-      try {
-        final localWeather = await localDataSource.getPreviousWeather();
-        return Right(localWeather);
-      } on CacheException{
-        return Left(CacheFailure());
-      }
-    }
-  }
 
 }
