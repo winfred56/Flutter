@@ -129,6 +129,11 @@ class WeatherDisplay extends StatelessWidget {
                       style: TextStyle(fontSize: 25),
                       textAlign: TextAlign.center,
                     ),
+                    // Text(
+                    //   'Temperature: ${weather.main?.temp}\nHumidity: ${weather.main?.humidity} ',
+                    //   style: TextStyle(fontSize: 25),
+                    //   textAlign: TextAlign.center,
+                    // ),
                   ],
                 )
               ),

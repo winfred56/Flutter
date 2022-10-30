@@ -2,8 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:weather_app_cc/core/errors/failures.dart';
 import 'package:weather_app_cc/core/utils/input_validations.dart';
+import 'package:weather_app_cc/core/utils/locationValidation.dart';
 
 import '../../domain/entities/weather.dart';
+import '../../domain/use_cases/getLocationWeather.dart';
 import '../../domain/use_cases/getSpecificWeather.dart';
 
 part 'weather_event.dart';
@@ -17,13 +19,19 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   final GetSpecificWeather getWeather;
+  final GetLocationWeather getLocationWeather;
   final InputValidation inputValidation;
+  final LocationValidator locationValidator;
+  //final GetUserLocation getUserLocation;
 
   WeatherState get initialState => Empty();
 
   WeatherBloc({
     required this.getWeather,
+    required this.getLocationWeather,
     required this.inputValidation,
+    required this.locationValidator,
+    //required this.getUserLocation,
   }) : super(Empty()){
     on<GetWeatherForCity>((event, emit) async {
 
@@ -48,32 +56,31 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       }
       );
     });
+
+    on<GetWeatherBasedOnLocation>((event, emit) async {
+      final lati = locationValidator.validateLatitude(event.latitude);
+      final longi = locationValidator.validateLongitude(event.longitude);
+      await lati.fold((failure) async {
+        emit(const Error(message: 'Coordinates Error'));
+      }, (latitudeDouble) async {
+        emit(Loading());
+        await longi.fold((failure) async {
+          emit(const Error(message: 'Coordinates Error'));
+        }, (longitudeDouble) async {
+          emit(Loading());
+          final failureOrWeather = await getLocationWeather(LParams(longitude: longitudeDouble, latitude: latitudeDouble));
+          await failureOrWeather.fold((failure) async {
+            emit(Error(message: _mapFailureToMessage(failure)));
+          }, (weather) async {
+            print(weather);
+            emit(Loaded(weather));
+          });
+        });
+      });
+
+    });
   }
 
-  // Stream<WeatherState> mapEventToState(
-  //     WeatherEvent event,
-  //     ) async* {
-  //   if (event is GetWeatherForCity) {
-  //     final inputEither =
-  //     inputValidation.checkString(event.city);
-  //
-  //     yield* inputEither.fold(
-  //           (failure) async* {
-  //         yield Error(message: INVALID_INPUT_FAILURE_MESSAGE);
-  //       },
-  //           (string) async* {
-  //         yield Loading();
-  //         final failureOrTrivia = await getWeather(
-  //           Params(city: string),
-  //         );
-  //         yield failureOrTrivia.fold(
-  //               (failure) => Error(message: _mapFailureToMessage(failure)),
-  //               (weather) => Loaded(weather),
-  //         );
-  //       },
-  //     );
-  //   }
-  // }
 
 }
 String _mapFailureToMessage(Failure failure) {

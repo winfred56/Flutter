@@ -8,7 +8,7 @@ import '../../domain/entities/weather.dart';
 import '../../domain/repositories/weather_repository.dart';
 import '../data_sources/local_data_sources.dart';
 
-class WeatherRepositoryImpl implements WeatherRepository{
+class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherRemoteDataSource remoteDataSource;
   final WeatherLocalDataSource localDataSource;
   final NetworkInfo network_info;
@@ -21,22 +21,44 @@ class WeatherRepositoryImpl implements WeatherRepository{
 
   @override
   Future<Either<Failure, WeatherEntity>> getWeather(String city) async {
-    if(await network_info.isConnected()){
-      try{
+    if (await network_info.isConnected()) {
+      try {
         final remoteWeather = await remoteDataSource.getWeather(city);
         localDataSource.cacheWeather(remoteWeather);
         return Right(remoteWeather);
-      } on ServerException{
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localWeather = await localDataSource.getPreviousWeather();
+        return Right(localWeather);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, WeatherEntity>> getLocationWeather(double latitude,
+      double longitude) async {
+    if (await network_info.isConnected()) {
+      try {
+        final remoteWeather = await remoteDataSource.getLocationWeather(
+            latitude, longitude);
+        localDataSource.cacheWeather(remoteWeather);
+        return Right(remoteWeather);
+      } on ServerException {
         return Left(ServerFailure());
       }
     }else{
-      try{
-        final localWeather =await localDataSource.getPreviousWeather();
+      try {
+        final localWeather = await localDataSource.getPreviousWeather();
         return Right(localWeather);
       } on CacheException{
         return Left(CacheFailure());
       }
     }
   }
-  
+
 }
