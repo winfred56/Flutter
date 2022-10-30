@@ -47,10 +47,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           emit(Error(message: _mapFailureToMessage(failure)));
         }, (weather) async { 
           print(weather);
-          for(int i = 0; i < weather.weather!.length; i++){
-            var trials = weather.weather![i];
-            trials.forEach((k,v) => print('${k}: ${v}'));
-          }
           emit(Loaded(weather));
         });
       }
