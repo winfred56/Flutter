@@ -21,7 +21,6 @@ Future<void> init() async {
   sl.registerFactory(() => WeatherBloc(
         getWeather: sl(),
         inputValidation: sl(),
-        locationValidator: sl(),
       ));
 
   // UseCases

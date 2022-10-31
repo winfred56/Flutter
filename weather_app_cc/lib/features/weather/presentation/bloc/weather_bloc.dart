@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:weather_app_cc/core/errors/failures.dart';
 import 'package:weather_app_cc/core/utils/input_validations.dart';
-import 'package:weather_app_cc/core/utils/locationValidation.dart';
 
 import '../../domain/entities/weather.dart';
 import '../../domain/use_cases/getSpecificWeather.dart';
@@ -20,7 +19,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final GetSpecificWeather getWeather;
 
   final InputValidation inputValidation;
-  final LocationValidator locationValidator;
   //final GetUserLocation getUserLocation;
 
   WeatherState get initialState => Empty();
@@ -29,7 +27,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     required this.getWeather,
 
     required this.inputValidation,
-    required this.locationValidator,
     //required this.getUserLocation,
   }) : super(Empty()){
     on<GetWeatherForCity>((event, emit) async {
