@@ -189,6 +189,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  onscreen_num_keyboard:
+    dependency: "direct main"
+    description:
+      name: onscreen_num_keyboard
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   path:
     dependency: transitive
     description:
