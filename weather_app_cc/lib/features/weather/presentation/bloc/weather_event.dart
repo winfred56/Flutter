@@ -12,4 +12,4 @@ class GetWeatherForCity extends WeatherEvent {
   const GetWeatherForCity(this.city);
 }
 
-class GetWeatherBasedOnLocation extends WeatherEvent {}
+class GetWeatherForLocation extends WeatherEvent {}

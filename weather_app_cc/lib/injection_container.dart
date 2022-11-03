@@ -1,7 +1,9 @@
 import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app_cc/features/weather/domain/use_cases/getWeatherFromLocation.dart';
 
 import 'core/network_info/network_info.dart';
 import 'core/utils/input_validations.dart';
@@ -21,10 +23,12 @@ Future<void> init() async {
   sl.registerFactory(() => WeatherBloc(
         getWeather: sl(),
         inputValidation: sl(),
+        getWeatherFromLocation: sl(),
       ));
 
   // UseCases
   sl.registerLazySingleton(() => GetSpecificWeather(sl()));
+  sl.registerLazySingleton(() => GetWeatherFromLocation(sl()));
 
   // Repository
   sl.registerLazySingleton<WeatherRepository>(() => WeatherRepositoryImpl(
@@ -49,4 +53,5 @@ Future<void> init() async {
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
+  sl.registerLazySingleton(() => Geolocator());
 }

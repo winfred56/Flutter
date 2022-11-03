@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:weather_app_cc/core/errors/failures.dart';
-import 'package:weather_app_cc/core/usecases/usecase.dart';
-import 'package:weather_app_cc/core/utils/input_validations.dart';
-import 'package:weather_app_cc/features/weather/domain/use_cases/getWeatherFromLocation.dart';
 
+import '../../../../core/errors/failures.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../../../../core/utils/input_validations.dart';
+import '../../domain/use_cases/getWeatherFromLocation.dart';
 import '../../domain/entities/weather.dart';
 import '../../domain/use_cases/getSpecificWeather.dart';
 
@@ -49,7 +49,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       }
       );
     });
-    on<GetWeatherBasedOnLocation>((event, emit) async {
+    on<GetWeatherForLocation>((event, emit) async {
       emit(Loading());
       final failureOrWeather = await getWeatherFromLocation(NoParams());
       await failureOrWeather.fold((failure) async {
