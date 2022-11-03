@@ -5,25 +5,13 @@ import 'package:weather_app_cc/core/usecases/usecase.dart';
 import 'package:weather_app_cc/features/weather/domain/entities/weather.dart';
 import 'package:weather_app_cc/features/weather/domain/repositories/weather_repository.dart';
 
-class GetWeatherFromLocation extends UseCase<WeatherEntity, LocationParams> {
+class GetWeatherFromLocation extends UseCase<WeatherEntity, NoParams> {
   final WeatherRepository repository;
 
   GetWeatherFromLocation(this.repository);
 
   @override
-  Future<Either<Failure, WeatherEntity>> call(parameter) async {
-    return await repository.getWeatherFromLocation(
-        parameter.latitude, parameter.longitude);
+  Future<Either<Failure, WeatherEntity>> call(NoParams parameter) async {
+    return await repository.getWeatherFromLocation();
   }
-}
-
-class LocationParams extends Equatable {
-  double latitude;
-  double longitude;
-
-  LocationParams({required this.latitude, required this.longitude});
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => [latitude, longitude];
 }
