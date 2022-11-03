@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:weather_app_cc/core/errors/failures.dart';
+import 'package:weather_app_cc/core/usecases/usecase.dart';
 import 'package:weather_app_cc/core/utils/input_validations.dart';
+import 'package:weather_app_cc/features/weather/domain/use_cases/getWeatherFromLocation.dart';
 
 import '../../domain/entities/weather.dart';
 import '../../domain/use_cases/getSpecificWeather.dart';
@@ -17,17 +19,16 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   final GetSpecificWeather getWeather;
-
   final InputValidation inputValidation;
-  //final GetUserLocation getUserLocation;
+  final GetWeatherFromLocation getWeatherFromLocation;
+
 
   WeatherState get initialState => Empty();
 
   WeatherBloc({
     required this.getWeather,
-
     required this.inputValidation,
-    //required this.getUserLocation,
+    required this.getWeatherFromLocation,
   }) : super(Empty()){
     on<GetWeatherForCity>((event, emit) async {
 
@@ -47,6 +48,15 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         });
       }
       );
+    });
+    on<GetWeatherBasedOnLocation>((event, emit) async {
+      emit(Loading());
+      final failureOrWeather = await getWeatherFromLocation(NoParams());
+      await failureOrWeather.fold((failure) async {
+        emit(Error(message: _mapFailureToMessage(failure)));
+      }, (weather) async {
+        emit(Loaded(weather));
+      });
     });
 
   }

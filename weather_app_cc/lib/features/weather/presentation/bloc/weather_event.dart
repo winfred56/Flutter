@@ -12,8 +12,4 @@ class GetWeatherForCity extends WeatherEvent {
   const GetWeatherForCity(this.city);
 }
 
-class GetWeatherBasedOnLocation extends WeatherEvent {
-  final double latitude;
-  final double longitude;
-  const GetWeatherBasedOnLocation(this.latitude, this.longitude);
-}
+class GetWeatherBasedOnLocation extends WeatherEvent {}
