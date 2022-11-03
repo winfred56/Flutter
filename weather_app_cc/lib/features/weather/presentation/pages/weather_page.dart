@@ -42,8 +42,9 @@ class _WeatherPageState extends State<WeatherPage> {
               }),
               Padding(
                 padding: EdgeInsets.all(10.0),
-                child: const TriviaControls(),
-              )
+                child: const WeatherControl(),
+              ),
+
             ],
           ),
         ),
@@ -132,16 +133,17 @@ class WeatherDisplay extends StatelessWidget {
   }
 }
 
-class TriviaControls extends StatefulWidget {
-  const TriviaControls({
+class WeatherControl extends StatefulWidget {
+  const WeatherControl({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<TriviaControls> createState() => _TriviaControlsState();
+  State<WeatherControl> createState() => _WeatherControlState();
 }
 
-class _TriviaControlsState extends State<TriviaControls> {
+
+class _WeatherControlState extends State<WeatherControl> {
   final controller = TextEditingController();
   late String inputStr;
 
@@ -160,7 +162,7 @@ class _TriviaControlsState extends State<TriviaControls> {
             inputStr = value;
           },
           onSubmitted: (_) {
-            addConcrete();
+            searchCity();
           },
         ),
         const SizedBox(height: 10),
@@ -168,19 +170,29 @@ class _TriviaControlsState extends State<TriviaControls> {
           children: [
             Expanded(
               child: ElevatedButton(
-                onPressed: addConcrete,
+                onPressed: searchCity,
                 child: const Text('Search'),
               ),
             ),
             const SizedBox(width: 10),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: locationWeather,
+                child: const Text('current location'),
+              ),
+            ),
           ],
         )
       ],
     );
   }
 
-  void addConcrete() {
+  void searchCity() {
     controller.clear();
     context.read<WeatherBloc>().add(GetWeatherForCity(inputStr));
+  }
+  void locationWeather() {
+    controller.clear();
+    context.read<WeatherBloc>().add(GetWeatherForLocation());
   }
 }
