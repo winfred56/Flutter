@@ -19,6 +19,7 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weather App"),
+        centerTitle: true,
       ),
       body: BlocProvider(
         create: (_) => sl<WeatherBloc>(),
