@@ -18,7 +18,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Weather App"),
+        title: const Text("Weather App ☁"),
         centerTitle: true,
       ),
       body: BlocProvider(
