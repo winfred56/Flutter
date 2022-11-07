@@ -32,13 +32,13 @@ class _WeatherPageState extends State<WeatherPage> {
                     message: "No weather",
                   );
                 } else if (state is Loading) {
-                  return LoadingWidget();
+                  return const LoadingWidget();
                 } else if (state is Loaded) {
                   return WeatherDisplay(weather: state.weather);
                 } else if (state is Error) {
                   return MessageDisplay(message: state.message);
                 } else {
-                  return MessageDisplay(message: 'Error');
+                  return const MessageDisplay(message: 'Error');
                 }
               }),
               Padding(
