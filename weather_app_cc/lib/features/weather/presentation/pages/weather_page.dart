@@ -41,9 +41,9 @@ class _WeatherPageState extends State<WeatherPage> {
                   return const MessageDisplay(message: 'Error');
                 }
               }),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(10.0),
-                child: const WeatherControl(),
+                child:  WeatherControl(),
               ),
 
             ],
