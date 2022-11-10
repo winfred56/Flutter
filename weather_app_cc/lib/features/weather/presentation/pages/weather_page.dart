@@ -110,7 +110,7 @@ class WeatherDisplay extends StatelessWidget {
           // Fixed size, doesn't scroll
           Text(
             weather.name,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 50,
               fontWeight: FontWeight.bold,
             ),
