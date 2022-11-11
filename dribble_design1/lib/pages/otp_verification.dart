@@ -72,7 +72,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                     const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
 
                     /// Title Text
-                    const Text("enter your\n mobile number",
+                    const Text("enter your\n mobile number ☎",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 26,
