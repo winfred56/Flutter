@@ -124,7 +124,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                             color: Colors.blue.shade600,
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pushNamed(context, '/draggable_stepper'),
                             icon: const Icon(Icons.arrow_forward_ios_rounded),
                           ),
                         ),
