@@ -42,7 +42,16 @@ dependencies:
   cloud_firestore: ^4.0.4
   firebase_messaging: ^14.0.3
   flutter_local_notifications: ^12.0.3
+  # Code Generation
+  build_runner: ^2.3.2
   freezed: ^2.2.1
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+  json_serializable: ^6.5.4
+  # Clean Architecture Goodies
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:
