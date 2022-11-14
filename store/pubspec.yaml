@@ -42,6 +42,7 @@ dependencies:
   cloud_firestore: ^4.0.4
   firebase_messaging: ^14.0.3
   flutter_local_notifications: ^12.0.3
+  freezed: ^2.2.1
 
 dev_dependencies:
   flutter_test:
