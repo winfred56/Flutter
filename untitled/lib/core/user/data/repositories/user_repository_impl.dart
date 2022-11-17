@@ -1,11 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:untitled/core/user/data/database/remote_database.dart';
 
-import 'package:untitled/core/user/domain/entities/user.dart';
-
-import 'package:untitled/shared/errors/failure.dart';
-import 'package:untitled/shared/network/network.dart';
-
+import '../database/remote_database.dart';
+import '../../domain/entities/user.dart';
+import '../../../../shared/errors/failure.dart';
+import '../../../../shared/network/network.dart';
 import '../../domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository{
