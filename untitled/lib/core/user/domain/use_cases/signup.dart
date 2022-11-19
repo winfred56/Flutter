@@ -1,20 +1,20 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled/core/user/domain/repositories/user_repository.dart';
 import 'package:untitled/shared/errors/failure.dart';
 import 'package:untitled/shared/usecases/usecase.dart';
 
-import '../entities/user.dart';
-
-class Login extends Usecase<User, SignUpParams> {
+class Signup extends Usecase<UserCredential, SignUpParams> {
   /// Constructor
-  Login(this.repository);
+  Signup(this.repository);
 
   final UserRepository repository;
 
   @override
-  Future<Either<Failure, User>> call(SignUpParams params) =>
-      repository.logIn(params.email, params.password);
+  Future<Either<Failure, UserCredential>> call(SignUpParams params) =>
+      repository.signUp(params.email, params.password);
+
 }
 
 class SignUpParams extends Equatable {
