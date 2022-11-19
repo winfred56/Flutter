@@ -1,7 +1,8 @@
 import 'package:get_it/get_it.dart';
 
+import 'core/user/user_injection.dart';
 import 'shared/network/network.dart';
-import 'core/user/user_injection_container.dart';
+
 
 /// Instantiate GetIT
 final sl = GetIt.instance;
