@@ -7,7 +7,7 @@ import 'injection_container.dart' as di;
 
 Future<void> main() async{
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  await di.init();
+  di.init();
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (BuildContext context) => MaterialApp(
