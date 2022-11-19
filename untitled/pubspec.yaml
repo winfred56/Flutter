@@ -27,6 +27,9 @@ dependencies:
   json_annotation: ^4.7.0
   json_serializable: ^6.5.4
 
+  # Caching
+  shared_preferences: ^2.0.15
+
   # Database
   firebase_core: ^2.1.1
 
@@ -36,8 +39,6 @@ dependencies:
   intl_phone_field: ^3.1.0
   nil: ^1.1.1
 
-  firebase_messaging: ^14.0.3
-  flutter_local_notifications: ^12.0.3
   cloud_firestore: ^4.0.3
   firebase_auth: ^4.1.0
   data_connection_checker_nulls: ^0.0.2
