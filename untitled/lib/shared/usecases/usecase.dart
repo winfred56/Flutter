@@ -31,3 +31,17 @@ class StringParams extends Equatable{
   List<Object?> get props => [value];
 
 }
+
+/// Used for list of strings value required usecase
+class ListStringParams extends Equatable {
+  /// Constructor
+  const ListStringParams(this.values);
+
+  /// Document ids for firestore
+  /// OR
+  /// List of String value parameter
+  final List<String> values;
+
+  @override
+  List<Object> get props => [values];
+}
