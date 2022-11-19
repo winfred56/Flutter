@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+CustomUser _$CustomUserFromJson(Map<String, dynamic> json) {
+  return _CustomUser.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
+mixin _$CustomUser {
   /// User's preferred username
   String get username => throw _privateConstructorUsedError;
 
@@ -37,13 +37,15 @@ mixin _$User {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $CustomUserCopyWith<CustomUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $CustomUserCopyWith<$Res> {
+  factory $CustomUserCopyWith(
+          CustomUser value, $Res Function(CustomUser) then) =
+      _$CustomUserCopyWithImpl<$Res, CustomUser>;
   @useResult
   $Res call(
       {String username,
@@ -54,9 +56,9 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
+    implements $CustomUserCopyWith<$Res> {
+  _$CustomUserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -98,9 +100,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$_CustomUserCopyWith<$Res>
+    implements $CustomUserCopyWith<$Res> {
+  factory _$$_CustomUserCopyWith(
+          _$_CustomUser value, $Res Function(_$_CustomUser) then) =
+      __$$_CustomUserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,9 +116,11 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+class __$$_CustomUserCopyWithImpl<$Res>
+    extends _$CustomUserCopyWithImpl<$Res, _$_CustomUser>
+    implements _$$_CustomUserCopyWith<$Res> {
+  __$$_CustomUserCopyWithImpl(
+      _$_CustomUser _value, $Res Function(_$_CustomUser) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,7 +132,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? email = null,
     Object? profilePicture = null,
   }) {
-    return _then(_$_User(
+    return _then(_$_CustomUser(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -153,15 +159,16 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
-  _$_User(
+class _$_CustomUser implements _CustomUser {
+  _$_CustomUser(
       {required this.username,
       required this.fullName,
       required this.gender,
       required this.email,
       required this.profilePicture});
 
-  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
+  factory _$_CustomUser.fromJson(Map<String, dynamic> json) =>
+      _$$_CustomUserFromJson(json);
 
   /// User's preferred username
   @override
@@ -185,14 +192,14 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(username: $username, fullName: $fullName, gender: $gender, email: $email, profilePicture: $profilePicture)';
+    return 'CustomUser(username: $username, fullName: $fullName, gender: $gender, email: $email, profilePicture: $profilePicture)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
+            other is _$_CustomUser &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.fullName, fullName) ||
@@ -211,26 +218,27 @@ class _$_User implements _User {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$_CustomUserCopyWith<_$_CustomUser> get copyWith =>
+      __$$_CustomUserCopyWithImpl<_$_CustomUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(
+    return _$$_CustomUserToJson(
       this,
     );
   }
 }
 
-abstract class _User implements User {
-  factory _User(
+abstract class _CustomUser implements CustomUser {
+  factory _CustomUser(
       {required final String username,
       required final String fullName,
       required final String gender,
       required final String email,
-      required final String profilePicture}) = _$_User;
+      required final String profilePicture}) = _$_CustomUser;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _CustomUser.fromJson(Map<String, dynamic> json) =
+      _$_CustomUser.fromJson;
 
   @override
 
@@ -254,5 +262,6 @@ abstract class _User implements User {
   String get profilePicture;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_CustomUserCopyWith<_$_CustomUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }

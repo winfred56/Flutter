@@ -6,9 +6,9 @@ part 'user.g.dart';
 
 // flutter packages run build_runner build --delete-conflicting-outputs
 @freezed
-class User with _$User {
+class CustomUser with _$CustomUser {
   /// Constructor
-  factory User({
+  factory CustomUser({
     /// User's preferred username
     required  final String username,
     /// User's Full Name
@@ -19,16 +19,16 @@ class User with _$User {
     required final String email,
     /// User's profile photo
     required final String profilePicture
-  }) = _User;
+  }) = _CustomUser;
 
 
 
   /// Converts Json to dart objects
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory CustomUser.fromJson(Map<String, dynamic> json) => _$CustomUserFromJson(json);
 
   /// initial data
-  factory User.initial() =>
-      User(
+  factory CustomUser.initial() =>
+      CustomUser(
           username: '',
           fullName: '',
           gender: '',
