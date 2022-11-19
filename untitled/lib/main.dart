@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'features/phone/presentation/pages/phone_page.dart';
 import 'injection_container.dart' as di;
 
 Future<void> main() async{
@@ -20,7 +19,7 @@ Future<void> main() async{
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      home: const PhonePage(),
+      //home: const PhonePage(),
     ),)
       );
 }
