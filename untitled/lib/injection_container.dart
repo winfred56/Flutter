@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 
-import 'core/user/user_injection.dart';
+import 'core/user/auth_injection.dart';
 import 'shared/network/network.dart';
 
 
