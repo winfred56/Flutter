@@ -1,34 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-/// Contracts for interacting with database
 abstract class UserRemoteDatabase {
-  /// Authenticates user account with credentials
-  Future<UserCredential> login(String email, String password);
-
-  /// Registers a [User] with credentials
-  Future<UserCredential> signup(String email, String password);
-
-  /// Logs a [User] out
-  Future<User?> logout(User user);
+  /// Logs a user into the application with credentials
+  Future<UserCredential> authLogin(String email, String password);
+  /// Register a new user
+  Future<UserCredential> authSignUp(String email, String password);
+  /// Log a user out
+  Future<UserCredential> authLogOut();
 }
 
-class UserRemoteDatabaseImpl extends UserRemoteDatabase {
+class UserRemoteDatabaseImpl implements UserRemoteDatabase{
   @override
-  Future<UserCredential> login(String email, String password) async {
-    final results = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
+  Future<UserCredential> authLogOut() async {
+    final results =  await FirebaseAuth.instance.signOut();
+    print(results as UserCredential);
     return results;
   }
 
   @override
-  Future<User?> logout(User user) async {
-    return null;
+  Future<UserCredential> authLogin(String email, String password) async {
+    final results =  await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+    print(results);
+    return results;
   }
 
   @override
-  Future<UserCredential> signup(String email, String password) async {
-    final result = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
-    return result;
+  Future<UserCredential> authSignUp(String email, String password) async {
+    final results =  await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+    print(results);
+    return results;
   }
+
 }
