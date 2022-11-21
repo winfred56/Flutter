@@ -1,11 +1,15 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/src/authentication/presentation/pages/login_page.dart';
 
 import 'injection_container.dart' as di;
 
-Future<void> main() async{
+
+
+void main() async{
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   di.init();
@@ -19,7 +23,7 @@ Future<void> main() async{
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      //home: const PhonePage(),
+      home: const LoginPage(),
     ),)
       );
 }
