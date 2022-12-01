@@ -74,7 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Already have an account?"),
-                        TextButton(onPressed: ()=> const LoginPage(), child: const Text('Login'),)
+                        TextButton(onPressed: ()=> Navigator.pushNamed(context, '/login'), child: const Text('Login'),)
                       ],
                     )
                   ],
