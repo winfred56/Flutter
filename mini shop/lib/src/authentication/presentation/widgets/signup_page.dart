@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_shop/src/authentication/presentation/widgets/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -72,8 +73,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an account?"),
-                        TextButton(onPressed: ()=> const SignUpPage(), child: const Text('Sign Up'),)
+                        const Text("Already have an account?"),
+                        TextButton(onPressed: ()=> const LoginPage(), child: const Text('Login'),)
                       ],
                     )
                   ],

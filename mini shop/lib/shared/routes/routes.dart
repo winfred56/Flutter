@@ -4,7 +4,7 @@ import 'package:mini_shop/src/authentication/presentation/widgets/signup_page.da
 
 class Routes{
   /// Open [SignUpPage]
-  static const signUp = '/sign-up';
+  static const signUp = '/signup';
   /// Open [LoginPage]
   static const login = '/login';
 
