@@ -8,6 +8,15 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+
+  /// Form Controller
+  final formKey = GlobalKey<FormState>();
+  /// email Controller
+  TextEditingController emailController = TextEditingController();
+  /// password Controller
+  TextEditingController passwordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
