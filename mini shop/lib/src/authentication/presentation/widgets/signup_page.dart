@@ -66,7 +66,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          /// Register a new user
+                        },
                         child: const Text('Login'),
                       ),
                     ),

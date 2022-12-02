@@ -64,7 +64,9 @@ class _LoginPageState extends State<LoginPage> {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Log a User in
+                        },
                         child: const Text('Login'),
                       ),
                     ),
