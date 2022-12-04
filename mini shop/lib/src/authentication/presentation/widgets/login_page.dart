@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                           /// Log user in
                         },
                         child: const Text(
-                          "Login",
+                          "Login 🎉",
                           style: TextStyle(
                             fontSize: 20,
                           ),
