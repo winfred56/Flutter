@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return  return Scaffold(
+    return  Scaffold(
       backgroundColor: HexColor('#FFC0CB'),
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 10),
