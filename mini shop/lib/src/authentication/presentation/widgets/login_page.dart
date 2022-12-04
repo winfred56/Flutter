@@ -46,30 +46,64 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
 
-              /// TextFormField
-              TextFormField(
-                style: TextStyle(color: HexColor('#732424')),
-                decoration: InputDecoration(
-                  label: const Text("Email address"),
-                  labelStyle: const TextStyle(color: Colors.black),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: HexColor('#FFFFFF')),
-                  ),
-                ),
-              ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Email Address'),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: .7),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: .7),
+                        ),
+                      ),
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Password'),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: .7),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: .7),
+                        ),
+                      ),
+                      controller: passwordController,
+                      obscureText: true,
+                    ),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
 
-              /// Sing In button
-              SizedBox(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.07,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(HexColor('#732424'),),
-                    //minimumSize:
-                  ),
-                  onPressed: () => Navigator.pushNamed(context, '/notifications'),
-                  child: const Text("Continue", style: TextStyle(fontSize: 20, ),),),
+                    /// Sign In button
+                    SizedBox(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(HexColor('#732424'),),
+                          //minimumSize:
+                        ),
+                        onPressed: (){
+                          /// Log user in
+                        },
+                        child: const Text("Login", style: TextStyle(fontSize: 20, ),),),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Already have an account?"),
+                        TextButton(onPressed: ()=> Navigator.pushNamed(context, '/login'), child: const Text('Login'),)
+                      ],
+                    )
+                  ],
+                ),
               ),
               const Padding(padding: EdgeInsets.symmetric(vertical: 20),),
 
