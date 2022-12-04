@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -18,71 +19,73 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  return Scaffold(
+      backgroundColor: HexColor('#FFC0CB'),
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              //SvgPicture.asset('assets/svgs/1.svg'),
-              Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        label: Text('Email Address'),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: .7),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: .7),
-                        ),
-                      ),
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        label: Text('Password'),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: .7),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: .7),
-                        ),
-                      ),
-                      controller: passwordController,
-                      obscureText: true,
-                    ),
-                    const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
-                    SizedBox(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Log a User in
-                        },
-                        child: const Text('Login'),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Don't have an account?"),
-                        TextButton(onPressed: () => Navigator.pushNamed(context, '/signup'), child: const Text('Sign Up'),)
-                      ],
-                    )
-                  ],
+              ///SvgPicture
+              SvgPicture.asset(
+                'assets/svgs/software.svg',
+                height: MediaQuery.of(context).size.height *0.6,
+              ),
+
+              /// Sign In
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Sign In',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+
+              /// TextFormField
+              TextFormField(
+                style: TextStyle(color: HexColor('#732424')),
+                decoration: InputDecoration(
+                  label: const Text("Email address"),
+                  labelStyle: const TextStyle(color: Colors.black),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: HexColor('#FFFFFF')),
+                  ),
+                ),
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+
+              /// Sing In button
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.07,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(HexColor('#732424'),),
+                    //minimumSize:
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/notifications'),
+                  child: const Text("Continue", style: TextStyle(fontSize: 20, ),),),
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 20),),
+
+              /// Create account
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("New User?"),
+                  TextButton(onPressed: (){},
+                    child: const Text("Create an account"),)
+                ],
               ),
             ],
           ),
         ),
+
       ),
     );
   }
