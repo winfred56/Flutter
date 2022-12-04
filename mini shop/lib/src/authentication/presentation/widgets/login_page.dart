@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -13,15 +12,16 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   /// Form Controller
   final formKey = GlobalKey<FormState>();
+
   /// email Controller
   TextEditingController emailController = TextEditingController();
+
   /// password Controller
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: HexColor('#FFC0CB'),
+    return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
@@ -30,21 +30,23 @@ class _LoginPageState extends State<LoginPage> {
               ///SvgPicture
               SvgPicture.asset(
                 'assets/svgs/software.svg',
-                height: MediaQuery.of(context).size.height *0.6,
+                height: MediaQuery.of(context).size.height * 0.5,
               ),
 
               /// Sign In
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Sign In',
+                  'Sign In 🔐',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+              ),
 
               Form(
                 key: formKey,
@@ -87,40 +89,39 @@ class _LoginPageState extends State<LoginPage> {
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(HexColor('#732424'),),
+                          backgroundColor: MaterialStateProperty.all(
+                            HexColor('#732424'),
+                          ),
                           //minimumSize:
                         ),
-                        onPressed: (){
+                        onPressed: () {
                           /// Log user in
                         },
-                        child: const Text("Login", style: TextStyle(fontSize: 20, ),),),
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Already have an account?"),
-                        TextButton(onPressed: ()=> Navigator.pushNamed(context, '/login'), child: const Text('Login'),)
+                        const Text("Don't have an account?"),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/signup'),
+                          child: const Text('Register'),
+                        )
                       ],
                     )
                   ],
                 ),
               ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 20),),
-
-              /// Create account
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("New User?"),
-                  TextButton(onPressed: (){},
-                    child: const Text("Create an account"),)
-                ],
-              ),
             ],
           ),
         ),
-
       ),
     );
   }
