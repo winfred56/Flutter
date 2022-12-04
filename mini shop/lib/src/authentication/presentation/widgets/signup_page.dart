@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -9,14 +10,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   /// Form Controller
   final formKey = GlobalKey<FormState>();
+
   /// email Controller
   TextEditingController emailController = TextEditingController();
+
   /// password Controller
   TextEditingController passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,29 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              //SvgPicture.asset('assets/svgs/1.svg'),
+              ///SvgPicture
+              SvgPicture.asset(
+                'assets/svgs/2.svg',
+                height: MediaQuery.of(context).size.height * 0.5,
+              ),
+
+              /// Sign In
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Register Today! 🗞',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+              ),
+
               Form(
                 key: formKey,
                 child: Column(
@@ -62,21 +82,38 @@ class _SignUpPageState extends State<SignUpPage> {
                       obscureText: true,
                     ),
                     const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+
+                    /// Sign In button
                     SizedBox(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            HexColor('#732424'),
+                          ),
+                          //minimumSize:
+                        ),
                         onPressed: () {
-                          /// Register a new user
+                          /// Register a new User
                         },
-                        child: const Text('Login'),
+                        child: const Text(
+                          "Register 🎉",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Already have an account?"),
-                        TextButton(onPressed: ()=> Navigator.pushNamed(context, '/login'), child: const Text('Login'),)
+                        const Text("Don't have an account?"),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/login'),
+                          child: const Text('Login'),
+                        )
                       ],
                     )
                   ],
