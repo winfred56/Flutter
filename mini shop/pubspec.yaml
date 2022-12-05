@@ -39,9 +39,9 @@ dependencies:
   device_preview: ^1.1.0
   flutter_svg: ^1.1.6
   hexcolor: ^3.0.1
-  firebase_auth: ^3.5.0
-  firebase_core: ^1.20.0
-  cloud_firestore: ^3.3.0
+  firebase_auth: ^4.1.5
+  firebase_core: ^2.3.0
+  cloud_firestore: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +53,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+#dependency_overrides:
+#  firebase_core_platform_interface: 4.5.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
