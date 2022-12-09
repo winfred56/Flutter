@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../data/remote_datasource.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -18,6 +20,9 @@ class _LoginPageState extends State<LoginPage> {
 
   /// password Controller
   TextEditingController passwordController = TextEditingController();
+
+  /// Authenticator Instance
+  final AuthenticateUsers _authenticator =  AuthenticateUsers();
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         onPressed: () {
                           /// Log user in
+                          _authenticator.logInWithEmailAndPassword(emailController.value.text, passwordController.value.text);
                         },
                         child: const Text(
                           "Login 🎉",
