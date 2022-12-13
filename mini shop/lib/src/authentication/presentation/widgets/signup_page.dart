@@ -24,6 +24,9 @@ class _SignUpPageState extends State<SignUpPage> {
   /// Authenticator Instance
   final AuthenticateUsers _authenticator =  AuthenticateUsers();
 
+  /// Error Controller
+  String error = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,9 +102,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           //minimumSize:
                         ),
-                        onPressed: () {
+                        onPressed: () async {
+                          formKey.currentState?.validate();
                           /// Register a new User
-                          _authenticator.registerWithEmailAndPassword(emailController.value.text, passwordController.value.text);
+                          var results = await _authenticator.registerWithEmailAndPassword(emailController.value.text, passwordController.value.text);
+                          if (results == null){
+                            error = 'Either Email or Password is incorrect';
+                          }
                         },
                         child: const Text(
                           "Register 🎉",
@@ -109,6 +116,15 @@ class _SignUpPageState extends State<SignUpPage> {
                             fontSize: 20,
                           ),
                         ),
+                      ),
+                    ),
+                    /// display errors if any
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        error,
+                        style: const TextStyle(
+                            color: Colors.red, fontSize: 14.0),
                       ),
                     ),
                     Row(

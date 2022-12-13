@@ -24,6 +24,9 @@ class _LoginPageState extends State<LoginPage> {
   /// Authenticator Instance
   final AuthenticateUsers _authenticator =  AuthenticateUsers();
 
+  /// Error Controller
+  String error = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,9 +102,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           //minimumSize:
                         ),
-                        onPressed: () {
+                        onPressed: () async {
+                          formKey.currentState?.validate();
                           /// Log user in
-                          _authenticator.logInWithEmailAndPassword(emailController.value.text, passwordController.value.text);
+                          var results = await _authenticator.logInWithEmailAndPassword(emailController.value.text, passwordController.value.text);
+                          if (results == null){
+                            error = 'Either Email or Password is incorrect';
+                          }
                         },
                         child: const Text(
                           "Login 🎉",
@@ -109,6 +116,15 @@ class _LoginPageState extends State<LoginPage> {
                             fontSize: 20,
                           ),
                         ),
+                      ),
+                    ),
+                    /// display errors if any
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        error,
+                        style: const TextStyle(
+                            color: Colors.red, fontSize: 14.0),
                       ),
                     ),
                     Row(
