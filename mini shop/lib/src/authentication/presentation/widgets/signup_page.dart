@@ -109,6 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           if (results == null){
                             error = 'Either Email or Password is incorrect';
                           }
+
                         },
                         child: const Text(
                           "Register 🎉",

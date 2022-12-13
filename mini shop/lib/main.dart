@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:mini_shop/shared/routes/routes.dart';
 import 'package:mini_shop/src/authentication/data/remote_datasource.dart';
-import 'package:mini_shop/src/authentication/presentation/widgets/login_page.dart';
+import 'package:mini_shop/src/authentication/presentation/pages/authenticate.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         theme: ThemeData.light(),
         routes: Routes.routes,
-        home: const LoginPage(),
+        home: const Authenticate(),
       ),
     );
   }
