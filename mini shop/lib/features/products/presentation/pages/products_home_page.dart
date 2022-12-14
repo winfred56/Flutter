@@ -162,7 +162,7 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Dresses',
+                      'Dresses 👗',
                       style:
                           TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
                     )),
@@ -301,6 +301,344 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                               child: const Image(
                                 image: NetworkImage(
                                     'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bef3.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 10),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Shoes 👟',
+                      style:
+                      TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                    )),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.brown.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bf4c.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.brown.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bf83.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.brown.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/5895fd98cba9841eabab60a4.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.brown.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/62ecfbfd368f9d14562de6a7.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 10),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Jackets 🧥',
+                      style:
+                      TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                    )),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.blue.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bf2c.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.blue.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bf31.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.blue.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/580b57fbd9996e24bc43bf30.png'),
+                              ),
+                            ),
+                            const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 5)),
+
+                            /// Item Name and Price
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text('Short Dress             ',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black87)),
+                                Text('\$80',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: InkWell(
+                        onTap: () => print("You clicked on this product"),
+                        child: Column(
+                          children: [
+                            /// Item Image
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.blue.shade100,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Image(
+                                image: NetworkImage(
+                                    'https://assets.stickpng.com/thumbs/585680404f6ae202fedf26f0.png'),
                               ),
                             ),
                             const Padding(
