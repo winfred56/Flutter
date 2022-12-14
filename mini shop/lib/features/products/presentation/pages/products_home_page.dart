@@ -174,7 +174,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -212,7 +213,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -250,7 +252,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -288,7 +291,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -333,7 +337,7 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     child: Text(
                       'Shoes 👟',
                       style:
-                      TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                          TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
                     )),
               ),
               SingleChildScrollView(
@@ -343,7 +347,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -381,7 +386,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -419,7 +425,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -457,7 +464,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -502,7 +510,7 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     child: Text(
                       'Jackets 🧥',
                       style:
-                      TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                          TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
                     )),
               ),
               SingleChildScrollView(
@@ -512,7 +520,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -550,7 +559,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -588,7 +598,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
@@ -626,7 +637,8 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: InkWell(
-                        onTap: () => print("You clicked on this product"),
+                        onTap: () =>
+                            Navigator.pushNamed(context, '/products_details'),
                         child: Column(
                           children: [
                             /// Item Image
