@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:mini_shop/core/user/presentation/bloc/user_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../injection_container.dart';
-import '../../domain/use_cases/register.dart';
+import 'core/user/presentation/bloc/user_bloc.dart';
+import 'injection_container.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginPageState extends State<LoginPage> {
   /// Bloc
   final bloc = sl<UserBloc>();
 
   /// Tracks form state
   final formKey = GlobalKey<FormState>();
+
   /// For editing password field
   final passwordController = TextEditingController();
 
   /// For editing email field
   final emailController = TextEditingController();
+
+  FirebaseAuth user = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +40,23 @@ class _SignUpState extends State<SignUp> {
               ///SvgPicture
               SvgPicture.asset(
                 'assets/svgs/software.svg',
-                height: MediaQuery.of(context).size.height *0.4,
+                height: MediaQuery.of(context).size.height * 0.5,
               ),
 
               /// Sign In
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Sign In',
+                  'Log In 🔐',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+              ),
 
               /// TextFormField
               Form(
@@ -81,7 +86,9 @@ class _SignUpState extends State<SignUp> {
                       ),
                       controller: passwordController,
                     ),
-                    const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                    ),
 
                     /// Sing In button
                     SizedBox(
@@ -89,33 +96,49 @@ class _SignUpState extends State<SignUp> {
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.black87,),
+                          backgroundColor: MaterialStateProperty.all(
+                            Colors.black87,
+                          ),
                           //minimumSize:
                         ),
-                        onPressed: () async{
-                          await bloc.registerUser(RegisterParams(emailController.text, passwordController.text));
-                          print('Using bloc.registerUser to Register User');
+                        onPressed: () async {
+                          formKey.currentState?.validate();
+                          await bloc.signIn(emailController.value.text, passwordController.value.text);
+                          if (user.currentUser != null ){
+                            setState(() {
+                              Navigator.pushNamed(context, '/products');
+                            });
+                          }
                         },
-                        child: const Text("Continue", style: TextStyle(fontSize: 20, ),),),
+                        child: const Text(
+                          "Log in 🔑",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10),),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+              ),
 
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("New User?"),
-                  TextButton(onPressed: (){},
-                    child: const Text("Create an account"),)
+                  TextButton(
+                    onPressed: () => Navigator.pushNamed(context, '/signup'),
+                    child: const Text("Create an account"),
+                  )
                 ],
               ),
             ],
           ),
         ),
-
       ),
     );
   }

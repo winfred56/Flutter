@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:mini_shop/features/products/presentation/pages/products_home_page.dart';
 import 'package:mini_shop/shared/routes/routes.dart';
-import 'package:mini_shop/core/user/presentation/pages/sign_up.dart';
+import 'package:mini_shop/sign_up.dart';
 import 'injection_container.dart' as di;
 
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData.light(),
       routes: Routes.routes,
-      home: const SignUp(),
+      home: const SignUpPage(),
     );
   }
 }
