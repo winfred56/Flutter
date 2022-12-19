@@ -5,13 +5,20 @@ import 'package:mini_shop/shared/usecase/usecase.dart';
 
 import '../repositories/authentication_repository.dart';
 
-class GetUser extends Usecase<Stream<User?>, NoParams> {
+
+abstract class GetUserUsecase<Type, Params> {
+  /// Contract call method
+  Either<Failure, Type> call(Params params);
+}
+
+
+class GetUser extends GetUserUsecase<Stream<User?>, NoParams> {
   /// Constructor
   GetUser(this.repository);
 
   AuthenticationRepository repository;
 
   @override
-  Future<Either<Failure, Stream<User?>>> call(NoParams params) =>
+  Either<Failure, Stream<User?>> call(NoParams params) =>
       repository.getUserStatus();
 }

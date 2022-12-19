@@ -6,14 +6,14 @@ import '../../../../shared/error/failure.dart';
 /// Contracts for [AuthenticationRepositoryImpl]
 abstract class AuthenticationRepository{
   /// Creates a new [User] instance
-  Future<Either<Failure, User?>> create(String email, String password);
+  Future<Either<Failure, void>> create(String email, String password);
 
   /// Log in an existing [User]
-  Future<Either<Failure, User?>> logIn(String email, String password);
+  Future<Either<Failure, void>> logIn(String email, String password);
 
   /// Log Out an existing [User]
   Future<Either<Failure, void>> logOut();
 
   /// Get [User] status (logged in / logged out)
-  Future<Either<Failure, Stream<User?>>> getUserStatus();
+  Either<Failure, Stream<User?>> getUserStatus();
 }

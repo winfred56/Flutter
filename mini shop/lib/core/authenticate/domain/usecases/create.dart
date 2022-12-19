@@ -1,19 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mini_shop/shared/error/failure.dart';
 
 import '../../../../shared/usecase/usecase.dart';
 import '../repositories/authentication_repository.dart';
 
-class Create extends Usecase<User?, CreateParams> {
+class Create extends Usecase<void, CreateParams> {
   /// Constructor
   Create(this.repository);
 
   AuthenticationRepository repository;
 
   @override
-  Future<Either<Failure, User?>> call(params) =>
+  Future<Either<Failure, void>> call(params) =>
       repository.create(params.email, params.password);
 
 }
