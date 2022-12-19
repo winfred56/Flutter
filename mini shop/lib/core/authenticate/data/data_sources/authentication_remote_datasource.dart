@@ -44,6 +44,7 @@ class AuthenticationRemoteDatasourceImpl
     final results = _auth.authStateChanges();
     if (kDebugMode) {
       print(results);
+      print(_auth.currentUser);
     }
     return results;
   }
