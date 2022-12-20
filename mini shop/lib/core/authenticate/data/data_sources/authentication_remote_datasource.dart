@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../profiles/domain/entities/profile.dart';
+
 abstract class AuthenticationRemoteDatasource {
   /// Creates a new [User] in Firebase
   Future<void> create(String email, String password);
@@ -29,6 +31,7 @@ class AuthenticationRemoteDatasourceImpl
       if (kDebugMode) {
         print(results);
       }
+      
     } catch (error) {
       if (kDebugMode) {
         print(error);

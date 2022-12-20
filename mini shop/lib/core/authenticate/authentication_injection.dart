@@ -31,5 +31,5 @@ void initAuthentication() {
     ..registerLazySingleton(() => LogOut(sl()))
     ..registerLazySingleton(() => GetUser(sl()))
     ..registerFactory(() => AuthenticationBloc(
-        create: sl(), getUser: sl(), logOut: sl(), logIn: sl()));
+        create: sl(), logOut: sl(), logIn: sl()));
 }

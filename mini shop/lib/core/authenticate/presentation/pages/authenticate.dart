@@ -13,6 +13,7 @@ class Wrapper extends StatelessWidget {
     /// if user is logged in display the Home else Log in or Sign up page screen
     final user = Provider.of<User?>(context);
     if (user == null) {
+      print('$user ----');
       return const LoginPage();
     } else {
       return const ProductsHomePage();
