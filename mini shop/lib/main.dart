@@ -7,7 +7,6 @@ import 'package:mini_shop/core/authenticate/presentation/pages/authenticate.dart
 import 'package:mini_shop/shared/routes/routes.dart';
 import 'package:provider/provider.dart';
 
-import 'core/authenticate/data/data_sources/authentication_remote_datasource.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User?>.value(
-      value: AuthenticationRemoteDatasourceImpl().getUser(),
+      value: null,
       initialData: null,
       child: MaterialApp(
         useInheritedMediaQuery: true,

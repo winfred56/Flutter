@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+
+
 class ProductsHomePage extends StatefulWidget {
   const ProductsHomePage({Key? key}) : super(key: key);
 
@@ -9,6 +11,8 @@ class ProductsHomePage extends StatefulWidget {
 }
 
 class _ProductsHomePageState extends State<ProductsHomePage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +26,7 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                   radius: 30,
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () async {},
                     icon: const Icon(
                       Icons.shopping_cart_rounded,
                       size: 34,
