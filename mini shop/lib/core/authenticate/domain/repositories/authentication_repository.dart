@@ -14,6 +14,5 @@ abstract class AuthenticationRepository{
   /// Log Out an existing [User]
   Future<Either<Failure, void>> logOut();
 
-  /// Get [User] status (logged in / logged out)
-  Either<Failure, Stream<User?>> getUserStatus();
+
 }

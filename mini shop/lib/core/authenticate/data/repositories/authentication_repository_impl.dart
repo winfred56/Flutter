@@ -35,23 +35,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     }
   }
 
-  @override
-  Either<Failure, Stream<User?>> getUserStatus() {
-    try {
-      final results = remoteDatasource.getUser();
-      if(kDebugMode){
-        print(results);
-      }
-      return Right(results);
-    }  catch (error) {
-      if (kDebugMode) {
-        print(error);
-        print(
-            'Error Coming From getUserStatus Method in AuthenticationRepositoryImpl --> authentication_repository_impl');
-      }
-      return const Left(Failure('Error Logging Into Your Account'));
-    }
-  }
 
   @override
   Future<Either<Failure, void>> logIn(String email, String password) async {
