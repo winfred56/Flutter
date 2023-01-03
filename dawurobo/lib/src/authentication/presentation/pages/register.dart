@@ -1,10 +1,14 @@
+import 'package:dawurobo/core/user/data/data_sources/local_database.dart';
+import 'package:dawurobo/core/user/domain/entities/user.dart';
 import 'package:dawurobo/src/authentication/presentation/pages/sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../../../core/user/presentation/bloc/user_bloc.dart';
+import '../../../../injection_container.dart';
 import '../../../../shared/ui/loader.dart';
 
 
@@ -24,12 +28,24 @@ class _RegisterPageState extends State<RegisterPage> {
   /// Form Controller
   final formKey = GlobalKey<FormState>();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final bloc = sl<UserBloc>();
+
+  final firebase_auth.FirebaseAuth  _auth = firebase_auth.FirebaseAuth.instance;
 
   Future<String> register(String email, String password) async {
     try {
       final result = await _auth.createUserWithEmailAndPassword(
           email: email.trim(), password: password);
+      final currentUser = firebase_auth.FirebaseAuth.instance.currentUser;
+      if(currentUser?.uid != '' && currentUser?.email != '') {
+        final profile = User.initial().copyWith(
+            id: currentUser!.uid,
+            email: emailController.value.text.trim()
+        );
+        await bloc.newSignIn(profile);
+        await sl<UserLocalDatabase>().save(profile);
+        setState(() {});
+      }
       return result.toString();
     } catch (error) {
       if (kDebugMode) {
@@ -122,12 +138,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                       emailController.value.text.trim(),
                                       passwordController.value.text),
                                   onLoadingDone: () async {
-                                    // await sl<UserLocalDatabase>()
-                                    //     .save(updatedDetails);
-                                    // userDetails.value =
-                                    //     updatedDetails;
+                                    setState(() {});
                                   },
                                   loadingText: 'Logging in ...🎉'));
+
                         },
                         child: const Text(
                           "Continue",

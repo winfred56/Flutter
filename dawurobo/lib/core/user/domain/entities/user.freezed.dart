@@ -32,11 +32,14 @@ mixin _$User {
   /// Full name associated to the user
   String get fullName => throw _privateConstructorUsedError;
 
+  /// Number of followers
+  int get followers => throw _privateConstructorUsedError;
+
+  /// Number of people following
+  int get following => throw _privateConstructorUsedError;
+
   /// Profile image associated to the user
   String get photo => throw _privateConstructorUsedError;
-
-  /// Posts associated to the user
-  List<Post> get posts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,8 +56,9 @@ abstract class $UserCopyWith<$Res> {
       String username,
       String email,
       String fullName,
-      String photo,
-      List<Post> posts});
+      int followers,
+      int following,
+      String photo});
 }
 
 /// @nodoc
@@ -74,8 +78,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? username = null,
     Object? email = null,
     Object? fullName = null,
+    Object? followers = null,
+    Object? following = null,
     Object? photo = null,
-    Object? posts = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -94,14 +99,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      followers: null == followers
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as int,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as int,
       photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String,
-      posts: null == posts
-          ? _value.posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<Post>,
     ) as $Val);
   }
 }
@@ -117,8 +126,9 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String username,
       String email,
       String fullName,
-      String photo,
-      List<Post> posts});
+      int followers,
+      int following,
+      String photo});
 }
 
 /// @nodoc
@@ -134,8 +144,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? username = null,
     Object? email = null,
     Object? fullName = null,
+    Object? followers = null,
+    Object? following = null,
     Object? photo = null,
-    Object? posts = null,
   }) {
     return _then(_$_User(
       id: null == id
@@ -154,14 +165,18 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      followers: null == followers
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as int,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as int,
       photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String,
-      posts: null == posts
-          ? _value._posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<Post>,
     ));
   }
 }
@@ -174,9 +189,9 @@ class _$_User implements _User {
       required this.username,
       required this.email,
       required this.fullName,
-      required this.photo,
-      required final List<Post> posts})
-      : _posts = posts;
+      required this.followers,
+      required this.following,
+      required this.photo});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -196,24 +211,21 @@ class _$_User implements _User {
   @override
   final String fullName;
 
+  /// Number of followers
+  @override
+  final int followers;
+
+  /// Number of people following
+  @override
+  final int following;
+
   /// Profile image associated to the user
   @override
   final String photo;
 
-  /// Posts associated to the user
-  final List<Post> _posts;
-
-  /// Posts associated to the user
-  @override
-  List<Post> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
-  }
-
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, fullName: $fullName, photo: $photo, posts: $posts)';
+    return 'User(id: $id, username: $username, email: $email, fullName: $fullName, followers: $followers, following: $following, photo: $photo)';
   }
 
   @override
@@ -227,14 +239,17 @@ class _$_User implements _User {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
-            (identical(other.photo, photo) || other.photo == photo) &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
+            (identical(other.followers, followers) ||
+                other.followers == followers) &&
+            (identical(other.following, following) ||
+                other.following == following) &&
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, email, fullName,
-      photo, const DeepCollectionEquality().hash(_posts));
+  int get hashCode => Object.hash(
+      runtimeType, id, username, email, fullName, followers, following, photo);
 
   @JsonKey(ignore: true)
   @override
@@ -256,8 +271,9 @@ abstract class _User implements User {
       required final String username,
       required final String email,
       required final String fullName,
-      required final String photo,
-      required final List<Post> posts}) = _$_User;
+      required final int followers,
+      required final int following,
+      required final String photo}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -279,12 +295,16 @@ abstract class _User implements User {
   String get fullName;
   @override
 
-  /// Profile image associated to the user
-  String get photo;
+  /// Number of followers
+  int get followers;
   @override
 
-  /// Posts associated to the user
-  List<Post> get posts;
+  /// Number of people following
+  int get following;
+  @override
+
+  /// Profile image associated to the user
+  String get photo;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
+import '../../../../core/user/data/data_sources/local_database.dart';
+import '../../../../core/user/domain/entities/user.dart';
+import '../../../../core/user/presentation/bloc/user_bloc.dart';
 import '../../../../core/user/presentation/pages/user_page.dart';
+import '../../../../injection_container.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -13,8 +17,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final bloc = sl<UserBloc>();
+
   void logout()async{
     await firebase_auth.FirebaseAuth.instance.signOut();
+    final result =  sl<UserLocalDatabase>().retrieve() as User;
+    await sl<UserLocalDatabase>().delete(result);
   }
 
   @override

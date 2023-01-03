@@ -1,4 +1,3 @@
-import 'package:dawurobo/core/user/domain/entities/post.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -9,26 +8,28 @@ part 'user.g.dart';
 @freezed
 class User with _$User {
   /// Constructor
-  factory User(
-      {
+  factory User({
+    ///  Firebase documentID -> [id]
+    required String id,
 
-      ///  Firebase documentID -> [id]
-      required String id,
+    /// Firebase user.displayName -> Username
+    required String username,
 
-      /// Firebase user.displayName -> Username
-      required String username,
+    /// Email associated to the user
+    required String email,
 
-      /// Email associated to the user
-      required String email,
+    /// Full name associated to the user
+    required String fullName,
 
-      /// Full name associated to the user
-      required String fullName,
+    /// Number of followers
+    required int followers,
 
-      /// Profile image associated to the user
-      required String photo,
+    /// Number of people following
+    required int following,
 
-      /// Posts associated to the user
-      required List<Post> posts}) = _User;
+    /// Profile image associated to the user
+    required String photo,
+  }) = _User;
 
   /// Converts json to dart object
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -41,6 +42,7 @@ class User with _$User {
         fullName: '',
         photo:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjQuWoYxxguqd9waQVKj8XOIwBScGgTKqcEQ&usqp=CAU',
-        posts: [],
+        followers: 0,
+        following: 0,
       );
 }

@@ -62,6 +62,7 @@ dependencies:
   flutter_svg: ^1.1.6
   nil: ^1.1.1
   provider: ^6.0.3
+  shared_preferences: ^2.0.15
 
 
 dev_dependencies:
