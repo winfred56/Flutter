@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -27,7 +28,9 @@ class _ProductsHomePageState extends State<ProductsHomePage> {
                   radius: 30,
                 ),
                 IconButton(
-                    onPressed: () async {},
+                    onPressed: () async {
+                      print(await FirebaseFirestore.instance.collection('products').get().then((querySnapshot) =>  querySnapshot.docs.forEach((doc) {print(doc.get('productPrice'));})));
+                    },
                     icon: const Icon(
                       Icons.shopping_cart_rounded,
                       size: 34,
