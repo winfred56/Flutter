@@ -140,6 +140,13 @@ class _ProfileState extends State<Profile> {
                               '😇',
                               style: TextStyle(fontSize: 65),
                             )),
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: OutlinedButton(onPressed: (){
+                            //TODO: Send a push notification to user {@username started following you}
+                          }, child: const Text('Follow')),
+                        )
                       ],
                     ),
                   ),
