@@ -1,3 +1,4 @@
+import 'package:dawurobo/core/post/domain/use_cases/retreive.dart';
 import 'package:dawurobo/core/post/presentation/bloc/PostBloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,7 +16,7 @@ void initPost() {
   sl
 
   /// Bloc
-    ..registerFactory(() => PostBloc(createPost: sl()))
+    ..registerFactory(() => PostBloc(createPost: sl(), retrievePosts: sl()))
 
   /// Remote Database
     ..registerLazySingleton<PostRemoteDatabase>(PostRemoteDatabaseImpl.new)
@@ -26,5 +27,6 @@ void initPost() {
         remoteDatabase: sl(), networkInfo: sl()))
 
   /// Register Usecases
+    ..registerLazySingleton(() => RetrievePosts(sl()))
     ..registerLazySingleton(() => CreatePost(sl()));
 }

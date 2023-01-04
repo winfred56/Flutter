@@ -27,4 +27,15 @@ class PostRepositoryImpl implements PostRepository {
       return Left(Failure(error.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Post>>> retrieve() async {
+    try {
+      await networkInfo.hasInternet();
+      final result = await remoteDatabase.retrieve();
+      return Right(result);
+    } catch (error) {
+      return Left(Failure(error.toString()));
+    }
+  }
 }

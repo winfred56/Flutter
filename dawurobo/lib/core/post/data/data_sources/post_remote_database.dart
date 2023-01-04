@@ -6,6 +6,9 @@ import '../../domain/entities/post.dart';
 abstract class PostRemoteDatabase {
   /// Create and save post in remote database
   Future<Post> create(Post post);
+
+  /// Get all [Post]s in remote database
+  Future<List<Post>> retrieve();
 }
 
 class PostRemoteDatabaseImpl implements PostRemoteDatabase {
@@ -18,6 +21,20 @@ class PostRemoteDatabaseImpl implements PostRemoteDatabase {
       return post;
     } on FirebaseException {
       return post;
+    }
+  }
+
+  @override
+  Future<List<Post>> retrieve() async {
+    try{
+      final result = (await FirebaseFirestore.instance.collection('posts').get())
+        .docs
+        .map((item) => Post.fromJson(item.data()))
+        .toList();
+      print('=========== $result ============');
+      return result;
+    }on FirebaseException {
+      return [];
     }
   }
 }

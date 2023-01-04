@@ -1,6 +1,7 @@
 import 'package:dawurobo/core/post/domain/entities/post.dart';
 import 'package:dawurobo/core/post/presentation/bloc/PostBloc.dart';
 import 'package:dawurobo/core/user/presentation/bloc/user_bloc.dart';
+import 'package:dawurobo/src/home/presentation/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 
@@ -106,7 +107,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                                   author: value.id,
                                 );
                                 createPost(newPost);
-                                Navigator.of(context).pop();
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()));
                               }, child: const Text('Create Post')))
                     ],
                   ),

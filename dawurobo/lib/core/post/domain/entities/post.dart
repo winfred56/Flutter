@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../user/domain/entities/user.dart';
+
 
 part 'post.g.dart';
 part 'post.freezed.dart';
