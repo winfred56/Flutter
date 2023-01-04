@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dawurobo/core/post/presentation/pages/create.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 
@@ -76,10 +77,9 @@ class _UserPageState extends State<UserPage> {
                                 Icons.camera_alt_outlined,
                                 color: Colors.black,
                               ),
-                              //backgroundColor: theme.colorScheme.primary,
                               shape: const CircleBorder(),
                               padding: const EdgeInsets.all(10),
-                              onPressed: () {print(value.fullName);},
+                              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>const CreatePostPage())),
                             ))),
                     Text(value.fullName,
                         style: Theme.of(context)
