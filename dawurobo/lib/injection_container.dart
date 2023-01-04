@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 
+import 'core/post/post_injection.dart';
 import 'core/user/user_injection.dart';
 import 'shared/network/network.dart';
 
@@ -23,6 +24,8 @@ Future<void> init() async {
   /// User
   initUser();
 
+  /// Post
+  initPost();
 
   /// Shared - repositories
   sl
