@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:dawurobo/core/post/presentation/pages/create.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter/material.dart';
 
 import '../../../../core/user/data/data_sources/local_database.dart';
 import '../../../../core/user/domain/entities/user.dart';
 import '../../../../core/user/presentation/bloc/user_bloc.dart';
 import '../../../../core/user/presentation/pages/user_page.dart';
 import '../../../../injection_container.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,12 +16,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final bloc = sl<UserBloc>();
 
-  void logout()async{
+  void logout() async {
     await firebase_auth.FirebaseAuth.instance.signOut();
-    final result =  sl<UserLocalDatabase>().retrieve() as User;
+    final result = sl<UserLocalDatabase>().retrieve() as User;
     await sl<UserLocalDatabase>().delete(result);
   }
 
@@ -30,17 +29,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const UserPage())),
-              icon: const Icon(Icons.person_rounded, color: Colors.brown,)),
-          automaticallyImplyLeading: false,
-          title: Text('Dawurobo',
-              style: Theme.of(context).textTheme.bodyMedium!
-                  .apply(fontSizeDelta: 3, fontWeightDelta: 4)),
-          centerTitle: true,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const UserPage())),
+            icon: const Icon(
+              Icons.person_rounded,
+              color: Colors.brown,
+            )),
+        automaticallyImplyLeading: false,
+        title: Text('Dawurobo',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .apply(fontSizeDelta: 3, fontWeightDelta: 4)),
+        centerTitle: true,
         actions: [
-          IconButton(onPressed: () => logout(), icon: const Icon(Icons.exit_to_app_rounded, color: Colors.brown))
+          IconButton(
+              onPressed: () => logout(),
+              icon: const Icon(Icons.exit_to_app_rounded, color: Colors.brown))
         ],
       ),
       body: SafeArea(
@@ -54,18 +61,30 @@ class _HomePageState extends State<HomePage> {
                     radius: 30,
                     backgroundColor: Colors.blue,
                   ),
-                  title: Text('@username', style: Theme.of(context).textTheme.bodyMedium!
-                      .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
+                  title: Text('@username',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
                   subtitle: Column(
                     children: [
-                      const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
+                      const Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.poll_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.mode_comment_rounded)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.share_rounded))
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.poll_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mode_comment_rounded)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_border_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.share_rounded))
                         ],
                       )
                     ],
@@ -77,18 +96,30 @@ class _HomePageState extends State<HomePage> {
                     radius: 30,
                     backgroundColor: Colors.yellow,
                   ),
-                  title: Text('@username', style: Theme.of(context).textTheme.bodyMedium!
-                      .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
+                  title: Text('@username',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
                   subtitle: Column(
                     children: [
-                      const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
+                      const Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.poll_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.mode_comment_rounded)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.share_rounded))
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.poll_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mode_comment_rounded)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_border_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.share_rounded))
                         ],
                       )
                     ],
@@ -100,18 +131,30 @@ class _HomePageState extends State<HomePage> {
                     radius: 30,
                     backgroundColor: Colors.black,
                   ),
-                  title: Text('@username', style: Theme.of(context).textTheme.bodyMedium!
-                      .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
+                  title: Text('@username',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
                   subtitle: Column(
                     children: [
-                      const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
+                      const Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.poll_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.mode_comment_rounded)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.share_rounded))
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.poll_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mode_comment_rounded)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_border_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.share_rounded))
                         ],
                       )
                     ],
@@ -123,18 +166,30 @@ class _HomePageState extends State<HomePage> {
                     radius: 30,
                     backgroundColor: Colors.pink,
                   ),
-                  title: Text('@username', style: Theme.of(context).textTheme.bodyMedium!
-                      .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
+                  title: Text('@username',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
                   subtitle: Column(
                     children: [
-                      const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
+                      const Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.poll_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.mode_comment_rounded)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.share_rounded))
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.poll_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mode_comment_rounded)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_border_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.share_rounded))
                         ],
                       )
                     ],
@@ -146,18 +201,30 @@ class _HomePageState extends State<HomePage> {
                     radius: 30,
                     backgroundColor: Colors.orange,
                   ),
-                  title: Text('@username', style: Theme.of(context).textTheme.bodyMedium!
-                      .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
+                  title: Text('@username',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(fontSizeDelta: 2, fontWeightDelta: 1)),
                   subtitle: Column(
                     children: [
-                      const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
+                      const Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et fermentum libero, vulputate commodo ligula. Aliquam eu facilisis lorem. Phasellus massa urna, vulputate placerat ligula porttitor, semper mattis risus.'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.poll_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.mode_comment_rounded)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border_outlined)),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.share_rounded))
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.poll_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mode_comment_rounded)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.favorite_border_outlined)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.share_rounded))
                         ],
                       )
                     ],
@@ -169,6 +236,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CreatePostPage())),
+          child: const Icon(Icons.add)),
     );
   }
 }
