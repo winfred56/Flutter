@@ -41,7 +41,6 @@ class _EditProfileState extends State<EditProfile> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       userDetails.value = await bloc.getAuthenticatedUser();
-      print(userDetails);
       emailController.text = userDetails.value.email;
       usernameController.text = userDetails.value.username;
       nameController.text = userDetails.value.fullName;

@@ -27,6 +27,10 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
   late TextEditingController postController = TextEditingController();
 
+  createPost(Post post)async{
+    await bloc.create(post);
+  }
+
   /// Logout
   void logout() async {
     await firebase_auth.FirebaseAuth.instance.signOut();
@@ -93,16 +97,16 @@ class _CreatePostPageState extends State<CreatePostPage> {
                       Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
-                              onPressed: () async {
+                              onPressed: () {
                                 if (!formKey.currentState!.validate()) {
                                   return;
                                 }
                                 final newPost = Post.initial().copyWith(
                                   postText: postController.value.text,
-                                  author: value
+                                  author: value.id,
                                 );
-                                await bloc.create(newPost);
-                                print('============= ${await bloc.create(newPost)} =============');
+                                createPost(newPost);
+                                Navigator.of(context).pop();
                               }, child: const Text('Create Post')))
                     ],
                   ),
