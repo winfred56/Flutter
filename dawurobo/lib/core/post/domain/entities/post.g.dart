@@ -8,7 +8,7 @@ part of 'post.dart';
 
 _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
       id: json['id'] as String,
-      author: User.fromJson(json['author'] as Map<String, dynamic>),
+      author: json['author'] as String,
       postText: json['postText'] as String,
       likes: json['likes'] as int,
     );

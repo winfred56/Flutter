@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../user/domain/entities/user.dart';
 
 part 'post.g.dart';
 part 'post.freezed.dart';
@@ -12,7 +11,7 @@ class Post with _$Post {
     required String id,
 
     /// Owner of a particular post
-    required User author,
+    required String author,
 
     /// Actual Post message
     required String postText,
@@ -26,5 +25,5 @@ class Post with _$Post {
 
   /// Initial Dummy data
   factory Post.initial() =>
-      Post(id: '', author: User.initial(), postText: 'postText', likes: 0);
+      Post(id: '', author: '', postText: 'postText', likes: 0);
 }

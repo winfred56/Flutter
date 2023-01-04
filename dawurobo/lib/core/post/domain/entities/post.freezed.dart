@@ -24,7 +24,7 @@ mixin _$Post {
   String get id => throw _privateConstructorUsedError;
 
   /// Owner of a particular post
-  User get author => throw _privateConstructorUsedError;
+  String get author => throw _privateConstructorUsedError;
 
   /// Actual Post message
   String get postText => throw _privateConstructorUsedError;
@@ -42,9 +42,7 @@ abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res, Post>;
   @useResult
-  $Res call({String id, User author, String postText, int likes});
-
-  $UserCopyWith<$Res> get author;
+  $Res call({String id, String author, String postText, int likes});
 }
 
 /// @nodoc
@@ -73,7 +71,7 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as User,
+              as String,
       postText: null == postText
           ? _value.postText
           : postText // ignore: cast_nullable_to_non_nullable
@@ -84,14 +82,6 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
               as int,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get author {
-    return $UserCopyWith<$Res>(_value.author, (value) {
-      return _then(_value.copyWith(author: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -100,10 +90,7 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       __$$_PostCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, User author, String postText, int likes});
-
-  @override
-  $UserCopyWith<$Res> get author;
+  $Res call({String id, String author, String postText, int likes});
 }
 
 /// @nodoc
@@ -128,7 +115,7 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as User,
+              as String,
       postText: null == postText
           ? _value.postText
           : postText // ignore: cast_nullable_to_non_nullable
@@ -158,7 +145,7 @@ class _$_Post implements _Post {
 
   /// Owner of a particular post
   @override
-  final User author;
+  final String author;
 
   /// Actual Post message
   @override
@@ -206,7 +193,7 @@ class _$_Post implements _Post {
 abstract class _Post implements Post {
   factory _Post(
       {required final String id,
-      required final User author,
+      required final String author,
       required final String postText,
       required final int likes}) = _$_Post;
 
@@ -219,7 +206,7 @@ abstract class _Post implements Post {
   @override
 
   /// Owner of a particular post
-  User get author;
+  String get author;
   @override
 
   /// Actual Post message
