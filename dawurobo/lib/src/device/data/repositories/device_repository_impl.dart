@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../shared/error/exception.dart';
 import '../../../../shared/error/failure.dart';
 import '../../../../shared/network/network.dart';
-import '../../../../shared/notifications/push_notifications.dart';
+import '../../../../shared/notifications/notifications.dart';
 import '../../domain/entities/device.dart';
 import '../../domain/repositories/device_repository.dart';
 import '../database/device_remote_database.dart';
