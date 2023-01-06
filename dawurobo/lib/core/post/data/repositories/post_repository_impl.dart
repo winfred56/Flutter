@@ -38,4 +38,15 @@ class PostRepositoryImpl implements PostRepository {
       return Left(Failure(error.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, Post>> getSpecificPost(String documentId) async {
+    try {
+      await networkInfo.hasInternet();
+      final result = await remoteDatabase.specificPost(documentId);
+      return Right(result);
+    } catch (error) {
+      return Left(Failure(error.toString()));
+    }
+  }
 }

@@ -9,4 +9,7 @@ abstract class PostRepository{
 
   /// Retrieve all [Post]
   Future<Either<Failure,List<Post>>> retrieve();
+
+  /// Retrieve specific [Post]
+  Future<Either<Failure, Post>> getSpecificPost(String documentId);
 }

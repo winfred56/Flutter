@@ -9,15 +9,28 @@ abstract class PostRemoteDatabase {
 
   /// Get all [Post]s in remote database
   Future<List<Post>> retrieve();
+
+  /// Get Specific [Post]s in remote database
+  Future<Post> specificPost(String documentId);
 }
 
 class PostRemoteDatabaseImpl implements PostRemoteDatabase {
   @override
   Future<Post> create(Post post) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('posts')
-          .add(post.toJson());
+      final FirebaseFirestore firestore = FirebaseFirestore.instance;
+      // Add the document to Cloud Firestore.
+      DocumentReference reference = await firestore.collection('posts').add(post.toJson());
+
+      // Get the document ID.
+      String documentId = reference.id;
+
+      // Update the object with the document ID.
+      post = post.copyWith(id: documentId);
+
+      // Update the document with the ID field.
+      await reference.update(post.toJson());
+
       return post;
     } on FirebaseException {
       return post;
@@ -31,10 +44,19 @@ class PostRemoteDatabaseImpl implements PostRemoteDatabase {
         .docs
         .map((item) => Post.fromJson(item.data()))
         .toList();
-      print('=========== $result ============');
       return result;
     }on FirebaseException {
       return [];
     }
+  }
+
+  @override
+  Future<Post> specificPost(String documentId) async {
+    final postMap = (await FirebaseFirestore.instance
+        .collection('posts')
+        .doc(documentId)
+        .get());
+    final results = postMap.data()!;
+    return Post.fromJson(results);
   }
 }
