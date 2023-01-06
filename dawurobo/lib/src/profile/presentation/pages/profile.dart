@@ -21,7 +21,10 @@ class _ProfileState extends State<Profile> {
 
   /// Bloc Holder
   final bloc = sl<ProfileBloc>();
-  
+
+  bool following = false;
+  String followBtn = 'Follow';
+
   @override
   void initState() {
     super.initState();
@@ -94,7 +97,23 @@ class _ProfileState extends State<Profile> {
                         const Padding(
                             padding: EdgeInsets.symmetric(vertical: 10)),
                         const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10)),
+                            padding: EdgeInsets.symmetric(vertical: 5)),
+                        OutlinedButton(onPressed: (){
+                          if(following == false){
+                            setState(() {
+                              following = true;
+                              followBtn = 'Unfollow';
+                            });
+                          }
+                          else{
+                            setState(() {
+                              following = false;
+                              followBtn = 'Follow';
+                            });
+                          }
+
+                          //TODO: Send a push notification to user {@username started following you}
+                        }, child: Text(followBtn)),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -140,13 +159,6 @@ class _ProfileState extends State<Profile> {
                               '😇',
                               style: TextStyle(fontSize: 65),
                             )),
-
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: OutlinedButton(onPressed: (){
-                            //TODO: Send a push notification to user {@username started following you}
-                          }, child: const Text('Follow')),
-                        )
                       ],
                     ),
                   ),
