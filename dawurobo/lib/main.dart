@@ -1,9 +1,14 @@
 import 'dart:async';
+import 'package:dawurobo/core/post/presentation/pages/post_detail.dart';
+import 'package:dawurobo/shared/notifications/push_notification.dart';
 import 'package:dawurobo/src/authentication/presentation/pages/authenticate.dart';
+import 'package:dawurobo/src/share/data/data_sources/share_remote_database.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
-import 'package:dawurobo/shared/notifications/push_notifications.dart';
+import 'package:dawurobo/shared/notifications/notifications.dart';
 import 'package:dawurobo/src/authentication/presentation/pages/sign_in.dart';
 import 'package:dawurobo/src/home/presentation/pages/home_page.dart';
 import 'package:device_preview/device_preview.dart';
@@ -35,7 +40,10 @@ Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   di.init();
   await Firebase.initializeApp();
+  await ShareRemoteDatabaseImpl.initializeDynamicLink(context);
   await di.sl<PushNotification>().initializeNotification();
+  LocalNotificationService.initialize();
+
   FirebaseMessaging.onBackgroundMessage(
       (message) => firebaseMessagingBackground(message));
   await FlutterLocalNotificationsPlugin()
@@ -44,6 +52,8 @@ Future<void> main() async {
       ?.createNotificationChannel(channel);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true, badge: true, sound: true);
+
+
   await runZonedGuarded<Future<void>>(
     () async {
       runApp(DevicePreview(
