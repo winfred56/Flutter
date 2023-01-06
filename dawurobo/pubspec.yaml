@@ -63,6 +63,11 @@ dependencies:
   nil: ^1.1.1
   provider: ^6.0.3
   shared_preferences: ^2.0.15
+  firebase_dynamic_links: ^5.0.11
+  url_launcher: ^6.1.7
+  share_plus: ^6.3.0
+  get: ^4.6.5
+
 
 
 dev_dependencies:
