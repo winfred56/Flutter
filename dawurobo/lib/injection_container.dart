@@ -1,4 +1,4 @@
-import 'package:dawurobo/shared/notifications/push_notifications.dart';
+import 'package:dawurobo/shared/notifications/notifications.dart';
 import 'package:dawurobo/src/profile/profile_injection.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
