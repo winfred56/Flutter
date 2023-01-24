@@ -3,7 +3,6 @@ import 'package:dribble_design1/pages/otp_verification.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../pages/campaign.dart';
-import '../../pages/draggable_stepper.dart';
 import '../../pages/edit_personal_info_page.dart';
 import '../../pages/notifications.dart';
 import '../../pages/settings_page.dart';
@@ -27,8 +26,8 @@ class Routes{
   static const editPersonalInfo = '/edit_personal_info';
   /// Open [OTPVerification]
   static const otpVerification = '/otp_verification';
-  /// Open [DraggableStepper]
-  static const draggableStepper = '/draggable_stepper';
+
+
 
   static final Map<String, WidgetBuilder> routes = {
     Routes.signUp : (BuildContext context) => const SignIn(),
@@ -39,7 +38,6 @@ class Routes{
     Routes.settings : (BuildContext context) => const SettingsPage(),
     Routes.editPersonalInfo : (BuildContext context) => const EditPersonalInfo(),
     Routes.otpVerification : (BuildContext context) => const OTPVerification(),
-    Routes.draggableStepper : (BuildContext context) => const DraggableStepper(),
   };
 
 }
