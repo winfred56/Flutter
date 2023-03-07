@@ -54,6 +54,23 @@ dependencies:
   cupertino_icons: ^1.0.2
   flex_color_scheme: ^6.1.2
 
+
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/static/launcher.png"
+  adaptive_icon_background: "assets/static/launcher.png"
+  adaptive_icon_foreground: "assets/static/launcher.png"
+  remove_alpha_ios: true
+
+# flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  image: "assets/static/logo.png"
+  color: "#ffffff"
+  color_dark: "#000000"
+  image_dark: "assets/static/logo.png"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
