@@ -6,9 +6,9 @@ import '../entities/electorate.dart';
 import '../repositories/electorate_repository.dart';
 
 /// Retrieves an authenticated [Electorate] instance saved locally
-class AuthenticatedUser extends Usecase<Electorate, NoParams> {
+class AuthenticatedElectorate extends Usecase<Electorate, NoParams> {
   /// Constructor
-  AuthenticatedUser(this.repository);
+  AuthenticatedElectorate(this.repository);
 
   /// Repository
   final ElectorateRepository repository;

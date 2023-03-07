@@ -7,9 +7,9 @@ import '../entities/electorate.dart';
 import '../repositories/electorate_repository.dart';
 
 /// Authenticate with email
-class SignInPhone implements Usecase<Electorate, SignInParams> {
+class SignIn implements Usecase<Electorate, SignInParams> {
   /// Constructor
-  SignInPhone(this.repository);
+  SignIn(this.repository);
 
   /// Repository
   final ElectorateRepository repository;

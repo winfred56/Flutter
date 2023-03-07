@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 
+import 'core/electorate/electorate_injection.dart';
 import 'shared/network/network.dart';
 import 'shared/platform/push_notification.dart';
 import 'src/device/device_injection.dart';
@@ -17,6 +18,9 @@ final sl = GetIt.instance;
 void init() {
   /// Device
   initDevice();
+
+  /// Electorate
+  initElectorate();
 
   /// Shared - repositories
   sl

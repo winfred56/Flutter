@@ -6,9 +6,9 @@ import '../entities/electorate.dart';
 import '../repositories/electorate_repository.dart';
 
 /// Logs a user out of an account
-class LogoutUser implements Usecase<Electorate, NoParams> {
+class LogoutElectorate implements Usecase<Electorate, NoParams> {
   /// Constructor
-  LogoutUser(this.repository);
+  LogoutElectorate(this.repository);
 
   /// Repository
   final ElectorateRepository repository;
