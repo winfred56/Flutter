@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "835662407207",
+    "project_id": "knust-elect",
+    "storage_bucket": "knust-elect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835662407207:android:ed210c5bf874d426099002",
+        "android_client_info": {
+          "package_name": "com.knustelect.app.knust_elect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835662407207-fo6hvh5i59o2rt31bf4ufale1jar0qn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYcbKqMu1ZEn5-F1au3PzKBZjjaMYBFH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835662407207-fo6hvh5i59o2rt31bf4ufale1jar0qn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
