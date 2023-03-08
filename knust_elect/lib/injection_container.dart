@@ -4,13 +4,12 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
-
-import 'core/electorate/electorate_injection.dart';
+import 'core/student/student_injection.dart';
 import 'shared/network/network.dart';
 import 'shared/platform/push_notification.dart';
+import 'src/authentication/authentication_injection.dart';
 import 'src/device/device_injection.dart';
-
-
+import 'src/home/home_injection.dart';
 
 /// Instantiate GetIT
 final sl = GetIt.instance;
@@ -19,25 +18,31 @@ void init() {
   /// Device
   initDevice();
 
-  /// Electorate
-  initElectorate();
+  /// Student
+  initStudent();
+
+  /// Authentication
+  initAuthentication();
+
+  /// Home
+  initHome();
 
   /// Shared - repositories
   sl
 
-  /// Checks Internet Connectivity
+    /// Checks Internet Connectivity
     ..registerLazySingleton<NetworkInfo>(NetworkInfoImpl.new)
 
-  /// Init Local Caching
+    /// Init Local Caching
     ..registerLazySingleton<HiveInterface>(() => Hive)
 
-  /// Init Firebase Messaging
+    /// Init Firebase Messaging
     ..registerFactory<FirebaseMessaging>(() => FirebaseMessaging.instance)
 
-  /// http package
+    /// http package
     ..registerLazySingleton(http.Client.new)
 
-  /// Init Push Notification
+    /// Init Push Notification
     ..registerFactory<FlutterLocalNotificationsPlugin>(
         FlutterLocalNotificationsPlugin.new)
     ..registerLazySingleton<PushNotification>(() => PushNotificationImpl(sl()));

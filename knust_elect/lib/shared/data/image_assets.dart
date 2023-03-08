@@ -5,4 +5,7 @@ class ImageAssets {
 
   /// Logo with background
   static const String backgroundLogo = 'assets/static/launcher.png';
+
+  /// Onboarding Image
+  static const String onboadrding = 'assets/static/onboarding.png';
 }
