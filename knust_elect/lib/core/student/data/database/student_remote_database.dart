@@ -1,23 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 
-import '../../domain/entities/electorate.dart';
+import '../../domain/entities/student.dart';
 
 /// Contracts for interacting with database
-abstract class ElectorateRemoteDatabase {
-  /// Authenticates [Electorate] account with phoneNumber
-  Future<Electorate> signIn(Electorate user);
+abstract class StudentRemoteDatabase {
+  /// Authenticates [Student] account with phoneNumber
+  Future<Student> signIn(Student user);
 
-  /// Updates a specific [Electorate] instance
-  Future<Electorate> update(Electorate electorate);
+  /// Updates a specific [Student] instance
+  Future<Student> update(Student student);
 
   Future<void> verifyEmail();
 }
 
 /// Implements [ProfileRemoteDatabase]
-class ElectorateRemoteDatabaseImpl implements ElectorateRemoteDatabase {
+class StudentRemoteDatabaseImpl implements StudentRemoteDatabase {
   @override
-  Future<Electorate> update(Electorate profile) async {
+  Future<Student> update(Student profile) async {
     await FirebaseFirestore.instance
         .collection('profiles')
         .doc(profile.id)
@@ -26,19 +26,19 @@ class ElectorateRemoteDatabaseImpl implements ElectorateRemoteDatabase {
   }
 
   @override
-  Future<Electorate> signIn(Electorate electorate) async {
+  Future<Student> signIn(Student student) async {
     try {
       final extra = {
         'date': FieldValue.serverTimestamp(),
-        'profileType': 'electorate'
+        'profileType': 'student'
       };
       await FirebaseFirestore.instance
-          .collection('profiles')
-          .doc(electorate.id)
-          .set(electorate.toJson()..addAll(extra));
-      return electorate;
+          .collection('students')
+          .doc(student.id)
+          .set(student.toJson()..addAll(extra));
+      return student;
     } on FirebaseException {
-      return electorate;
+      return student;
     }
   }
 

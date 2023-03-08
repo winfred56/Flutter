@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'electorate.dart';
+part of 'student.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Electorate _$ElectorateFromJson(Map<String, dynamic> json) {
-  return _Electorate.fromJson(json);
+Student _$StudentFromJson(Map<String, dynamic> json) {
+  return _Student.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Electorate {
+mixin _$Student {
   ///  Firebase documentID -> [id]
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
@@ -32,29 +32,31 @@ mixin _$Electorate {
   @HiveField(2)
   String get username => throw _privateConstructorUsedError;
 
-  /// Email associated to the user
+  /// Email associated to the student
   @HiveField(3)
   String get email => throw _privateConstructorUsedError;
 
-  /// Full name associated to the user
+  /// Full name associated to the student
   @HiveField(4)
   String get name => throw _privateConstructorUsedError;
 
-  /// Profile image associated to the user
+  /// Full name associated to the student
   @HiveField(5)
+  bool get voted => throw _privateConstructorUsedError;
+
+  /// Profile image associated to the student
+  @HiveField(6)
   String get photo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ElectorateCopyWith<Electorate> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StudentCopyWith<Student> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ElectorateCopyWith<$Res> {
-  factory $ElectorateCopyWith(
-          Electorate value, $Res Function(Electorate) then) =
-      _$ElectorateCopyWithImpl<$Res, Electorate>;
+abstract class $StudentCopyWith<$Res> {
+  factory $StudentCopyWith(Student value, $Res Function(Student) then) =
+      _$StudentCopyWithImpl<$Res, Student>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
@@ -62,13 +64,14 @@ abstract class $ElectorateCopyWith<$Res> {
       @HiveField(2) String username,
       @HiveField(3) String email,
       @HiveField(4) String name,
-      @HiveField(5) String photo});
+      @HiveField(5) bool voted,
+      @HiveField(6) String photo});
 }
 
 /// @nodoc
-class _$ElectorateCopyWithImpl<$Res, $Val extends Electorate>
-    implements $ElectorateCopyWith<$Res> {
-  _$ElectorateCopyWithImpl(this._value, this._then);
+class _$StudentCopyWithImpl<$Res, $Val extends Student>
+    implements $StudentCopyWith<$Res> {
+  _$StudentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,6 +86,7 @@ class _$ElectorateCopyWithImpl<$Res, $Val extends Electorate>
     Object? username = null,
     Object? email = null,
     Object? name = null,
+    Object? voted = null,
     Object? photo = null,
   }) {
     return _then(_value.copyWith(
@@ -106,6 +110,10 @@ class _$ElectorateCopyWithImpl<$Res, $Val extends Electorate>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      voted: null == voted
+          ? _value.voted
+          : voted // ignore: cast_nullable_to_non_nullable
+              as bool,
       photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -115,11 +123,10 @@ class _$ElectorateCopyWithImpl<$Res, $Val extends Electorate>
 }
 
 /// @nodoc
-abstract class _$$_ElectorateCopyWith<$Res>
-    implements $ElectorateCopyWith<$Res> {
-  factory _$$_ElectorateCopyWith(
-          _$_Electorate value, $Res Function(_$_Electorate) then) =
-      __$$_ElectorateCopyWithImpl<$Res>;
+abstract class _$$_StudentCopyWith<$Res> implements $StudentCopyWith<$Res> {
+  factory _$$_StudentCopyWith(
+          _$_Student value, $Res Function(_$_Student) then) =
+      __$$_StudentCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,15 +135,15 @@ abstract class _$$_ElectorateCopyWith<$Res>
       @HiveField(2) String username,
       @HiveField(3) String email,
       @HiveField(4) String name,
-      @HiveField(5) String photo});
+      @HiveField(5) bool voted,
+      @HiveField(6) String photo});
 }
 
 /// @nodoc
-class __$$_ElectorateCopyWithImpl<$Res>
-    extends _$ElectorateCopyWithImpl<$Res, _$_Electorate>
-    implements _$$_ElectorateCopyWith<$Res> {
-  __$$_ElectorateCopyWithImpl(
-      _$_Electorate _value, $Res Function(_$_Electorate) _then)
+class __$$_StudentCopyWithImpl<$Res>
+    extends _$StudentCopyWithImpl<$Res, _$_Student>
+    implements _$$_StudentCopyWith<$Res> {
+  __$$_StudentCopyWithImpl(_$_Student _value, $Res Function(_$_Student) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,9 +154,10 @@ class __$$_ElectorateCopyWithImpl<$Res>
     Object? username = null,
     Object? email = null,
     Object? name = null,
+    Object? voted = null,
     Object? photo = null,
   }) {
-    return _then(_$_Electorate(
+    return _then(_$_Student(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -170,6 +178,10 @@ class __$$_ElectorateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      voted: null == voted
+          ? _value.voted
+          : voted // ignore: cast_nullable_to_non_nullable
+              as bool,
       photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -180,18 +192,19 @@ class __$$_ElectorateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Electorate extends _Electorate {
-  _$_Electorate(
+class _$_Student extends _Student {
+  _$_Student(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.phoneNumber,
       @HiveField(2) required this.username,
       @HiveField(3) required this.email,
       @HiveField(4) required this.name,
-      @HiveField(5) required this.photo})
+      @HiveField(5) required this.voted,
+      @HiveField(6) required this.photo})
       : super._();
 
-  factory _$_Electorate.fromJson(Map<String, dynamic> json) =>
-      _$$_ElectorateFromJson(json);
+  factory _$_Student.fromJson(Map<String, dynamic> json) =>
+      _$$_StudentFromJson(json);
 
   ///  Firebase documentID -> [id]
   @override
@@ -208,26 +221,31 @@ class _$_Electorate extends _Electorate {
   @HiveField(2)
   final String username;
 
-  /// Email associated to the user
+  /// Email associated to the student
   @override
   @HiveField(3)
   final String email;
 
-  /// Full name associated to the user
+  /// Full name associated to the student
   @override
   @HiveField(4)
   final String name;
 
-  /// Profile image associated to the user
+  /// Full name associated to the student
   @override
   @HiveField(5)
+  final bool voted;
+
+  /// Profile image associated to the student
+  @override
+  @HiveField(6)
   final String photo;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Electorate &&
+            other is _$_Student &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -235,40 +253,41 @@ class _$_Electorate extends _Electorate {
                 other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.voted, voted) || other.voted == voted) &&
             (identical(other.photo, photo) || other.photo == photo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, phoneNumber, username, email, name, photo);
+  int get hashCode => Object.hash(
+      runtimeType, id, phoneNumber, username, email, name, voted, photo);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ElectorateCopyWith<_$_Electorate> get copyWith =>
-      __$$_ElectorateCopyWithImpl<_$_Electorate>(this, _$identity);
+  _$$_StudentCopyWith<_$_Student> get copyWith =>
+      __$$_StudentCopyWithImpl<_$_Student>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ElectorateToJson(
+    return _$$_StudentToJson(
       this,
     );
   }
 }
 
-abstract class _Electorate extends Electorate {
-  factory _Electorate(
+abstract class _Student extends Student {
+  factory _Student(
       {@HiveField(0) required final String id,
       @HiveField(1) required final String phoneNumber,
       @HiveField(2) required final String username,
       @HiveField(3) required final String email,
       @HiveField(4) required final String name,
-      @HiveField(5) required final String photo}) = _$_Electorate;
-  _Electorate._() : super._();
+      @HiveField(5) required final bool voted,
+      @HiveField(6) required final String photo}) = _$_Student;
+  _Student._() : super._();
 
-  factory _Electorate.fromJson(Map<String, dynamic> json) =
-      _$_Electorate.fromJson;
+  factory _Student.fromJson(Map<String, dynamic> json) = _$_Student.fromJson;
 
   @override
 
@@ -287,21 +306,26 @@ abstract class _Electorate extends Electorate {
   String get username;
   @override
 
-  /// Email associated to the user
+  /// Email associated to the student
   @HiveField(3)
   String get email;
   @override
 
-  /// Full name associated to the user
+  /// Full name associated to the student
   @HiveField(4)
   String get name;
   @override
 
-  /// Profile image associated to the user
+  /// Full name associated to the student
   @HiveField(5)
+  bool get voted;
+  @override
+
+  /// Profile image associated to the student
+  @HiveField(6)
   String get photo;
   @override
   @JsonKey(ignore: true)
-  _$$_ElectorateCopyWith<_$_Electorate> get copyWith =>
+  _$$_StudentCopyWith<_$_Student> get copyWith =>
       throw _privateConstructorUsedError;
 }
