@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:knust_elect/core/student/domain/use_cases/update.dart';
 
+import 'domain/use_cases/update.dart';
 import 'data/database/student_local_database.dart';
 import 'data/database/student_remote_database.dart';
 import 'data/repositories/student_repository_impl.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../src/signin/presentation/pages/signin_page.dart';
+import '../src/authentication/presentation/pages/signin_page.dart';
 
 
 /// Access all available routes in the application
