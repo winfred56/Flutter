@@ -47,16 +47,24 @@ class Validator {
     return null;
   }
 
-  /// Validate otp code
-  static String? code(String? value) {
-    try {
-      if (value!.length == 6 && int.parse(value) >= 0) {
-        return null;
-      } else {
-        return '${6 - value.length} digits more';
-      }
-    } on FormatException {
-      return 'code should be a number 😑';
+  /// Validate Email address
+  static String? email(String? value){
+    final RegExp pattern = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+      caseSensitive: false,
+      unicode: true,
+    );
+    if(value!.isEmpty){
+      return null;
+    }
+    if(pattern.hasMatch(value)){
+      return null;
+    }
+    if(value.endsWith('@st.knust.edu.gh')){
+      return null;
+    }
+    else{
+      return 'Invalid email address';
     }
   }
 }
