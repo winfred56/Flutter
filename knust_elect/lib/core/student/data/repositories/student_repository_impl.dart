@@ -74,4 +74,15 @@ class StudentRepositoryImpl implements StudentRepository {
     }
   }
 
+  @override
+  Future<Either<Failure, Student>> retrieve(String documentID) async {
+    try {
+      await networkInfo.hasInternet();
+      final results = await remoteDatabase.retrieve(documentID);
+      return Right(results);
+    } on DeviceException catch (error) {
+      return Left(Failure(error.message));
+    }
+  }
+
 }

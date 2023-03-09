@@ -5,11 +5,14 @@ import '../../domain/entities/student.dart';
 
 /// Contracts for interacting with database
 abstract class StudentRemoteDatabase {
-  /// Authenticates [Student] account with phoneNumber
+  /// Authenticates [Student] account
   Future<Student> signIn(Student user);
 
   /// Updates a specific [Student] instance
   Future<Student> update(Student student);
+
+  /// Retrieve a [Student] instance
+  Future<Student> retrieve(String documentID);
 
   Future<void> verifyEmail();
 }
@@ -46,8 +49,10 @@ class StudentRemoteDatabaseImpl implements StudentRemoteDatabase {
   Future<void> verifyEmail() async {
     try {
       final currentUser = FirebaseAuth.instance.currentUser;
-      if(currentUser != null && currentUser.email != null && currentUser.emailVerified == false){
-        if(currentUser.emailVerified ){
+      if (currentUser != null &&
+          currentUser.email != null &&
+          currentUser.emailVerified == false) {
+        if (currentUser.emailVerified) {
           return;
         }
         await currentUser.sendEmailVerification();
@@ -57,5 +62,12 @@ class StudentRemoteDatabaseImpl implements StudentRemoteDatabase {
     }
   }
 
-
+  @override
+  Future<Student> retrieve(String documentID) async {
+    final result = await FirebaseFirestore.instance
+        .collection('students')
+        .doc(documentID)
+        .get();
+    return Student.fromJson(result.data()!);
+  }
 }

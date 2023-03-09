@@ -11,6 +11,9 @@ abstract class StudentRepository {
   /// Updates a specific [Student] instance
   Future<Either<Failure, Student>> update(Student user);
 
+  /// Retrieves an authenticated [Student] instance, saved remotely
+  Future<Either<Failure, Student>> retrieve(String documentID);
+
   /// Retrieves an authenticated [Student] instance, saved locally
   Future<Either<Failure, Student>> authenticated();
 

@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import 'domain/use_cases/retrieve.dart';
 import 'domain/use_cases/update.dart';
 import 'data/database/student_local_database.dart';
 import 'data/database/student_remote_database.dart';
@@ -34,6 +35,7 @@ void initStudent() {
     ..registerLazySingleton(() => UpdateStudent(sl()))
     ..registerLazySingleton(() => SignIn(sl()))
     ..registerLazySingleton(() => LogoutStudent(sl()))
+    ..registerLazySingleton(() => RetrieveStudent(sl()))
     ..registerFactory(() => Verification(sl()))
     ..registerLazySingleton(() => AuthenticatedStudent(sl()));
 }
