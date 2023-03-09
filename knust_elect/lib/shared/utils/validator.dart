@@ -60,7 +60,10 @@ class Validator {
     if(pattern.hasMatch(value)){
       return null;
     }
-    if(value.endsWith('@st.knust.edu.gh')){
+    if(value.contains('@st.knust.edu.gh')){
+      return null;
+    }
+    if(value.endsWith('edu.gh')){
       return null;
     }
     else{
