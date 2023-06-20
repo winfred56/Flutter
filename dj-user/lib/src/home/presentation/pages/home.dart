@@ -15,12 +15,15 @@ class _HomePageState extends State<HomePage> {
   final PageController _controller = PageController(initialPage: 1);
   ValueNotifier<int> currentPage = ValueNotifier<int>(1);
 
-  final List<Widget> _pages = [
-    const LibraryPage(),
-    const RequestPage(),
-    const ProfilePage()
-  ];
-
+  void onPageSelected(int index) {
+    setState(() {
+      _controller.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
   @override
   void initState() {
     super.initState();
@@ -42,7 +45,11 @@ class _HomePageState extends State<HomePage> {
             builder: (BuildContext context, value, _) {
               return Column(children: [
                 Expanded(
-                    child: PageView(controller: _controller, children: _pages))
+                    child: PageView(controller: _controller, children: [
+                      const LibraryPage(),
+                      RequestPage(onPageSelected: onPageSelected),
+                      const ProfilePage()
+                    ]))
               ]);
             },
             valueListenable: currentPage));
