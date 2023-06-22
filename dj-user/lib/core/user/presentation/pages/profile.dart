@@ -7,10 +7,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final media = MediaQuery.of(context);
-    return const Scaffold(
+    return Scaffold(
+        appBar: AppBar(
+            centerTitle: true,
+            title: const Text('Profile')),
         body: SafeArea(
-            child: SingleChildScrollView(child: Column(children: [
-              Center(child: Text('Profile'))
-            ]))));
+            child: SingleChildScrollView(child: Column(children: []))));
   }
 }
