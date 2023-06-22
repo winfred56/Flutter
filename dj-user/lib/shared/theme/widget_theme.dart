@@ -4,17 +4,17 @@ class CustomTheme {
   static ThemeData darkTheme = ThemeData.dark().copyWith(
 
       /// Colors
-      colorScheme: const ColorScheme.light(
-          primary: Color.fromRGBO(5, 60, 91, 1),
-          secondary: Color.fromRGBO(255, 212, 0, 1),
+      colorScheme: ColorScheme.light(
+          primary: Colors.blue,
+          secondary: Colors.grey.shade800,
           onPrimary: Colors.white,
           background: Colors.white,
-          onBackground: Color(0xFF212121),
+          onBackground: const Color(0xFF212121),
           surface: Colors.white,
-          secondaryContainer: Color.fromRGBO(226, 233, 239, 1),
-          surfaceTint: Color.fromRGBO(44, 44, 44, 1),
-          onSurface: Color(0xFF424242),
-          error: Color.fromRGBO(207, 9, 20, 1),
+          secondaryContainer: const Color.fromRGBO(226, 233, 239, 1),
+          surfaceTint: const Color.fromRGBO(44, 44, 44, 1),
+          onSurface: const Color(0xFF424242),
+          error: const Color.fromRGBO(207, 9, 20, 1),
           onError: Colors.white),
       // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:
       //     MaterialStateProperty.resolveWith<TextStyle>(
@@ -29,7 +29,7 @@ class CustomTheme {
       /// Elevated Button
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromRGBO(5, 60, 91, 1),
+              backgroundColor: Colors.blue,
              // textStyle: GoogleFonts.lato(fontSize: 18, color: Colors.white),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)))),
