@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../../shared/data/image_assets.dart';
+import '../../../../shared/presentation/ui/navigation_helper.dart';
+import '../../../home/presentation/pages/home.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class OnboardingPage extends StatelessWidget {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
-                      onPressed: () {},
+                      onPressed: () => NavigationHelper.push(context, const HomePage()),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -45,7 +47,7 @@ class OnboardingPage extends StatelessWidget {
                   height: media.size.height * 0.07,
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => NavigationHelper.pushAndRemoveUntilPage(context, const HomePage()),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
