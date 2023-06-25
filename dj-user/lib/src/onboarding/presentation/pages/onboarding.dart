@@ -3,6 +3,7 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../../shared/data/image_assets.dart';
 import '../../../../shared/presentation/ui/navigation_helper.dart';
+import '../../../authentication/presentation/pages/sign_in.dart';
 import '../../../home/presentation/pages/home.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -47,7 +48,7 @@ class OnboardingPage extends StatelessWidget {
                   height: media.size.height * 0.07,
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () => NavigationHelper.pushAndRemoveUntilPage(context, const HomePage()),
+                      onPressed: () => NavigationHelper.pushAndRemoveUntilPage(context, const SignInPage()),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -58,7 +59,7 @@ class OnboardingPage extends StatelessWidget {
                                   size: 50
                                 )),
                             const Spacer(),
-                            const Text('Sign in with Google'),
+                            const Text('Sign in with Email'),
                             const Spacer()
                           ]))),
               const Padding(padding: EdgeInsets.symmetric(vertical: 5))

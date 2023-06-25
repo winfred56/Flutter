@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-import 'src/authentication/presentation/pages/onboarding.dart';
-import 'src/home/presentation/pages/home.dart';
+import 'src/onboarding/presentation/pages/onboarding.dart';
 import 'shared/theme/widget_theme.dart';
-
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
