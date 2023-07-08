@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "630189353326",
+    "project_id": "music-request-proj300",
+    "storage_bucket": "music-request-proj300.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630189353326:android:d980c3d8a272e380af397f",
+        "android_client_info": {
+          "package_name": "com.djrequest.app.dj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630189353326-tikdth4gqaru4ntq4lbt33pn79fq60l1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabej8C2TSf3Um-ikDLKROStxXuorSoy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630189353326-tikdth4gqaru4ntq4lbt33pn79fq60l1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
