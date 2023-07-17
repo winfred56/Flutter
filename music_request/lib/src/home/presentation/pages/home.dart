@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:music_request/src/home/presentation/pages/scan_page.dart';
 
 import '../../../../core/user/presentation/pages/profile.dart';
 import '../../../library/presentation/pages/library.dart';
-import '../../../../core/request/presentation/pages/request_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,7 +47,8 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                     child: PageView(controller: _controller, children: [
                       const LibraryPage(),
-                      RequestPage(onPageSelected: onPageSelected),
+                      ScanPage(onPageSelected: onPageSelected),
+                      //RequestPage(onPageSelected: onPageSelected),
                       const ProfilePage()
                     ]))
               ]);

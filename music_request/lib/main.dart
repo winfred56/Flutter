@@ -8,6 +8,7 @@ import 'firebase_options.dart';
 import 'shared/data/hive_adapters.dart';
 import 'shared/platform/push_notification.dart';
 import 'injection_container.dart' as di;
+import 'src/home/presentation/pages/home.dart';
 import 'src/onboarding/presentation/pages/onboarding.dart';
 
 Future<void> main() async {
@@ -26,7 +27,7 @@ Future<void> main() async {
             locale: DevicePreview.locale(context),
             useInheritedMediaQuery: true,
             builder: DevicePreview.appBuilder,
-            home: OnboardingPage(),
+            home: authState ? const HomePage() : OnboardingPage(),
             // themeMode: ThemeMode.dark,
             // theme: CustomTheme.darkTheme,
             title: 'DJ')));

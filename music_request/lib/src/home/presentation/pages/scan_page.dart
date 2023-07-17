@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:vibration/vibration.dart';
 
 class ScanPage extends StatefulWidget {
-  const ScanPage({Key? key}) : super(key: key);
+  const ScanPage({Key? key, required this.onPageSelected}) : super(key: key);
+  final Function(int) onPageSelected;
 
   @override
   State<ScanPage> createState() => _ScanPageState();
@@ -40,7 +42,41 @@ class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(children: [_buildQRView(context), _buildOverlay(context)]));
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            toolbarHeight: 0),
+        body: Stack(children: [
+          _buildQRView(context),
+          Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkWell(
+                      onTap: () => widget.onPageSelected(0),
+                      child: const Column(children: [
+                        Icon(Ionicons.musical_notes, color: Colors.white),
+                        Padding(
+                            padding: EdgeInsets.only(top: 8.0),
+                            child: Text('Library',
+                                style: TextStyle(color: Colors.white)))
+                      ])))),
+          Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkWell(
+                      onTap: () => widget.onPageSelected(2),
+                      child: const Column(children: [
+                        Icon(Ionicons.person, color: Colors.white),
+                        Padding(
+                            padding: EdgeInsets.only(top: 8.0),
+                            child: Text('Profile',
+                                style: TextStyle(color: Colors.white)))
+                      ])))),
+          _buildOverlay(context)
+        ]));
   }
 
   Widget _buildQRView(BuildContext context) {

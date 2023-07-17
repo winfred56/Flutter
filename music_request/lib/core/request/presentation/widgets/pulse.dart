@@ -41,14 +41,14 @@ class _PulsingContainerState extends State<PulsingContainer>
                     width: _sizeAnimation.value * 2.4,
                     height: _sizeAnimation.value * 2.4,
                     child: ActionChip(
+                        backgroundColor: Colors.blue.shade300,
                         elevation: 5,
                         shape: const CircleBorder(),
                         label: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.earbuds,
-                              size: _sizeAnimation.value * 2,
-                              color: Colors.white),
-                        ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.earbuds,
+                                size: _sizeAnimation.value * 2,
+                                color: Colors.white)),
                         onPressed: () {}));
               });
         });

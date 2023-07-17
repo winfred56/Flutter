@@ -17,13 +17,13 @@ class LibraryPage extends StatelessWidget {
           ListTile(
               minLeadingWidth: 0,
               onTap: () {},
-              leading: const Icon(Icons.earbuds, color: Colors.white),
+              leading: const Icon(Icons.earbuds, color: Colors.black),
               title: const Text('Requests')),
           const Divider(),
           ListTile(
               minLeadingWidth: 0,
               onTap: () {},
-              leading: const Icon(Icons.person, color: Colors.white),
+              leading: const Icon(Icons.person, color: Colors.black),
               title: const Text('DJ\'s')),
           const Divider(),
           const Padding(
@@ -39,7 +39,7 @@ class LibraryPage extends StatelessWidget {
                 width: media.size.width * 0.45,
                 height: media.size.height * 0.35,
                 decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
+                    color: Colors.grey.shade500,
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(children: [
                   Padding(
@@ -58,7 +58,7 @@ class LibraryPage extends StatelessWidget {
                 width: media.size.width * 0.45,
                 height: media.size.height * 0.35,
                 decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
+                    color: Colors.grey.shade500,
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(children: [
                   Padding(
@@ -80,7 +80,7 @@ class LibraryPage extends StatelessWidget {
                 width: media.size.width * 0.45,
                 height: media.size.height * 0.35,
                 decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
+                    color: Colors.grey.shade500,
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(children: [
                   Padding(
@@ -99,7 +99,7 @@ class LibraryPage extends StatelessWidget {
                 width: media.size.width * 0.45,
                 height: media.size.height * 0.35,
                 decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
+                    color: Colors.grey.shade500,
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(children: [
                   Padding(

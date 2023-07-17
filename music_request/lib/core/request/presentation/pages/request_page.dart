@@ -21,10 +21,7 @@ class _RequestPageState extends State<RequestPage> {
             width: media.size.width,
             height: media.size.height,
             decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-              Color.fromRGBO(4, 18, 32, 1),
-              Color.fromRGBO(0, 14, 28, 1)
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+                color: Colors.blue),
             child: SafeArea(
                 minimum: const EdgeInsets.symmetric(horizontal: 15),
                 child: SingleChildScrollView(
@@ -37,25 +34,25 @@ class _RequestPageState extends State<RequestPage> {
                             InkWell(
                                 onTap: () => widget.onPageSelected(0),
                                 child: const Column(children: [
-                                  Icon(Ionicons.musical_notes),
+                                  Icon(Ionicons.musical_notes, color: Colors.white),
                                   Padding(
                                       padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('Library'))
+                                      child: Text('Library', style: TextStyle(color: Colors.white)))
                                 ])),
                             InkWell(
                                 onTap: () => widget.onPageSelected(2),
                                 child: const Column(children: [
-                                  Icon(Ionicons.person),
+                                  Icon(Ionicons.person, color: Colors.white),
                                   Padding(
                                       padding: EdgeInsets.only(top: 8.0),
-                                      child: Text('Profile'))
+                                      child: Text('Profile', style: TextStyle(color: Colors.white)))
                                 ]))
                           ])),
                   Padding(
                       padding: const EdgeInsets.only(bottom: 30, top: 80),
                       child: Text('Tap to request a song',
                           style: theme.textTheme.bodyMedium!
-                              .apply(fontWeightDelta: 3))),
+                              .apply(fontWeightDelta: 3, color: Colors.white))),
                   const Center(child: PulsingContainer()),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
                   ActionChip(
