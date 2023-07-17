@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                       const LibraryPage(),
                       ScanPage(onPageSelected: onPageSelected),
                       //RequestPage(onPageSelected: onPageSelected),
-                      const ProfilePage()
+                      ProfilePage()
                     ]))
               ]);
             },
