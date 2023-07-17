@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "467928280528",
+    "project_id": "music-request-300",
+    "storage_bucket": "music-request-300.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467928280528:android:03c653136f34f32ce51dd5",
+        "android_client_info": {
+          "package_name": "com.musicrequest.app.music_request"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467928280528-g2t5a29pcnqcon74upnuen2dp1abgc87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.musicrequest.app.music_request",
+            "certificate_hash": "b4eff5b85b807ba2c4105de1b478c5b87a9c2a60"
+          }
+        },
+        {
+          "client_id": "467928280528-ooe1ar8h0je9ch5eajke79h1qh4sk768.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL_uubqyLyPqLsfpFxda4FqxufmHMlAgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467928280528-ccjbqj2838k0tvkv9a2ul3hebsptiqj6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "467928280528-45ulf1l6pjtvo7llvf8lj2jbi49lmn84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.musicrequest.app.musicRequest"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467928280528:android:d99c13506c80088ce51dd5",
+        "android_client_info": {
+          "package_name": "com.musicrequestdj.app.music_reques_dj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467928280528-ooe1ar8h0je9ch5eajke79h1qh4sk768.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL_uubqyLyPqLsfpFxda4FqxufmHMlAgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467928280528-ccjbqj2838k0tvkv9a2ul3hebsptiqj6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "467928280528-45ulf1l6pjtvo7llvf8lj2jbi49lmn84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.musicrequest.app.musicRequest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
