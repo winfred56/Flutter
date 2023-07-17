@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'core/user/user_injection.dart';
 import 'shared/network/network.dart';
 import 'shared/platform/push_notification.dart';
+import 'src/authentication/authentication_injection.dart';
 
 /// Instantiate GetIT
 final sl = GetIt.instance;
@@ -14,6 +15,9 @@ final sl = GetIt.instance;
 void init() {
   /// User
   initUser();
+
+  /// Authentication
+  initAuthentication();
 
   /// Shared - repositories
   sl

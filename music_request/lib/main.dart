@@ -26,7 +26,7 @@ Future<void> main() async {
             locale: DevicePreview.locale(context),
             useInheritedMediaQuery: true,
             builder: DevicePreview.appBuilder,
-            home: const OnboardingPage(),
+            home: OnboardingPage(),
             // themeMode: ThemeMode.dark,
             // theme: CustomTheme.darkTheme,
             title: 'DJ')));

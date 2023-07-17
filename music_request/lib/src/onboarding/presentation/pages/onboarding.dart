@@ -3,11 +3,11 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../../shared/data/image_assets.dart';
 import '../../../../shared/presentation/ui/navigation_helper.dart';
+import '../../../authentication/presentation/logic/auth_logic.dart';
 import '../../../authentication/presentation/pages/sign_in.dart';
-import '../../../home/presentation/pages/home.dart';
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({Key? key}) : super(key: key);
+class OnboardingPage extends StatelessWidget with AuthLogic {
+  OnboardingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class OnboardingPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white),
-                      onPressed: () => NavigationHelper.push(context, const HomePage()),
+                          backgroundColor: Colors.grey),
+                      onPressed: () => continueWithGoogle(context),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
