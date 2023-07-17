@@ -5,6 +5,7 @@ import 'package:music_request/src/home/presentation/pages/home.dart';
 
 import '../../../../core/user/data/database/user_local_database.dart';
 import '../../../../core/user/domain/entities/user.dart';
+import '../../../../core/user/presentation/pages/update_profile.dart';
 import '../../../../injection_container.dart';
 import '../../../../shared/presentation/ui/navigation_helper.dart';
 import '../bloc/authentication_bloc.dart';
@@ -78,29 +79,29 @@ mixin AuthLogic {
   }
 
   /// Register
-  // Future<void> register(String email, String password, BuildContext context,
-  //     ValueNotifier<bool> loading) async {
-  //   await FirebaseAuth.instance
-  //       .createUserWithEmailAndPassword(email: email.trim(), password: password)
-  //       .catchError((error) {
-  //     loading.value = false;
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         backgroundColor: Theme.of(context).colorScheme.error,
-  //         content: Text(error.code,
-  //             style: Theme.of(context)
-  //                 .textTheme
-  //                 .bodyMedium!
-  //                 .apply(color: Theme.of(context).colorScheme.onError))));
-  //   });
-  //   final userID = firebase.currentUser!.uid;
-  //   final user = User.initial().copyWith(id: userID, email: email);
-  //   await bloc.createUserProfile(user);
-  //   await sl<UserLocalDatabase>().save(user).then((value) {
-  //     loading.value = false;
-  //     return NavigationHelper.pushAndRemoveUntilPage(
-  //         context, const UpdateProfilePage());
-  //   });
-  // }
+  Future<void> register(String email, String password, BuildContext context,
+      ValueNotifier<bool> loading) async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email.trim(), password: password)
+        .catchError((error) {
+      loading.value = false;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Theme.of(context).colorScheme.error,
+          content: Text(error.code,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .apply(color: Theme.of(context).colorScheme.onError))));
+    });
+    final userID = firebase.currentUser!.uid;
+    final user = User.initial().copyWith(id: userID, email: email);
+    await bloc.createUserProfile(user);
+    await sl<UserLocalDatabase>().save(user).then((value) {
+      loading.value = false;
+      return NavigationHelper.pushAndRemoveUntilPage(
+          context, const UpdateProfilePage());
+    });
+  }
 
   /// Update Profile
   Future<void> updateProfile(

@@ -50,6 +50,7 @@ class CustomTheme {
       /// Buttons
       buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.primary),
 
+
       /// Chip
       chipTheme: ChipThemeData(
           backgroundColor: Colors.grey.shade700, shape: const CircleBorder()),
