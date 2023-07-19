@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter/material.dart';
-import 'package:music_request/src/home/presentation/pages/home.dart';
 
 import '../../../../injection_container.dart';
 import '../../../../shared/presentation/ui/navigation_helper.dart';
+import '../../../../src/home/presentation/pages/home.dart';
 import '../../../../src/onboarding/presentation/pages/onboarding.dart';
 import '../../data/database/user_local_database.dart';
 import '../../domain/entities/user.dart';
