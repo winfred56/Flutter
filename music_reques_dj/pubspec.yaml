@@ -68,6 +68,9 @@ dependencies:
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.1.0
   vibration: ^1.8.1
+  pdf: ^3.10.4
+  open_file: ^3.3.2
+  dio: ^5.3.0
 
 dev_dependencies:
   flutter_test:

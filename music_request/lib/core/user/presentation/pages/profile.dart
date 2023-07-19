@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:music_request/core/user/presentation/logic/user_logic.dart';
 import 'package:music_request/shared/extensions/extentions.dart';
 
@@ -50,14 +49,7 @@ class ProfilePage extends StatelessWidget with UserLogic{
                             snapshot.requireData.dateOfBirth),
                         icon: Icons.cake),
                     ProfileDetail.withTap(
-                        'Logout', Icons.logout, () => signOut(context)),
-                    OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.delete_forever,
-                            color: theme.colorScheme.error),
-                        label: Text('Delete Account',
-                            style: theme.textTheme.headlineSmall!
-                                .copyWith(color: theme.colorScheme.error)))
+                        'Logout', Icons.logout, () => signOut(context))
                   ]).padX(15),
                 );
               } else {
