@@ -8,6 +8,7 @@ import 'core/user/user_injection.dart';
 import 'shared/network/network.dart';
 import 'shared/platform/push_notification.dart';
 import 'src/authentication/authentication_injection.dart';
+import 'src/home/home_injection.dart';
 
 /// Instantiate GetIT
 final sl = GetIt.instance;
@@ -18,6 +19,9 @@ void init() {
 
   /// Authentication
   initAuthentication();
+
+  /// Home
+  initHome();
 
   /// Shared - repositories
   sl
