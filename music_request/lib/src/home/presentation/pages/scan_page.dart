@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:music_request/shared/presentation/ui/navigation_helper.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:vibration/vibration.dart';
+
+import '../../../../core/request/presentation/pages/request_page.dart';
+import '../../../../injection_container.dart';
+import '../bloc/home_bloc.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key, required this.onPageSelected}) : super(key: key);
@@ -13,23 +18,22 @@ class ScanPage extends StatefulWidget {
 
 class _ScanPageState extends State<ScanPage> {
   /// Bloc
-  // final bloc = sl<HomeBloc>();
+  final bloc = sl<HomeBloc>();
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   late QRViewController controller;
-  bool loading = false;
+  ValueNotifier<bool> loading = ValueNotifier<bool>(false);
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
       // Handle scanned QR code data
       Vibration.vibrate(duration: 200);
-      controller.pauseCamera();
-      loading = true;
+      controller.stopCamera();
+      loading.value = true;
 
       /// Retrieve the DJ Info
-      ///
-      loading = false;
-      controller.resumeCamera();
+      await bloc.retrieve(scanData.code!).then((value) => NavigationHelper.push(context, RequestPage(dj: value)));
+      loading.value = false;
     });
   }
 
@@ -95,10 +99,15 @@ class _ScanPageState extends State<ScanPage> {
     return Positioned.fill(
         child: Container(
             alignment: Alignment.center,
-            child: loading == true
-                ? const Center(child: CircularProgressIndicator())
-                : const Text('Place QR code in the frame to scan',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                    textAlign: TextAlign.center)));
+            child: ValueListenableBuilder<bool>(
+              valueListenable: loading,
+              builder: (BuildContext context, value, _) {
+                return loading.value
+                    ? const Center(child: CircularProgressIndicator())
+                    : const Text('Place QR code in the frame to scan',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        textAlign: TextAlign.center);
+              },
+            )));
   }
 }

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:music_request/shared/presentation/ui/navigation_helper.dart';
+
+import '../../../user/domain/entities/user.dart';
+import '../pages/search_song.dart';
 
 class PulsingContainer extends StatefulWidget {
-  const PulsingContainer({super.key});
+  const PulsingContainer({super.key,required this.dj});
+  final User dj;
 
   @override
   State<PulsingContainer> createState() => _PulsingContainerState();
@@ -49,7 +54,7 @@ class _PulsingContainerState extends State<PulsingContainer>
                             child: Icon(Icons.earbuds,
                                 size: _sizeAnimation.value * 2,
                                 color: Colors.white)),
-                        onPressed: () {}));
+                        onPressed: () => NavigationHelper.push(context, const SearchSongPage())));
               });
         });
   }
