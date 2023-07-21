@@ -91,8 +91,8 @@ class _SearchSongPageState extends State<SearchSongPage> {
 
 Future<String> auth() async {
   String url = "https://accounts.spotify.com/api/token";
-  String clientId = dotenv.get('client_id', fallback: '');
-  String clientSecret = dotenv.get('client_secret', fallback: '');
+  String clientId = dotenv.get('CLIENT_ID', fallback: '');
+  String clientSecret = dotenv.get('CLIENT_SECRET', fallback: '');
 
 
   Map<String, String> headers = {
