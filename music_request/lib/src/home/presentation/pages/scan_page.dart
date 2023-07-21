@@ -53,32 +53,36 @@ class _ScanPageState extends State<ScanPage> {
             toolbarHeight: 0),
         body: Stack(children: [
           _buildQRView(context),
-          Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                      onTap: () => widget.onPageSelected(0),
-                      child: const Column(children: [
-                        Icon(Ionicons.musical_notes, color: Colors.white),
-                        Padding(
-                            padding: EdgeInsets.only(top: 8.0),
-                            child: Text('Library',
-                                style: TextStyle(color: Colors.white)))
-                      ])))),
-          Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                      onTap: () => widget.onPageSelected(2),
-                      child: const Column(children: [
-                        Icon(Ionicons.person, color: Colors.white),
-                        Padding(
-                            padding: EdgeInsets.only(top: 8.0),
-                            child: Text('Profile',
-                                style: TextStyle(color: Colors.white)))
-                      ])))),
+          SafeArea(
+            child: Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: InkWell(
+                        onTap: () => widget.onPageSelected(0),
+                        child: const Column(children: [
+                          Icon(Ionicons.musical_notes, color: Colors.white),
+                          Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Text('Library',
+                                  style: TextStyle(color: Colors.white)))
+                        ])))),
+          ),
+          SafeArea(
+            child: Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: InkWell(
+                        onTap: () => widget.onPageSelected(2),
+                        child: const Column(children: [
+                          Icon(Ionicons.person, color: Colors.white),
+                          Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Text('Profile',
+                                  style: TextStyle(color: Colors.white)))
+                        ])))),
+          ),
           _buildOverlay(context)
         ]));
   }
