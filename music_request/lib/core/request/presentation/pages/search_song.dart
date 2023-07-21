@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:music_request/core/song/domain/entities/song.dart';
@@ -90,8 +91,9 @@ class _SearchSongPageState extends State<SearchSongPage> {
 
 Future<String> auth() async {
   String url = "https://accounts.spotify.com/api/token";
-  String clientId = "0d0aea8ca5804fe2b1865284d07e5fc0";
-  String clientSecret = "f5a299b5357947a9a7c5dcef8a461424";
+  String clientId = dotenv.get('client_id', fallback: '');
+  String clientSecret = dotenv.get('client_secret', fallback: '');
+
 
   Map<String, String> headers = {
     'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,10 +1,9 @@
-import 'dart:convert';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'core/user/data/database/user_local_database.dart';
 import 'firebase_options.dart';
@@ -18,6 +17,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   di.init();
+  await dotenv.load();
   await HiveAdapters.setUp();
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   final authState = await di.sl<UserLocalDatabase>().authenticationStatus();
@@ -37,41 +37,40 @@ Future<void> main() async {
   });
 }
 
-// client_id = '0d0aea8ca5804fe2b1865284d07e5fc0';
-// client_secret = 'f5a299b5357947a9a7c5dcef8a461424';
 
-Future<String> auth() async{
-  String url = "https://accounts.spotify.com/api/token";
-  String clientId = "0d0aea8ca5804fe2b1865284d07e5fc0";
-  String clientSecret = "f5a299b5357947a9a7c5dcef8a461424";
 
-  Map<String, String> headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  };
-
-  String body = "grant_type=client_credentials&client_id=$clientId&client_secret=$clientSecret";
-
-  try {
-    http.Response response = await http.post(Uri.parse(url), headers: headers, body: body);
-
-    if (response.statusCode == 200) {
-      // Request successful, handle the response
-      Map<String, dynamic> responseData = json.decode(response.body);
-      String accessToken = responseData['access_token'];
-      print("Access Token: $accessToken");
-      return accessToken;
-    } else {
-      // Request failed
-      print("Request failed with status: ${response.statusCode}");
-      print("Request failed with status: ${response.body}");
-      return 'accessToken';
-    }
-  } catch (e) {
-    // Error occurred during the request
-    print("Error: $e");
-    return 'accessToken';
-  }
-}
+// Future<String> auth() async{
+//   String url = "https://accounts.spotify.com/api/token";
+//   String clientId = dotenv.get('client_id', fallback: '');
+//   String clientSecret = dotenv.get('client_secret', fallback: '');
+//
+//   Map<String, String> headers = {
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   };
+//
+//   String body = "grant_type=client_credentials&client_id=$clientId&client_secret=$clientSecret";
+//
+//   try {
+//     http.Response response = await http.post(Uri.parse(url), headers: headers, body: body);
+//
+//     if (response.statusCode == 200) {
+//       // Request successful, handle the response
+//       Map<String, dynamic> responseData = json.decode(response.body);
+//       String accessToken = responseData['access_token'];
+//       print("Access Token: $accessToken");
+//       return accessToken;
+//     } else {
+//       // Request failed
+//       print("Request failed with status: ${response.statusCode}");
+//       print("Request failed with status: ${response.body}");
+//       return 'accessToken';
+//     }
+//   } catch (e) {
+//     // Error occurred during the request
+//     print("Error: $e");
+//     return 'accessToken';
+//   }
+// }
 
 // Future<void> getArtist()async{
 //   String url = "https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb";
