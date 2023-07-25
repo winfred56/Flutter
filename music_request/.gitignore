@@ -1,5 +1,6 @@
 # Sensitive Information
 *.env
+.env
 
 # Miscellaneous
 *.class
