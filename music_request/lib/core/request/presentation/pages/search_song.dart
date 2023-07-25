@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:music_request/core/song/domain/entities/song.dart';
+import 'package:music_request/core/request/domain/entities/song.dart';
 
 class SearchSongPage extends StatefulWidget {
   const SearchSongPage({Key? key}) : super(key: key);
@@ -37,19 +37,22 @@ class _SearchSongPageState extends State<SearchSongPage> {
                           builder: (context, value, child) {
                             return ElevatedButton(
                                 onPressed: () async {
-                                  if(songController.text.isNotEmpty){
+                                  if (songController.text.isNotEmpty) {
                                     loading.value = true;
-                                  await research(songController.text)
-                                      .then((value) {
-                                    loading.value = false;
-                                        return showModalBottomSheet(
-                                    showDragHandle: true,
-                                    enableDrag: true,
-                                    backgroundColor: Colors.grey,
+                                    await research(songController.text)
+                                        .then((value) {
+                                      loading.value = false;
+                                      return showModalBottomSheet(
+                                          showDragHandle: true,
+                                          enableDrag: true,
+                                          backgroundColor: Colors.grey,
                                           context: context,
                                           builder: (context) {
                                             return SizedBox(
-                                                height: MediaQuery.of(context).size.height * 0.5,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.5,
                                               child: ListView.builder(
                                                   itemCount: value.length,
                                                   itemBuilder:
@@ -60,7 +63,7 @@ class _SearchSongPageState extends State<SearchSongPage> {
                                                               'No results'));
                                                     } else {
                                                       return ListTile(
-                                                        onTap: (){},
+                                                        onTap: () {},
                                                         title: Text(value[index]
                                                             .songName),
                                                         trailing: Text(
@@ -71,8 +74,9 @@ class _SearchSongPageState extends State<SearchSongPage> {
                                                   }),
                                             );
                                           });
-                                      });
-                                }},
+                                    });
+                                  }
+                                },
                                 child: value
                                     ? const CircularProgressIndicator(
                                         color: Colors.white)
@@ -93,7 +97,6 @@ Future<String> auth() async {
   String url = "https://accounts.spotify.com/api/token";
   String clientId = dotenv.get('CLIENT_ID', fallback: '');
   String clientSecret = dotenv.get('CLIENT_SECRET', fallback: '');
-
 
   Map<String, String> headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -150,7 +153,9 @@ Future<List<Song>> research(String song) async {
         songs.add(Song(
             songName: await responseData['tracks']['items'][i]['name'],
             artistName: await responseData['tracks']['items'][i]['artists'][0]
-                ['name']));
+                ['name'],
+            songImage: await responseData['tracks']['items'][i]['album']
+                ['images'][0]['url']));
       }
       return songs;
     } else {

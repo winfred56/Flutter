@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_reques_dj/src/home/presentation/pages/download_qr_page.dart';
 
+import '../../../../core/requests/presentation/pages/pending_requests.dart';
 import '../../../../core/requests/presentation/pages/request_page.dart';
 import '../../../../core/user/presentation/pages/profile.dart';
 import '../../../library/presentation/pages/library.dart';
@@ -48,7 +49,8 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                     child: PageView(controller: _controller, children: [
                       const LibraryPage(),
-                      DownloadQrPage(onPageSelected: onPageSelected),
+                      const PendingRequestsPage(),
+                    //  DownloadQrPage(onPageSelected: onPageSelected),
                       ProfilePage()
                     ]))
               ]);
