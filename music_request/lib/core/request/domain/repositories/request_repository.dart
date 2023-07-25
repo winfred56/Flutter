@@ -9,5 +9,5 @@ abstract class RequestRepository{
   Future<Either<Failure, Request>> sendRequest(Request request);
 
   /// Search for a song
-  Future<Either<Failure, Song>> search(String songTitle);
+  Future<Either<Failure, List<Song>>> search(String songTitle);
 }

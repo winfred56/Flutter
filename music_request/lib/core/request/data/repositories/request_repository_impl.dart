@@ -31,7 +31,7 @@ class RequestRepositoryImpl implements RequestRepository {
   }
 
   @override
-  Future<Either<Failure, Song>> search(String songTitle) async {
+  Future<Either<Failure, List<Song>>> search(String songTitle) async {
     try {
       await networkInfo.hasInternet();
       final results = await remoteDatabase.searchForSong(songTitle);

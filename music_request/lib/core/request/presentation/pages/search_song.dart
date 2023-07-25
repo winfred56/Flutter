@@ -1,8 +1,7 @@
-import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:music_request/core/request/domain/entities/song.dart';
+
+import '../../../../injection_container.dart';
+import '../bloc/request_bloc.dart';
 
 class SearchSongPage extends StatefulWidget {
   const SearchSongPage({Key? key}) : super(key: key);
@@ -12,6 +11,10 @@ class SearchSongPage extends StatefulWidget {
 }
 
 class _SearchSongPageState extends State<SearchSongPage> {
+  /// bloc
+  final bloc = sl<RequestBloc>();
+
+  /// Controller
   TextEditingController songController = TextEditingController();
 
   /// Loading Notifier
@@ -39,7 +42,8 @@ class _SearchSongPageState extends State<SearchSongPage> {
                                 onPressed: () async {
                                   if (songController.text.isNotEmpty) {
                                     loading.value = true;
-                                    await research(songController.text)
+                                    await bloc
+                                        .search(songController.text)
                                         .then((value) {
                                       loading.value = false;
                                       return showModalBottomSheet(
@@ -93,79 +97,79 @@ class _SearchSongPageState extends State<SearchSongPage> {
   }
 }
 
-Future<String> auth() async {
-  String url = "https://accounts.spotify.com/api/token";
-  String clientId = dotenv.get('CLIENT_ID', fallback: '');
-  String clientSecret = dotenv.get('CLIENT_SECRET', fallback: '');
-
-  Map<String, String> headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  };
-
-  String body =
-      "grant_type=client_credentials&client_id=$clientId&client_secret=$clientSecret";
-
-  try {
-    http.Response response =
-        await http.post(Uri.parse(url), headers: headers, body: body);
-
-    if (response.statusCode == 200) {
-      // Request successful, handle the response
-      Map<String, dynamic> responseData = json.decode(response.body);
-      String accessToken = responseData['access_token'];
-      print("Access Token: $accessToken");
-      return accessToken;
-    } else {
-      // Request failed
-      print("Request failed with status: ${response.statusCode}");
-      print("Request failed with status: ${response.body}");
-      return 'accessToken';
-    }
-  } catch (e) {
-    // Error occurred during the request
-    print("Error: $e");
-    return 'accessToken';
-  }
-}
-
-Future<List<Song>> research(String song) async {
-  String accessToken = await auth();
-  String baseUrl = "https://api.spotify.com/v1/search";
-  String searchQuery = song; // Replace with your custom search query
-  int limit = 5; // Number of results to limit
-  bool includeExternal = true; // Include external audio sources
-
-  String url =
-      "$baseUrl?q=$searchQuery&type=track&limit=$limit&include_external=$includeExternal";
-
-  Map<String, String> headers = {
-    'Authorization': 'Bearer $accessToken',
-  };
-
-  try {
-    http.Response response = await http.get(Uri.parse(url), headers: headers);
-
-    if (response.statusCode == 200) {
-      // Request successful, handle the response
-      Map<String, dynamic> responseData = await json.decode(response.body);
-      List<Song> songs = [];
-      for (int i = 0; i < responseData['tracks']['items'].length; i++) {
-        songs.add(Song(
-            songName: await responseData['tracks']['items'][i]['name'],
-            artistName: await responseData['tracks']['items'][i]['artists'][0]
-                ['name'],
-            songImage: await responseData['tracks']['items'][i]['album']
-                ['images'][0]['url']));
-      }
-      return songs;
-    } else {
-      // Request failed
-      print("Request failed with status: ${response.statusCode}");
-      return [];
-    }
-  } catch (e) {
-    // Error occurred during the request
-    print("Error: $e");
-    return [];
-  }
-}
+// Future<String> auth() async {
+//   String url = "https://accounts.spotify.com/api/token";
+//   String clientId = dotenv.get('CLIENT_ID', fallback: '');
+//   String clientSecret = dotenv.get('CLIENT_SECRET', fallback: '');
+//
+//   Map<String, String> headers = {
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   };
+//
+//   String body =
+//       "grant_type=client_credentials&client_id=$clientId&client_secret=$clientSecret";
+//
+//   try {
+//     http.Response response =
+//         await http.post(Uri.parse(url), headers: headers, body: body);
+//
+//     if (response.statusCode == 200) {
+//       // Request successful, handle the response
+//       Map<String, dynamic> responseData = json.decode(response.body);
+//       String accessToken = responseData['access_token'];
+//       print("Access Token: $accessToken");
+//       return accessToken;
+//     } else {
+//       // Request failed
+//       print("Request failed with status: ${response.statusCode}");
+//       print("Request failed with status: ${response.body}");
+//       return 'accessToken';
+//     }
+//   } catch (e) {
+//     // Error occurred during the request
+//     print("Error: $e");
+//     return 'accessToken';
+//   }
+// }
+//
+// Future<List<Song>> research(String song) async {
+//   String accessToken = await auth();
+//   String baseUrl = "https://api.spotify.com/v1/search";
+//   String searchQuery = song; // Replace with your custom search query
+//   int limit = 5; // Number of results to limit
+//   bool includeExternal = true; // Include external audio sources
+//
+//   String url =
+//       "$baseUrl?q=$searchQuery&type=track&limit=$limit&include_external=$includeExternal";
+//
+//   Map<String, String> headers = {
+//     'Authorization': 'Bearer $accessToken',
+//   };
+//
+//   try {
+//     http.Response response = await http.get(Uri.parse(url), headers: headers);
+//
+//     if (response.statusCode == 200) {
+//       // Request successful, handle the response
+//       Map<String, dynamic> responseData = await json.decode(response.body);
+//       List<Song> songs = [];
+//       for (int i = 0; i < responseData['tracks']['items'].length; i++) {
+//         songs.add(Song(
+//             songName: await responseData['tracks']['items'][i]['name'],
+//             artistName: await responseData['tracks']['items'][i]['artists'][0]
+//                 ['name'],
+//             songImage: await responseData['tracks']['items'][i]['album']
+//                 ['images'][0]['url']));
+//       }
+//       return songs;
+//     } else {
+//       // Request failed
+//       print("Request failed with status: ${response.statusCode}");
+//       return [];
+//     }
+//   } catch (e) {
+//     // Error occurred during the request
+//     print("Error: $e");
+//     return [];
+//   }
+// }
