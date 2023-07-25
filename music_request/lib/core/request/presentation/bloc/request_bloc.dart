@@ -26,7 +26,9 @@ class RequestBloc {
 
   /// Send a request
   Future<String?> request(Request request) async {
-    final result = await sendSongRequest(SendSongRequestParams(request));
+    final user = await getAuthenticatedUser();
+    final result = await sendSongRequest(
+        SendSongRequestParams(request.copyWith(user: user)));
     return result.fold((failure) => failure.message, (success) => null);
   }
 

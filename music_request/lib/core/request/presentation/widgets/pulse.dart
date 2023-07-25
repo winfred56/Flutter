@@ -54,7 +54,7 @@ class _PulsingContainerState extends State<PulsingContainer>
                             child: Icon(Icons.earbuds,
                                 size: _sizeAnimation.value * 2,
                                 color: Colors.white)),
-                        onPressed: () => NavigationHelper.push(context, const SearchSongPage())));
+                        onPressed: () => NavigationHelper.push(context, SearchSongPage(dj: widget.dj))));
               });
         });
   }

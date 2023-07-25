@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../injection_container.dart';
+import '../../../user/domain/entities/user.dart';
+import '../../domain/entities/request.dart';
 import '../bloc/request_bloc.dart';
 
 class SearchSongPage extends StatefulWidget {
-  const SearchSongPage({Key? key}) : super(key: key);
+  const SearchSongPage({Key? key, required this.dj}) : super(key: key);
+  final User dj;
 
   @override
   State<SearchSongPage> createState() => _SearchSongPageState();
@@ -53,30 +57,43 @@ class _SearchSongPageState extends State<SearchSongPage> {
                                           context: context,
                                           builder: (context) {
                                             return SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.5,
-                                              child: ListView.builder(
-                                                  itemCount: value.length,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    if (value.isEmpty) {
-                                                      return const Center(
-                                                          child: Text(
-                                                              'No results'));
-                                                    } else {
-                                                      return ListTile(
-                                                        onTap: () {},
-                                                        title: Text(value[index]
-                                                            .songName),
-                                                        trailing: Text(
-                                                            value[index]
-                                                                .artistName),
-                                                      );
-                                                    }
-                                                  }),
-                                            );
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.5,
+                                                child: ListView.builder(
+                                                    itemCount: value.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      if (value.isEmpty) {
+                                                        return const Center(
+                                                            child: Text(
+                                                                'No results'));
+                                                      } else {
+                                                        return ListTile(
+                                                          onTap: () async {
+                                                            final request = Request
+                                                                    .initial()
+                                                                .copyWith(
+                                                                    song: value[
+                                                                        index],
+                                                                    dj: widget
+                                                                        .dj,
+                                                                    date: DateTime
+                                                                            .now()
+                                                                        .toString());
+                                                            await bloc.request(
+                                                                request);
+                                                          },
+                                                          title: Text(
+                                                              value[index]
+                                                                  .songName),
+                                                          trailing: Text(
+                                                              value[index]
+                                                                  .artistName),
+                                                        );
+                                                      }
+                                                    }));
                                           });
                                     });
                                   }
