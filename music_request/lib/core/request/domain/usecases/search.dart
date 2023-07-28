@@ -4,11 +4,12 @@ import 'package:music_request/core/request/domain/repositories/request_repositor
 import 'package:music_request/shared/error/failure.dart';
 import 'package:music_request/shared/usecase/usecase.dart';
 
-class SearchSong implements Usecase<List<Song> ,StringParams>{
+class SearchSong implements Usecase<List<Song>, StringParams> {
   /// Constructor
   SearchSong(this.repository);
   final RequestRepository repository;
 
   @override
-  Future<Either<Failure, List<Song>>> call(StringParams params) => params.value;
+  Future<Either<Failure, List<Song>>> call(StringParams params) =>
+      repository.search(params.value);
 }

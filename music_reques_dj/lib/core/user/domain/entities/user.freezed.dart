@@ -66,25 +66,18 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {@HiveField(0)
-          String id,
-      @HiveField(1)
-          String phoneNumber,
-      @HiveField(2)
-          String username,
-      @HiveField(3)
-          String email,
-      @HiveField(4)
-          String fullName,
-      @HiveField(5)
-          String photo,
-      @HiveField(6)
-          String fcmToken,
+      {@HiveField(0) String id,
+      @HiveField(1) String phoneNumber,
+      @HiveField(2) String username,
+      @HiveField(3) String email,
+      @HiveField(4) String fullName,
+      @HiveField(5) String photo,
+      @HiveField(6) String fcmToken,
       @JsonKey(
           readValue: JsonConverterWrapper.dateOfBirth,
           toJson: JsonConverterWrapper.toJson)
       @HiveField(7)
-          String dateOfBirth});
+      String dateOfBirth});
 }
 
 /// @nodoc
@@ -153,25 +146,18 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@HiveField(0)
-          String id,
-      @HiveField(1)
-          String phoneNumber,
-      @HiveField(2)
-          String username,
-      @HiveField(3)
-          String email,
-      @HiveField(4)
-          String fullName,
-      @HiveField(5)
-          String photo,
-      @HiveField(6)
-          String fcmToken,
+      {@HiveField(0) String id,
+      @HiveField(1) String phoneNumber,
+      @HiveField(2) String username,
+      @HiveField(3) String email,
+      @HiveField(4) String fullName,
+      @HiveField(5) String photo,
+      @HiveField(6) String fcmToken,
       @JsonKey(
           readValue: JsonConverterWrapper.dateOfBirth,
           toJson: JsonConverterWrapper.toJson)
       @HiveField(7)
-          String dateOfBirth});
+      String dateOfBirth});
 }
 
 /// @nodoc
@@ -233,25 +219,18 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User extends _User {
   _$_User(
-      {@HiveField(0)
-          required this.id,
-      @HiveField(1)
-          required this.phoneNumber,
-      @HiveField(2)
-          required this.username,
-      @HiveField(3)
-          required this.email,
-      @HiveField(4)
-          required this.fullName,
-      @HiveField(5)
-          required this.photo,
-      @HiveField(6)
-          required this.fcmToken,
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.phoneNumber,
+      @HiveField(2) required this.username,
+      @HiveField(3) required this.email,
+      @HiveField(4) required this.fullName,
+      @HiveField(5) required this.photo,
+      @HiveField(6) required this.fcmToken,
       @JsonKey(
           readValue: JsonConverterWrapper.dateOfBirth,
           toJson: JsonConverterWrapper.toJson)
       @HiveField(7)
-          required this.dateOfBirth})
+      required this.dateOfBirth})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -340,25 +319,18 @@ class _$_User extends _User {
 
 abstract class _User extends User {
   factory _User(
-      {@HiveField(0)
-          required final String id,
-      @HiveField(1)
-          required final String phoneNumber,
-      @HiveField(2)
-          required final String username,
-      @HiveField(3)
-          required final String email,
-      @HiveField(4)
-          required final String fullName,
-      @HiveField(5)
-          required final String photo,
-      @HiveField(6)
-          required final String fcmToken,
+      {@HiveField(0) required final String id,
+      @HiveField(1) required final String phoneNumber,
+      @HiveField(2) required final String username,
+      @HiveField(3) required final String email,
+      @HiveField(4) required final String fullName,
+      @HiveField(5) required final String photo,
+      @HiveField(6) required final String fcmToken,
       @JsonKey(
           readValue: JsonConverterWrapper.dateOfBirth,
           toJson: JsonConverterWrapper.toJson)
       @HiveField(7)
-          required final String dateOfBirth}) = _$_User;
+      required final String dateOfBirth}) = _$_User;
   _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;

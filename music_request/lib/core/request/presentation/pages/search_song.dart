@@ -61,39 +61,32 @@ class _SearchSongPageState extends State<SearchSongPage> {
                                                         .size
                                                         .height *
                                                     0.5,
-                                                child: ListView.builder(
-                                                    itemCount: value.length,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      if (value.isEmpty) {
-                                                        return const Center(
-                                                            child: Text(
-                                                                'No results'));
-                                                      } else {
-                                                        return ListTile(
-                                                          onTap: () async {
-                                                            final request = Request
-                                                                    .initial()
-                                                                .copyWith(
-                                                                    song: value[
-                                                                        index],
-                                                                    dj: widget
-                                                                        .dj,
-                                                                    date: DateTime
-                                                                            .now()
-                                                                        .toString());
-                                                            await bloc.request(
-                                                                request);
-                                                          },
-                                                          title: Text(
-                                                              value[index]
-                                                                  .songName),
-                                                          trailing: Text(
-                                                              value[index]
-                                                                  .artistName),
-                                                        );
-                                                      }
-                                                    }));
+                                                child:ListView.builder(
+                                                  itemCount: value.length,
+                                                  itemBuilder: (context, index) {
+                                                    if (value.isEmpty) {
+                                                      return const Center(child: Text('No results'));
+                                                    } else {
+                                                      return ListTile(
+                                                        onTap: () async {
+                                                          final request = Request.initial().copyWith(
+                                                            song: value[index],
+                                                            dj: widget.dj,
+                                                            date: DateTime.now().toString(),
+                                                          );
+                                                          await bloc.request(request);
+                                                        },
+                                                        leading: Image(
+                                                          image: NetworkImage(value[index].songImage),
+                                                          fit: BoxFit.cover
+                                                        ),
+                                                        title: Text(value[index].songName),
+                                                        subtitle: Text(value[index].artistName),
+                                                      );
+                                                    }
+                                                  }
+                                                )
+                                            );
                                           });
                                     });
                                   }
