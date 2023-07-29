@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -18,10 +19,10 @@ class OnboardingPage extends StatelessWidget with AuthLogic {
             child: Center(
                 child: Column(children: [
               const Padding(padding: EdgeInsets.symmetric(vertical: 60)),
-              const Center(child: Icon(Ionicons.cloud, size: 160, color: Colors.blue)),
-              const Text('Save your Requests',
+              const Center(child: Icon(CupertinoIcons.cloud_fog_fill, size: 160, color: Colors.blue)),
+              const Text('Request your favorite song',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              const Text('Access your Requests, all in one place',
+              const Text('Access your Requests, all in one place.',
                   style: TextStyle(
                       fontWeight: FontWeight.w400, color: Colors.grey)),
               const Spacer(),
@@ -55,7 +56,7 @@ class OnboardingPage extends StatelessWidget with AuthLogic {
                             Transform.scale(
                                 scale: 0.5,
                                 child: const Icon(
-                                  Ionicons.mail,
+                                  CupertinoIcons.mail_solid,
                                   size: 50
                                 )),
                             const Spacer(),
