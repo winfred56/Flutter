@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_reques_dj/shared/extensions/extentions.dart';
 
@@ -27,7 +28,7 @@ class ProfilePage extends StatelessWidget with UserLogic {
               IconButton(
                   onPressed: () =>
                       NavigationHelper.push(context, const UpdateProfilePage()),
-                  icon: const Icon(Icons.edit, size: 20, color: Colors.black),
+                  icon: const Icon(CupertinoIcons.pencil, size: 20, color: Colors.black),
                   splashRadius: 20)
             ],
             backgroundColor: const Color.fromRGBO(244, 244, 244, 1)),
@@ -44,13 +45,13 @@ class ProfilePage extends StatelessWidget with UserLogic {
                     ProfilePicture(),
                     ProfileDetail(
                         title: snapshot.requireData.fullName,
-                        icon: Icons.person),
+                        icon: CupertinoIcons.person_alt),
                     ProfileDetail(
-                        title: snapshot.requireData.email, icon: Icons.email),
+                        title: snapshot.requireData.email, icon: CupertinoIcons.mail_solid),
                     ProfileDetail(
                         title: DateFormatter.birthDate(
                             snapshot.requireData.dateOfBirth),
-                        icon: Icons.cake),
+                        icon: CupertinoIcons.calendar),
                     ProfileDetail.withTap(
                         'Logout', Icons.logout, () => signOut(context))
                   ]).padX(15),

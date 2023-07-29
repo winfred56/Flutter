@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:ionicons/ionicons.dart';
 
 import '../../../../shared/utils/date_formatter.dart';
 import '../../../../shared/utils/validator.dart';
@@ -97,7 +97,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                       controller: fullNameController,
                                       keyboardType: TextInputType.name,
                                       decoration: const InputDecoration(
-                                          suffixIcon: Icon(Ionicons.person),
+                                          suffixIcon: Icon(CupertinoIcons.person_alt),
                                           hintText: 'Full Name'),
                                       validator: Validator.name),
                                   Padding(
@@ -113,7 +113,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                       keyboardType: TextInputType.name,
                                       decoration: const InputDecoration(
                                           suffixIcon:
-                                              Icon(Icons.alternate_email),
+                                              Icon(CupertinoIcons.at),
                                           hintText: 'Username'),
                                       validator: Validator.username),
                                   Padding(
@@ -132,7 +132,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                       disableLengthCheck: true,
                                       decoration: const InputDecoration(
                                           hintText: 'Phone Number',
-                                          suffixIcon: Icon(Ionicons.call),
+                                          suffixIcon: Icon(CupertinoIcons.phone_fill),
                                           ),
                                       initialCountryCode: 'GH')
                                 ]))),
@@ -149,7 +149,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                             validator: Validator.dateOfBirth,
                             controller: dateOfBirthController,
                             decoration: const InputDecoration(
-                                suffixIcon: Icon(Icons.cake),
+                                suffixIcon: Icon(CupertinoIcons.calendar_today),
                                 hintText: 'Date Of Birth')),
                         Padding(
                             padding: const EdgeInsets.only(top: 50.0),

@@ -33,6 +33,41 @@ class LibraryBloc {
     });
   }
 
+  /// Retrieve all Accepted Requests
+  Stream<List<Request>> listAllAcceptedRequests(String djID) async* {
+    final result = await listRequests(StringParams(djID));
+    yield* result.fold((failure) async* {
+      yield <Request>[];
+    }, (requests) async* {
+      yield* requests.where((event) {
+        event.retainWhere((element) => element.status == Status.accepted);
+        if (event.isEmpty) {
+          return event.isEmpty;
+        } else {
+          return event.isNotEmpty;
+        }
+      });
+    });
+  }
+
+
+  /// Retrieve all Declined Requests
+  Stream<List<Request>> listAllDeclineRequests(String djID) async* {
+    final result = await listRequests(StringParams(djID));
+    yield* result.fold((failure) async* {
+      yield <Request>[];
+    }, (requests) async* {
+      yield* requests.where((event) {
+        event.retainWhere((element) => element.status == Status.declined);
+        if (event.isEmpty) {
+          return event.isEmpty;
+        } else {
+          return event.isNotEmpty;
+        }
+      });
+    });
+  }
+
   /// Update a request
   Future<Request> update(Request request) async {
     final result = await updateRequest(UpdateRequestParams(request));

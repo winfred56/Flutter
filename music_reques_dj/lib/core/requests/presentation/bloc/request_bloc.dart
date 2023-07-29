@@ -25,7 +25,7 @@ class RequestBloc {
   }
 
   /// Retrieve all Requests
-  Stream<List<Request>> listAllRequests(String djID) async* {
+  Stream<List<Request>> listAllPendinRequests(String djID) async* {
     final result = await listRequests(StringParams(djID));
     yield* result.fold((failure) async* {
       yield <Request>[];

@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:music_reques_dj/core/requests/domain/entities/request.dart';
 import 'package:music_reques_dj/core/requests/presentation/bloc/request_bloc.dart';
+import 'package:music_reques_dj/core/requests/presentation/widgets/small_profile.dart';
 
 import '../../../../injection_container.dart';
 import '../../../user/domain/entities/user.dart';
@@ -30,7 +31,7 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                   if (userSnapshot.hasData) {
                     return StreamBuilder<List<Request>>(
                         stream:
-                            bloc.listAllRequests(userSnapshot.requireData.id),
+                            bloc.listAllPendinRequests(userSnapshot.requireData.id),
                         builder: (context, snapshot) {
                           if (snapshot.hasData &&
                               snapshot.requireData.isNotEmpty) {
@@ -42,19 +43,20 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                       key: ValueKey(request.id),
                                       endActionPane: ActionPane(
                                           motion: const ScrollMotion(),
-                                          dismissible:
-                                              DismissiblePane(onDismissed: () async {
+                                          dismissible: DismissiblePane(
+                                              onDismissed: () async {
                                             /// Accept Request
-                                                 await bloc.update(request.copyWith(
+                                            await bloc.update(request.copyWith(
                                                 status: Status.accepted));
-                                                 (context as Element).markNeedsBuild();
+                                            (context as Element)
+                                                .markNeedsBuild();
                                           }),
                                           children: [
                                             SlidableAction(
                                                 onPressed: (context) {},
                                                 backgroundColor: Colors.green,
                                                 foregroundColor: Colors.white,
-                                                icon: Icons.verified,
+                                                icon: CupertinoIcons.check_mark_circled,
                                                 label: 'Accept')
                                           ]),
                                       startActionPane: ActionPane(
@@ -64,14 +66,14 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                             /// Decline request
                                             await bloc.update(request.copyWith(
                                                 status: Status.declined));
-                                              }),
+                                          }),
                                           children: [
                                             SlidableAction(
                                                 onPressed: (context) {},
                                                 backgroundColor:
                                                     const Color(0xFFFE4A49),
                                                 foregroundColor: Colors.white,
-                                                icon: Icons.delete,
+                                                icon: CupertinoIcons.delete,
                                                 label: 'Delete')
                                           ]),
                                       child: ListTile(
@@ -79,34 +81,9 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                               showDragHandle: true,
                                               elevation: 3,
                                               context: context,
-                                              builder: (context) => SafeArea(
-                                                  minimum: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 15),
-                                                  child: SizedBox(
-                                                      child: Column(children: [
-                                                    Row(children: [
-                                                      IconButton(
-                                                          onPressed: () => Navigator.pop(context),
-                                                          icon: const Icon(
-                                                              Ionicons
-                                                                  .close_circle)),
-                                                      const Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 15.0),
-                                                          child: Text(
-                                                              'Request From'))
-                                                    ]),
-                                                    const Divider(),
-                                                    CircleAvatar(
-                                                      radius: 40,
-                                                      backgroundImage:
-                                                          NetworkImage(request
-                                                              .user.photo),
-                                                    ),
-                                                    Text(request.user.fullName)
-                                                  ])))),
+                                              builder: (context) =>
+                                                  SmallProfile(
+                                                      request: request)),
                                           leading: Image(
                                               image: NetworkImage(
                                                   request.song.songImage)),
