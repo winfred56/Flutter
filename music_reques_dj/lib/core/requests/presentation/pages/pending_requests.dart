@@ -42,8 +42,10 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                       endActionPane: ActionPane(
                                           motion: const ScrollMotion(),
                                           dismissible:
-                                              DismissiblePane(onDismissed: () {
+                                              DismissiblePane(onDismissed: () async {
                                             /// Accept Request
+                                                 await bloc.update(request.copyWith(
+                                                status: Status.accepted));
                                           }),
                                           children: [
                                             SlidableAction(
@@ -55,10 +57,12 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                           ]),
                                       startActionPane: ActionPane(
                                           motion: const ScrollMotion(),
-                                          dismissible:
-                                              DismissiblePane(onDismissed: () {
-                                            /// Delete Item
-                                          }),
+                                          dismissible: DismissiblePane(
+                                              onDismissed: () async {
+                                            /// Decline request
+                                            await bloc.update(request.copyWith(
+                                                status: Status.declined));
+                                              }),
                                           children: [
                                             SlidableAction(
                                                 onPressed: (context) {},
@@ -81,7 +85,7 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                                       child: Column(children: [
                                                     Row(children: [
                                                       IconButton(
-                                                          onPressed: () {},
+                                                          onPressed: () => Navigator.pop(context),
                                                           icon: const Icon(
                                                               Ionicons
                                                                   .close_circle)),

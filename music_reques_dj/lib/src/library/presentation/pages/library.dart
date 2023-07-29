@@ -18,13 +18,13 @@ class LibraryPage extends StatelessWidget {
               minLeadingWidth: 0,
               onTap: () {},
               leading: const Icon(Icons.earbuds, color: Colors.black),
-              title: const Text('Requests')),
+              title: const Text('Accepted Requests')),
           const Divider(),
           ListTile(
               minLeadingWidth: 0,
               onTap: () {},
               leading: const Icon(Icons.person, color: Colors.black),
-              title: const Text('DJ\'s')),
+              title: const Text('Declined Requests')),
           const Divider(),
           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),

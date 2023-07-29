@@ -1,14 +1,13 @@
-import 'package:music_reques_dj/core/requests/domain/usecases/list.dart';
-
+import '../../../../core/requests/domain/entities/request.dart';
+import '../../../../core/requests/domain/usecases/list.dart';
+import '../../../../core/requests/domain/usecases/update.dart';
+import '../../../../core/user/domain/entities/user.dart';
+import '../../../../core/user/domain/usecases/authenticated_user.dart';
 import '../../../../shared/usecase/usecase.dart';
-import '../../../user/domain/entities/user.dart';
-import '../../../user/domain/usecases/authenticated_user.dart';
-import '../../domain/entities/request.dart';
-import '../../domain/usecases/update.dart';
 
-class RequestBloc {
+class LibraryBloc {
   /// Constructor
-  RequestBloc({
+  LibraryBloc({
     required this.listRequests,
     required this.updateRequest,
     required this.authenticatedUser,
@@ -30,14 +29,7 @@ class RequestBloc {
     yield* result.fold((failure) async* {
       yield <Request>[];
     }, (requests) async* {
-      yield* requests.where((event) {
-        event.retainWhere((element) => element.status == Status.pending);
-        if (event.isEmpty) {
-          return event.isEmpty;
-        } else {
-          return event.isNotEmpty;
-        }
-      });
+      yield* requests;
     });
   }
 

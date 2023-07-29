@@ -5,7 +5,7 @@ abstract class RequestRemoteDatabase {
   /// List of all requests
   Stream<List<Request>> list(String djID);
 
-  ///
+  /// Update request
   Future<Request> update(Request request);
 }
 
