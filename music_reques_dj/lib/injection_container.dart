@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
+import 'core/requests/request_injection.dart';
 import 'core/user/user_injection.dart';
 import 'shared/network/network.dart';
 import 'shared/platform/push_notification.dart';
@@ -22,6 +23,9 @@ void init() {
 
   /// Home
   initHome();
+
+  ///  Requests
+  initRequest();
 
   /// Shared - repositories
   sl

@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-
 import '../../../../shared/utils/converter.dart';
 import '../../../user/domain/entities/user.dart';
 import 'song.dart';
@@ -18,6 +17,7 @@ class Request with _$Request {
       required Song song,
       required User user,
       required User dj,
+      required Status status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -37,6 +37,9 @@ class Request with _$Request {
         song: Song.initial(),
         user: User.initial(),
         dj: User.initial(),
+        status: Status.pending,
         date: DateTime.now().toString(),
       );
 }
+
+enum Status { pending, accepted, declined }

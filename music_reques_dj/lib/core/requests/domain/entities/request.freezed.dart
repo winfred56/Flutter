@@ -24,6 +24,7 @@ mixin _$Request {
   Song get song => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
   User get dj => throw _privateConstructorUsedError;
+  Status get status => throw _privateConstructorUsedError;
   @JsonKey(
       readValue: JsonConverterWrapper.date, toJson: JsonConverterWrapper.toJson)
   String get date => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $RequestCopyWith<$Res> {
       Song song,
       User user,
       User dj,
+      Status status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -70,6 +72,7 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
     Object? song = null,
     Object? user = null,
     Object? dj = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
@@ -89,6 +92,10 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
           ? _value.dj
           : dj // ignore: cast_nullable_to_non_nullable
               as User,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -133,6 +140,7 @@ abstract class _$$_RequestCopyWith<$Res> implements $RequestCopyWith<$Res> {
       Song song,
       User user,
       User dj,
+      Status status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -160,6 +168,7 @@ class __$$_RequestCopyWithImpl<$Res>
     Object? song = null,
     Object? user = null,
     Object? dj = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_$_Request(
@@ -179,6 +188,10 @@ class __$$_RequestCopyWithImpl<$Res>
           ? _value.dj
           : dj // ignore: cast_nullable_to_non_nullable
               as User,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -196,6 +209,7 @@ class _$_Request implements _Request {
       required this.song,
       required this.user,
       required this.dj,
+      required this.status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -213,6 +227,8 @@ class _$_Request implements _Request {
   @override
   final User dj;
   @override
+  final Status status;
+  @override
   @JsonKey(
       readValue: JsonConverterWrapper.date, toJson: JsonConverterWrapper.toJson)
   final String date;
@@ -226,12 +242,14 @@ class _$_Request implements _Request {
             (identical(other.song, song) || other.song == song) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.dj, dj) || other.dj == dj) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, song, user, dj, date);
+  int get hashCode =>
+      Object.hash(runtimeType, id, song, user, dj, status, date);
 
   @JsonKey(ignore: true)
   @override
@@ -253,6 +271,7 @@ abstract class _Request implements Request {
       required final Song song,
       required final User user,
       required final User dj,
+      required final Status status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -268,6 +287,8 @@ abstract class _Request implements Request {
   User get user;
   @override
   User get dj;
+  @override
+  Status get status;
   @override
   @JsonKey(
       readValue: JsonConverterWrapper.date, toJson: JsonConverterWrapper.toJson)

@@ -17,6 +17,7 @@ class Request with _$Request {
       required Song song,
       required User user,
       required User dj,
+        required Status status,
       @JsonKey(
           readValue: JsonConverterWrapper.date,
           toJson: JsonConverterWrapper.toJson)
@@ -36,6 +37,13 @@ class Request with _$Request {
         song: Song.initial(),
         user: User.initial(),
         dj: User.initial(),
+        status: Status.pending,
         date: DateTime.now().toString(),
       );
+}
+
+enum Status{
+  pending,
+  accepted,
+  declined
 }
