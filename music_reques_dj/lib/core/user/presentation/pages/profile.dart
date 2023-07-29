@@ -9,14 +9,16 @@ import '../widgets/profile_detail.dart';
 import '../widgets/profile_picture.dart';
 import 'update_profile.dart';
 
-class ProfilePage extends StatelessWidget with UserLogic{
-  ProfilePage({Key? key}) : super(key: key);
+class ProfilePage extends StatelessWidget with UserLogic {
+  ProfilePage({Key? key, required this.user}) : super(key: key);
+  final User user;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-        appBar: AppBar(elevation: 0,
+        appBar: AppBar(
+            elevation: 0,
             title: Text('Profile',
                 style: theme.textTheme.labelLarge!
                     .copyWith(fontSize: 24, letterSpacing: 1)),
@@ -41,7 +43,8 @@ class ProfilePage extends StatelessWidget with UserLogic{
                   child: ListView(children: [
                     ProfilePicture(),
                     ProfileDetail(
-                        title: snapshot.requireData.fullName, icon: Icons.person),
+                        title: snapshot.requireData.fullName,
+                        icon: Icons.person),
                     ProfileDetail(
                         title: snapshot.requireData.email, icon: Icons.email),
                     ProfileDetail(
@@ -49,14 +52,7 @@ class ProfilePage extends StatelessWidget with UserLogic{
                             snapshot.requireData.dateOfBirth),
                         icon: Icons.cake),
                     ProfileDetail.withTap(
-                        'Logout', Icons.logout, () => signOut(context)),
-                    OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.delete_forever,
-                            color: theme.colorScheme.error),
-                        label: Text('Delete Account',
-                            style: theme.textTheme.headlineSmall!
-                                .copyWith(color: theme.colorScheme.error)))
+                        'Logout', Icons.logout, () => signOut(context))
                   ]).padX(15),
                 );
               } else {

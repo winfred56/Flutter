@@ -14,7 +14,7 @@ class RequestRemoteDatabaseImpl implements RequestRemoteDatabase {
   Stream<List<Request>> list(String djID) async* {
     yield* FirebaseFirestore.instance
         .collection('requests')
-        .orderBy('date', descending: false)
+        .orderBy('date', descending: true)
         .snapshots()
         .map((request) => request.docs
             .where((requestDoc) => (requestDoc.data()['dj']['id']) == (djID))

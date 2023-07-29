@@ -8,7 +8,8 @@ import '../../../../injection_container.dart';
 import '../../../user/domain/entities/user.dart';
 
 class PendingRequestsPage extends StatefulWidget {
-  const PendingRequestsPage({Key? key}) : super(key: key);
+  const PendingRequestsPage({Key? key, required this.user}) : super(key: key);
+  final User user;
 
   @override
   State<PendingRequestsPage> createState() => _PendingRequestsPageState();
@@ -38,7 +39,7 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                 itemBuilder: (context, index) {
                                   final request = snapshot.requireData[index];
                                   return Slidable(
-                                      key: const ValueKey(0),
+                                      key: ValueKey(request.id),
                                       endActionPane: ActionPane(
                                           motion: const ScrollMotion(),
                                           dismissible:
@@ -46,6 +47,7 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                             /// Accept Request
                                                  await bloc.update(request.copyWith(
                                                 status: Status.accepted));
+                                                 (context as Element).markNeedsBuild();
                                           }),
                                           children: [
                                             SlidableAction(

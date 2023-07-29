@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:music_reques_dj/src/home/presentation/pages/download_qr_page.dart';
 
 import '../../../../core/requests/presentation/pages/pending_requests.dart';
-import '../../../../core/requests/presentation/pages/request_page.dart';
+import '../../../../core/user/domain/entities/user.dart';
 import '../../../../core/user/presentation/pages/profile.dart';
+import '../../../../injection_container.dart';
 import '../../../library/presentation/pages/library.dart';
+import '../bloc/home_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,9 +15,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  /// Controller
   final PageController _controller = PageController(initialPage: 1);
   ValueNotifier<int> currentPage = ValueNotifier<int>(1);
 
+  /// Bloc
+  final bloc = sl<HomeBloc>();
+
+  /// Current User
+  User user = User.initial();
   void onPageSelected(int index) {
     setState(() {
       _controller.animateToPage(
@@ -26,8 +33,11 @@ class _HomePageState extends State<HomePage> {
       );
     });
   }
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) async => user = await bloc.getAuthenticatedUser());
     super.initState();
     _controller.addListener(() {
       currentPage.value = _controller.page!.round();
@@ -48,11 +58,11 @@ class _HomePageState extends State<HomePage> {
               return Column(children: [
                 Expanded(
                     child: PageView(controller: _controller, children: [
-                      const LibraryPage(),
-                      const PendingRequestsPage(),
-                    //  DownloadQrPage(onPageSelected: onPageSelected),
-                      ProfilePage()
-                    ]))
+                  LibraryPage(user: user),
+                  PendingRequestsPage(user: user),
+                  //  DownloadQrPage(onPageSelected: onPageSelected),
+                  ProfilePage(user: user)
+                ]))
               ]);
             },
             valueListenable: currentPage));
