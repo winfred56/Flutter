@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
+import '../../../../shared/presentation/ui/navigation_helper.dart';
 import '../../../../shared/utils/validator.dart';
 import '../logic/auth_logic.dart';
+import 'register.dart';
 
 class SignInPage extends StatelessWidget with AuthLogic {
   SignInPage({Key? key}) : super(key: key);
@@ -32,7 +34,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                       const Text('Welcome', style: TextStyle(fontSize: 42)),
                       const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text('Signup to Music Request And Lets Fun.',
+                          child: Text('Sign in to Music Request And Lets Fun.',
                               textAlign: TextAlign.center)),
                       Form(
                           key: formKey,
@@ -45,7 +47,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                                     validator: Validator.email,
                                     decoration: const InputDecoration(
                                         hintText: 'Email',
-                                        prefixIcon: Icon(Ionicons.mail_open)))),
+                                        prefixIcon: Icon(CupertinoIcons.mail_solid)))),
                             Padding(
                                 padding: const EdgeInsets.only(bottom: 40.0),
                                 child: TextFormField(
@@ -55,7 +57,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                                     decoration: const InputDecoration(
                                         hintText: 'Password',
                                         prefixIcon:
-                                            Icon(Ionicons.lock_closed)))),
+                                            Icon(CupertinoIcons.lock_fill)))),
                             SizedBox(
                                 height: media.size.height * 0.07,
                                 width: double.infinity,
@@ -67,7 +69,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                                             if (formKey.currentState!
                                                 .validate()) {
                                               loading.value = true;
-                                              register(
+                                              signIn(
                                                   emailController.text.trim(),
                                                   passwordController.text,
                                                   context,
@@ -87,6 +89,8 @@ class SignInPage extends StatelessWidget with AuthLogic {
                           ])),
                       const Padding(
                           padding: EdgeInsets.symmetric(vertical: 10)),
+                      TextButton(onPressed: () => NavigationHelper.push(context, const RegisterPage()), child: const Text('Don\'t have an account?  REGISTER'))
+
                     ])))));
   }
 }
