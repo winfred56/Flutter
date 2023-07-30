@@ -1,10 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:music_request/core/request/presentation/widgets/search_results.dart';
 
 import '../../../../injection_container.dart';
 import '../../../user/domain/entities/user.dart';
-import '../../domain/entities/request.dart';
 import '../bloc/request_bloc.dart';
 
 class SearchSongPage extends StatefulWidget {
@@ -26,106 +25,84 @@ class _SearchSongPageState extends State<SearchSongPage> {
   final loading = ValueNotifier<bool>(false);
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
     return Scaffold(
         body: SafeArea(
             minimum: const EdgeInsets.symmetric(horizontal: 15),
-            child: Padding(
-                padding: const EdgeInsets.only(top: 60.0),
-                child: Column(children: [
-                  Center(
-                      child: TextFormField(
-                          controller: songController,
-                          decoration: const InputDecoration(
-                              hintText: 'Search for a song'))),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: double.infinity,
-                      child: ValueListenableBuilder<bool>(
-                          valueListenable: loading,
-                          builder: (context, value, child) {
-                            return ElevatedButton(
-                                onPressed: () async {
-                                  if (songController.text.isNotEmpty) {
-                                    loading.value = true;
-                                    await bloc
-                                        .search(songController.text)
-                                        .then((value) {
-                                      loading.value = false;
-                                      return showModalBottomSheet(
-                                          showDragHandle: true,
-                                          enableDrag: true,
-                                          backgroundColor: Colors.grey,
-                                          context: context,
-                                          builder: (context) {
-                                            return SizedBox(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.5,
-                                                child:ListView.builder(
-                                                  itemCount: value.length,
-                                                  itemBuilder: (context, index) {
-                                                    if (value.isEmpty) {
-                                                      return const Center(child: Text('No results'));
-                                                    } else {
-                                                      return ListTile(
-                                                        onTap: () async {
-                                                          final request = Request.initial().copyWith(
-                                                            song: value[index],
-                                                            dj: widget.dj,
-                                                            date: DateTime.now().toString(),
-                                                          );
-                                                          await bloc.request(request).then((value) {
-                                                            Navigator.pop(context);
-                                                            showDialog(context: context,
-                                                                builder: (BuildContext context) => AlertDialog(
-                                                                  actions: [
-                                                                    TextButton(
-                                                                        onPressed: () => Navigator.pop(context),
-                                                                        child: const Text('Okay 👍'))
-                                                                  ],
-                                                                  content: SizedBox(
-                                                                      height: media.size.height * 0.35,
-                                                                      child: const Column(children: [
-                                                                        Center(child: Icon(Icons.verified, color: Colors.green, size: 40)),
-                                                                        Divider(),
-                                                                        Text(
-                                                                            'Your Song request has been submitted successfully.\n\n\nThe DJ will review and decide whether to play it or not.')
-                                                                      ])),
-                                                                )
-                                                            );
-                                                          });
-
-                                                        },
-                                                        leading: Image(
-                                                          image: NetworkImage(value[index].songImage),
-                                                          fit: BoxFit.cover
-                                                        ),
-                                                        title: Text(value[index].songName),
-                                                        subtitle: Text(value[index].artistName),
-                                                      );
-                                                    }
-                                                  }
-                                                )
-                                            );
-                                          });
-                                    });
-                                  }
-                                },
-                                child: value
-                                    ? const CircularProgressIndicator(
-                                        color: Colors.white)
-                                    : Text('Search',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .apply(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .surface)));
-                          }))
-                ]))));
+            child: SingleChildScrollView(
+              child: Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Column(children: [
+                    const Center(
+                        child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Text(
+                          textAlign: TextAlign.center,
+                          'Type the name of the song you\'d like to request, and we\'ll work our magic to find the perfect match for you! 🪄🔍'),
+                    )),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+                    const Center(
+                        child: Icon(CupertinoIcons.music_note_2,
+                            color: Colors.black, size: 50)),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+                    const Center(
+                        child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Text(
+                          textAlign: TextAlign.center,
+                          'Go ahead and let us know which tunes you want to dance to, and we\'ll make sure you have an unforgettable time at the party! 🎶💃🕺'),
+                    )),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+                    Center(
+                        child: TextFormField(
+                            controller: songController,
+                            decoration: const InputDecoration(
+                                hintText: 'Search for a song'))),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        width: double.infinity,
+                        child: ValueListenableBuilder<bool>(
+                            valueListenable: loading,
+                            builder: (context, value, child) {
+                              return ElevatedButton(
+                                  onPressed: () async {
+                                    if (songController.text.isNotEmpty) {
+                                      loading.value = true;
+                                      await bloc
+                                          .search(songController.text)
+                                          .then((value) {
+                                        loading.value = false;
+                                        return showModalBottomSheet(
+                                            showDragHandle: true,
+                                            enableDrag: true,
+                                            backgroundColor: Colors.grey,
+                                            context: context,
+                                            builder: (context) {
+                                              return SearchResults(
+                                                  results: value,
+                                                  dj: widget.dj);
+                                            });
+                                      });
+                                      songController.text = '';
+                                    }
+                                  },
+                                  child: value
+                                      ? const CircularProgressIndicator(
+                                          color: Colors.white)
+                                      : Text('Search',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .apply(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .surface)));
+                            })),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+                    const Center(
+                        child: Text(
+                            'Let the music play and the good times roll! 🎵🎉'))
+                  ])),
+            )));
   }
 }
-

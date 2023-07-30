@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../user/domain/entities/user.dart';
@@ -36,25 +34,24 @@ class _RequestPageState extends State<RequestPage> {
                   const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
                   SizedBox(
                       child: Column(children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(widget.dj.photo),
-                          radius: 50,
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: Text(widget.dj.fullName,
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold))),
-                        const Padding(padding: EdgeInsets.only(top: 10)),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color:  Colors.blue.shade300,
-                            borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: Text(widget.dj.email),
-                        )
-                      ]))
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(widget.dj.photo),
+                      radius: 50,
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 30),
+                        child: Text(widget.dj.fullName,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold))),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.blue.shade300,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(widget.dj.email),
+                    )
+                  ]))
                   // Text(widget.dj.username)
                 ])))));
   }
