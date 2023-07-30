@@ -29,7 +29,7 @@ class AboutUs extends StatelessWidget {
                   child: Text(textAlign: TextAlign.center,'We are all about bringing the beats and making your musical experiences unforgettable! 🎶🎉')
                 ),
                 Padding(
-                    padding: EdgeInsets.only(top: 30.0),
+                    padding: EdgeInsets.only(top: 10.0, left: 8, right: 8),
                     child: Text(textAlign: TextAlign.center,'This app is a 3rd-year computer science mini project that aims to elevate your music party vibes to the next level! 🚀💻')
                 ),
                 Padding(padding: EdgeInsets.only(top: 20)),
