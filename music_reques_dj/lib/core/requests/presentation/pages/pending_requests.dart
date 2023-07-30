@@ -46,12 +46,15 @@ class _PendingRequestsPageState extends State<PendingRequestsPage> {
                                   end: Alignment.bottomRight,
                                   colors: [Colors.blue, Colors.green]))),
                       Align(
-                          alignment: Alignment.topLeft,
-                          child: IconButton(
-                              onPressed: () =>
-                                  scaffoldKey.currentState?.openDrawer(),
-                              icon: const Icon(Ionicons.menu,
-                                  color: Colors.black))),
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 25.0),
+                            child: IconButton(
+                                onPressed: () =>
+                                    scaffoldKey.currentState?.openDrawer(),
+                                icon: const Icon(Ionicons.menu,
+                                    color: Colors.black)),
+                          )),
                       const Positioned.fill(child: Center(child: Text('Music Requests', style: TextStyle(fontSize: 28, color: Colors.white))))
                     ]),
                     Expanded(
