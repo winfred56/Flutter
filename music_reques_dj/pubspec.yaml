@@ -72,6 +72,20 @@ dependencies:
   pdf: ^3.10.4
   open_file: ^3.3.2
   dio: ^5.3.0
+# dart run flutter_native_splash:create
+flutter_native_splash:
+  image: assets/static/logo.png
+  color: "#ffffff"
+  image_dark: "assets/static/logo.png"
+
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/static/logo.png"
+  adaptive_icon_background: "assets/static/logo.png"
+  adaptive_icon_foreground: "assets/static/logo.png"
+  remove_alpha_ios: true
 
 dev_dependencies:
   flutter_test:
