@@ -19,6 +19,18 @@ class RequestRepositoryImpl implements RequestRepository {
   NetworkInfo networkInfo;
   RequestRemoteDatabase remoteDatabase;
 
+
+  @override
+  Future<Either<Failure, Stream<List<Request>>>> list(String djID) async {
+    try {
+      await networkInfo.hasInternet();
+      final results = remoteDatabase.list(djID);
+      return Right(results);
+    } on DeviceException catch (error) {
+      return Left(Failure(error.message));
+    }
+  }
+
   @override
   Future<Either<Failure, Request>> sendRequest(Request request) async {
     try {

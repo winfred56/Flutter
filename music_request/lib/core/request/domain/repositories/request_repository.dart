@@ -10,4 +10,8 @@ abstract class RequestRepository{
 
   /// Search for a song
   Future<Either<Failure, List<Song>>> search(String songTitle);
+
+  /// All Requests for this user
+  Future<Either<Failure, Stream<List<Request>>>> list(String djID);
 }
+

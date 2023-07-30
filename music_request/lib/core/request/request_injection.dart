@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:music_request/core/request/domain/usecases/list.dart';
 import 'package:music_request/core/request/domain/usecases/search.dart';
 import 'package:music_request/core/request/presentation/bloc/request_bloc.dart';
 
@@ -27,5 +28,6 @@ void initRequest() {
 
     /// Register Usecases
     ..registerLazySingleton(() => SendSongRequest(sl()))
+    ..registerLazySingleton(() => ListRequests(sl()))
     ..registerLazySingleton(() => SearchSong(sl()));
 }

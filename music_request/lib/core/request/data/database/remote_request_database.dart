@@ -12,6 +12,9 @@ abstract class RequestRemoteDatabase {
 
   /// Search for a song
   Future<List<Song>> searchForSong(String songTitle);
+
+  /// All requests made by this user
+  Stream<List<Request>> list(String djID);
 }
 
 class RequestRemoteDatabaseImpl implements RequestRemoteDatabase {
@@ -98,5 +101,17 @@ class RequestRemoteDatabaseImpl implements RequestRemoteDatabase {
         .doc(documentID.id)
         .set(request.toJson()..addAll(extras));
     return request.copyWith(id: documentID.id);
+  }
+
+  @override
+  Stream<List<Request>> list(String djID) async* {
+    yield* FirebaseFirestore.instance
+        .collection('requests')
+        .orderBy('date', descending: true)
+        .snapshots()
+        .map((request) => request.docs
+            .where((requestDoc) => (requestDoc.data()['dj']['id']) == (djID))
+            .map<Request>((event) => Request.fromJson(event.data()))
+            .toList());
   }
 }
