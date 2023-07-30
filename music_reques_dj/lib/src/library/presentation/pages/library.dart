@@ -37,7 +37,7 @@ class _LibraryPageState extends State<LibraryPage> {
                       context: context,
                       builder: (context) =>
                           AcceptedRequests(user: widget.user)),
-                  leading: const Icon(CupertinoIcons.check_mark_circled, color: Colors.black),
+                  leading: const Icon(CupertinoIcons.check_mark_circled_solid, color: Colors.black),
                   title: const Text('Accepted Requests')),
               const Divider(),
               ListTile(
@@ -48,7 +48,7 @@ class _LibraryPageState extends State<LibraryPage> {
                       context: context,
                       builder: (context) =>
                           DeclinedRequests(user: widget.user)),
-                  leading: const Icon(CupertinoIcons.delete, color: Colors.black),
+                  leading: const Icon(CupertinoIcons.delete_solid, color: Colors.black),
                   title: const Text('Declined Requests')),
               const Divider(),
               const Padding(
@@ -112,7 +112,14 @@ class _LibraryPageState extends State<LibraryPage> {
                     }
                     if (snapshot.hasData && snapshot.requireData.isEmpty) {
                       return const Center(
-                          child: Text('No Requests at the moment'));
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(CupertinoIcons.tray_fill, color: Colors.blue, size: 80),
+                              Text('No Requests at the moment.\nEmpty Playlist', textAlign: TextAlign.center),
+                            ]
+                          ));
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());

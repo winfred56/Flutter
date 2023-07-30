@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
+import 'shared/theme/widget_theme.dart';
 import 'src/home/presentation/pages/home.dart';
 import 'core/user/data/database/user_local_database.dart';
 import 'firebase_options.dart';
@@ -28,8 +29,8 @@ Future<void> main() async {
             useInheritedMediaQuery: true,
             builder: DevicePreview.appBuilder,
             home: authState ? const HomePage() : OnboardingPage(),
-            // themeMode: ThemeMode.dark,
-            // theme: CustomTheme.darkTheme,
+            // themeMode: ThemeMode.light,
+            theme: CustomTheme.darkTheme,
             title: 'DJ')));
   });
 }

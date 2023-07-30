@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static ThemeData darkTheme = ThemeData.dark().copyWith(
+  static ThemeData darkTheme = ThemeData.light().copyWith(
 
       /// Colors
       colorScheme: ColorScheme.light(
@@ -16,6 +16,7 @@ class CustomTheme {
           onSurface: const Color(0xFF424242),
           error: const Color.fromRGBO(207, 9, 20, 1),
           onError: Colors.white),
+
       // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:
       //     MaterialStateProperty.resolveWith<TextStyle>(
       //         (Set<MaterialState> states) {
@@ -26,6 +27,14 @@ class CustomTheme {
       /// Icons
       iconTheme: const IconThemeData(color: Colors.white),
 
+      inputDecorationTheme: InputDecorationTheme(
+          focusColor: Colors.white,
+          contentPadding: const EdgeInsets.all(25),
+          filled: true,
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(10.0)),
+          fillColor: Colors.blue.shade100),
       /// Elevated Button
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -36,7 +45,7 @@ class CustomTheme {
 
       /// AppBar
       appBarTheme: const AppBarTheme(
-        backgroundColor:  Color(0xFF424242),
+        // backgroundColor:  Color(0xFF424242),
           elevation: 0,
           centerTitle: true,
           titleTextStyle: TextStyle(fontSize: 24),

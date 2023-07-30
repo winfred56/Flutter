@@ -22,16 +22,17 @@ class ProfilePage extends StatelessWidget with UserLogic {
             elevation: 0,
             title: Text('Profile',
                 style: theme.textTheme.labelLarge!
-                    .copyWith(fontSize: 24, letterSpacing: 1)),
+                    .copyWith(fontSize: 24, color: Colors.white)),
             centerTitle: true,
             actions: [
               IconButton(
                   onPressed: () =>
                       NavigationHelper.push(context, const UpdateProfilePage()),
-                  icon: const Icon(CupertinoIcons.pencil, size: 20, color: Colors.black),
+                  icon: const Icon(CupertinoIcons.pencil, size: 20, color: Colors.white),
                   splashRadius: 20)
             ],
-            backgroundColor: const Color.fromRGBO(244, 244, 244, 1)),
+            // backgroundColor: const Color.fromRGBO(244, 244, 244, 1)
+        ),
         body: FutureBuilder<User>(
             future: bloc.getAuthenticatedUser(),
             builder: (BuildContext context, snapshot) {

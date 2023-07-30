@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_reques_dj/core/requests/domain/entities/request.dart';
 import 'package:music_reques_dj/src/library/presentation/bloc/library_bloc.dart';
@@ -62,7 +63,16 @@ class AcceptedRequests extends StatelessWidget {
                 });
           }
           if(snapshot.hasData && snapshot.requireData.isEmpty){
-            return const Center(child:Text('No Requests at the moment'));
+            return const Center(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(CupertinoIcons.tray_fill, color: Colors.blue, size: 80),
+                      Text(
+                          'You do not have any requests at the moment.\nEmpty Playlist', textAlign: TextAlign.center)
+                    ]
+                ));
           }
           return Container();
         }
