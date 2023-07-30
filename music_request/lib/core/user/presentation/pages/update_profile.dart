@@ -86,13 +86,15 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                 autovalidateMode: AutovalidateMode.always,
                                 child: Column(children: [
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Full Name',
-                                              style: theme
-                                                  .textTheme.headlineSmall!
-                                                  .apply(fontWeightDelta: 1)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   TextFormField(
                                       controller: fullNameController,
                                       keyboardType: TextInputType.name,
@@ -101,13 +103,15 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                           hintText: 'Full Name'),
                                       validator: Validator.name),
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Username',
-                                              style: theme
-                                                  .textTheme.headlineSmall!
-                                                  .apply(fontWeightDelta: 1)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   TextFormField(
                                       controller: userNameController,
                                       keyboardType: TextInputType.name,
@@ -117,13 +121,15 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                           hintText: 'Username'),
                                       validator: Validator.username),
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Phone Number',
-                                              style: theme
-                                                  .textTheme.headlineSmall!
-                                                  .apply(fontWeightDelta: 1)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   IntlPhoneField(
                                       validator: (phoneNumber) =>
                                           Validator.phoneNumber(
@@ -131,18 +137,19 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                       controller: phoneNumberController,
                                       disableLengthCheck: true,
                                       decoration: const InputDecoration(
-                                          hintText: 'Phone Number',
-                                          suffixIcon: Icon(Ionicons.call),
-                                          ),
+                                        hintText: 'Phone Number',
+                                        suffixIcon: Icon(Ionicons.call),
+                                      ),
                                       initialCountryCode: 'GH')
                                 ]))),
                         Padding(
-                            padding: const EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 10, bottom: 5),
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Date Of Birth',
-                                    style: theme.textTheme.headlineSmall!
-                                        .apply(fontWeightDelta: 1)))),
+                                    style: theme.textTheme.labelLarge!.apply(
+                                        fontWeightDelta: 1,
+                                        fontSizeDelta: 2)))),
                         TextFormField(
                             onTap: () => _selectDate(context),
                             readOnly: true,
@@ -188,8 +195,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                                       .colorScheme.onPrimary)
                                               : Text('Save',
                                                   style: theme
-                                                      .textTheme.headlineSmall!
+                                                      .textTheme.labelLarge!
                                                       .apply(
+                                                          fontSizeDelta: 2,
                                                           color: theme
                                                               .colorScheme
                                                               .surface));

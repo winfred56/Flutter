@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_request/core/user/presentation/logic/user_logic.dart';
 import 'package:music_request/shared/extensions/extentions.dart';
@@ -19,13 +20,13 @@ class ProfilePage extends StatelessWidget with UserLogic{
         appBar: AppBar(elevation: 0,
             title: Text('Profile',
                 style: theme.textTheme.labelLarge!
-                    .copyWith(fontSize: 24, letterSpacing: 1)),
+                    .copyWith(fontSize: 24)),
             centerTitle: true,
             actions: [
               IconButton(
                   onPressed: () =>
                       NavigationHelper.push(context, const UpdateProfilePage()),
-                  icon: const Icon(Icons.edit, size: 20, color: Colors.black),
+                  icon: const Icon(CupertinoIcons.pencil, size: 20, color: Colors.black),
                   splashRadius: 20)
             ],
             backgroundColor: const Color.fromRGBO(244, 244, 244, 1)),

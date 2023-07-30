@@ -45,7 +45,6 @@ class CustomTheme {
 
       /// AppBar
       appBarTheme: const AppBarTheme(
-        backgroundColor:  Color(0xFF424242),
           elevation: 0,
           centerTitle: true,
           titleTextStyle: TextStyle(fontSize: 24),
