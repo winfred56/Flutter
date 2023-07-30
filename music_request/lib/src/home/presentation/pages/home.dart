@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:music_request/src/home/presentation/bloc/home_bloc.dart';
 import 'package:music_request/src/home/presentation/pages/scan_page.dart';
 
+import '../../../../core/user/domain/entities/user.dart';
 import '../../../../core/user/presentation/pages/profile.dart';
+import '../../../../injection_container.dart';
 import '../../../library/presentation/pages/library.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final PageController _controller = PageController(initialPage: 1);
   ValueNotifier<int> currentPage = ValueNotifier<int>(1);
+  final bloc = sl<HomeBloc>();
+  User user = User.initial();
 
   void onPageSelected(int index) {
     setState(() {
@@ -24,8 +29,11 @@ class _HomePageState extends State<HomePage> {
       );
     });
   }
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) async => user = await bloc.getAuthenticatedUser());
     super.initState();
     _controller.addListener(() {
       currentPage.value = _controller.page!.round();
@@ -46,11 +54,11 @@ class _HomePageState extends State<HomePage> {
               return Column(children: [
                 Expanded(
                     child: PageView(controller: _controller, children: [
-                      const LibraryPage(),
-                      ScanPage(onPageSelected: onPageSelected),
-                      //RequestPage(onPageSelected: onPageSelected),
-                      ProfilePage()
-                    ]))
+                  LibraryPage(user: user),
+                  ScanPage(onPageSelected: onPageSelected),
+                  //RequestPage(onPageSelected: onPageSelected),
+                  ProfilePage()
+                ]))
               ]);
             },
             valueListenable: currentPage));

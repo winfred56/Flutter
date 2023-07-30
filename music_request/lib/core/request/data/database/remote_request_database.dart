@@ -110,7 +110,7 @@ class RequestRemoteDatabaseImpl implements RequestRemoteDatabase {
         .orderBy('date', descending: true)
         .snapshots()
         .map((request) => request.docs
-            .where((requestDoc) => (requestDoc.data()['dj']['id']) == (djID))
+            .where((requestDoc) => (requestDoc.data()['user']['id']) == (djID))
             .map<Request>((event) => Request.fromJson(event.data()))
             .toList());
   }

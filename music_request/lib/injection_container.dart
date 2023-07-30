@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:music_request/src/library/library_injection.dart';
 
 import 'core/request/request_injection.dart';
 import 'core/user/user_injection.dart';
@@ -26,6 +27,9 @@ void init() {
 
   /// Request
   initRequest();
+
+  /// Library
+  initLibrary();
 
   /// Shared - repositories
   sl
