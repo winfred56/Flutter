@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:music_reques_dj/shared/presentation/ui/navigation_helper.dart';
+import 'package:music_reques_dj/src/home/presentation/widgets/about.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/user/domain/entities/user.dart';
@@ -107,11 +109,12 @@ class _SideBarState extends State<SideBar> {
                                   ])
                                 ]),
                               ))))),
-              const Padding(
-                  padding: EdgeInsets.only(top: 10),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10),
                   child: ListTile(
-                      title: Text('About Us'),
-                      leading: Icon(CupertinoIcons.info))),
+                      title: const Text('About Us'),
+                      onTap: () => NavigationHelper.push(context, const AboutUs()),
+                      leading: const Icon(CupertinoIcons.info))),
               const Spacer(),
               const Padding(
                   padding: EdgeInsets.all(8.0),
