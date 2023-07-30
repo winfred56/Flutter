@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_reques_dj/shared/presentation/ui/navigation_helper.dart';
+import 'package:music_reques_dj/src/authentication/presentation/pages/register.dart';
 
 import '../../../../shared/utils/validator.dart';
 import '../logic/auth_logic.dart';
@@ -98,7 +100,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                           }))
                 ])),
               //  const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                TextButton(onPressed: (){}, child: const Text('Don\'t have an account?  REGISTER'))
+                TextButton(onPressed: () => NavigationHelper.push(context, const RegisterPage()), child: const Text('Don\'t have an account?  REGISTER'))
               ]),
             )));
   }
