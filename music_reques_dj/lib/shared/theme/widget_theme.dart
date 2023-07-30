@@ -17,13 +17,6 @@ class CustomTheme {
           error: const Color.fromRGBO(207, 9, 20, 1),
           onError: Colors.white),
 
-      // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:
-      //     MaterialStateProperty.resolveWith<TextStyle>(
-      //         (Set<MaterialState> states) {
-      //   // Default style for the button
-      //   return GoogleFonts.lato(fontSize: 18);
-      // }))),
-
       /// Icons
       iconTheme: const IconThemeData(color: Colors.white),
 

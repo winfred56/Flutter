@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static ThemeData darkTheme = ThemeData.dark().copyWith(
+  static ThemeData darkTheme = ThemeData.light().copyWith(
 
       /// Colors
       colorScheme: ColorScheme.light(
@@ -25,6 +25,15 @@ class CustomTheme {
 
       /// Icons
       iconTheme: const IconThemeData(color: Colors.white),
+
+    inputDecorationTheme: InputDecorationTheme(
+        focusColor: Colors.white,
+        contentPadding: const EdgeInsets.all(25),
+        filled: true,
+        border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10.0)),
+        fillColor: Colors.blue.shade100),
 
       /// Elevated Button
       elevatedButtonTheme: ElevatedButtonThemeData(
