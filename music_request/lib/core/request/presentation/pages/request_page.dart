@@ -35,8 +35,8 @@ class _RequestPageState extends State<RequestPage> {
                   Center(
                       child: PulsingContainer(dj: widget.dj)),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
-                  const Text('DJ'),
-                  Text(widget.dj.username)
+                  // const Text('DJ'),
+                  // Text(widget.dj.username)
                 ])))));
   }
 }

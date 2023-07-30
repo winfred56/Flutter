@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_request/shared/presentation/ui/navigation_helper.dart';
 
@@ -51,7 +52,7 @@ class _PulsingContainerState extends State<PulsingContainer>
                         shape: const CircleBorder(),
                         label: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(Icons.earbuds,
+                            child: Icon(CupertinoIcons.music_note,
                                 size: _sizeAnimation.value * 2,
                                 color: Colors.white)),
                         onPressed: () => NavigationHelper.push(context, SearchSongPage(dj: widget.dj))));
