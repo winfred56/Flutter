@@ -28,12 +28,13 @@ class _ScanPageState extends State<ScanPage> {
     controller.scannedDataStream.listen((scanData) async {
       // Handle scanned QR code data
       Vibration.vibrate(duration: 200);
-      controller.stopCamera();
+      controller.pauseCamera();
       loading.value = true;
 
       /// Retrieve the DJ Info
       await bloc.retrieve(scanData.code!).then((value) => NavigationHelper.push(context, RequestPage(dj: value)));
       loading.value = false;
+      controller.resumeCamera();
     });
   }
 

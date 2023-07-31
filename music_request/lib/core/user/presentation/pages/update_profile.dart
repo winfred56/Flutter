@@ -1,8 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:music_request/core/user/presentation/logic/user_logic.dart';
 
+import '../../../../shared/data/image_assets.dart';
 import '../../../../shared/utils/date_formatter.dart';
 import '../../../../shared/utils/validator.dart';
 import '../../domain/entities/user.dart';
@@ -79,6 +84,59 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                     valueListenable: localUserDetails,
                     builder: ((context, value, _) {
                       return Column(children: [
+                        ValueListenableBuilder<File?>(
+                            valueListenable: selectedImage,
+                            builder: (context, imageFile, _) {
+                              if (imageFile != null) {
+                                return CircleAvatar(
+                                  radius: 90,
+                                  backgroundImage: FileImage(imageFile),
+                                  child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: ActionChip(
+                                          backgroundColor:
+                                              theme.colorScheme.primary,
+                                          label: Icon(Icons.edit_rounded,
+                                              size: 14,
+                                              color:
+                                                  theme.colorScheme.onPrimary),
+                                          shape: const CircleBorder(),
+                                          onPressed: () async {
+                                            final imageFile = await chooseImage(
+                                                ImageSource.gallery);
+                                            if (imageFile != null) {
+                                              selectedImage.value = imageFile;
+                                            }
+                                          })),
+                                );
+                              } else {
+                                return CircleAvatar(
+                                    radius: 90,
+                                    onBackgroundImageError: (context, error) =>
+                                        ImageAssets.imagePlaceholder,
+                                    backgroundImage: NetworkImage(value.photo),
+                                    backgroundColor: Colors.grey,
+                                    child: Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: ActionChip(
+                                            backgroundColor:
+                                                theme.colorScheme.primary,
+                                            label: Icon(
+                                                CupertinoIcons.camera_fill,
+                                                size: 14,
+                                                color: theme
+                                                    .colorScheme.onPrimary),
+                                            shape: const CircleBorder(),
+                                            onPressed: () async {
+                                              final imageFile =
+                                                  await chooseImage(
+                                                      ImageSource.gallery);
+                                              if (imageFile != null) {
+                                                selectedImage.value = imageFile;
+                                              }
+                                            })));
+                              }
+                            }),
                         Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Form(
@@ -171,15 +229,22 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                         return;
                                       }
                                       loading.value = true;
+                                      String? imageUrl;
+                                      imageUrl = selectedImage.value != null
+                                          ? await uploadImage(
+                                          selectedImage.value!)
+                                          : null;
                                       final updatedUserDetails = value.copyWith(
                                           phoneNumber:
-                                              '0${phoneNumberController.text}',
+                                          phoneNumberController.text,
                                           username: userNameController.text,
                                           dateOfBirth:
-                                              DateFormatter.convertToDateTime(
-                                                      dateOfBirthController
-                                                          .text)
-                                                  .toString(),
+                                          DateFormatter.convertToDateTime(
+                                              dateOfBirthController
+                                                  .text)
+                                              .toString(),
+                                          photo: imageUrl ??
+                                              localUserDetails.value.photo,
                                           fullName: fullNameController.text);
                                       if (mounted) {
                                         updateProfile(context,
