@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../../../shared/data/image_assets.dart';
 import '../../../../shared/utils/date_formatter.dart';
 import '../../../../shared/utils/validator.dart';
 import '../../domain/entities/user.dart';
@@ -79,6 +83,58 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                     valueListenable: localUserDetails,
                     builder: ((context, value, _) {
                       return Column(children: [
+                        ValueListenableBuilder<File?>(
+                            valueListenable: selectedImage,
+                            builder: (context, imageFile, _) {
+                              if (imageFile != null) {
+                                return CircleAvatar(
+                                  radius: 90,
+                                  backgroundImage: FileImage(imageFile),
+                                  child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: ActionChip(
+                                          backgroundColor:
+                                              theme.colorScheme.primary,
+                                          label: Icon(Icons.edit_rounded,
+                                              size: 14,
+                                              color:
+                                                  theme.colorScheme.onPrimary),
+                                          shape: const CircleBorder(),
+                                          onPressed: () async {
+                                            final imageFile = await chooseImage(
+                                                ImageSource.gallery);
+                                            if (imageFile != null) {
+                                              selectedImage.value = imageFile;
+                                            }
+                                          })),
+                                );
+                              } else {
+                                return CircleAvatar(
+                                    radius: 90,
+                                    onBackgroundImageError: (context, error) =>
+                                        ImageAssets.imagePlaceholder,
+                                    backgroundImage: NetworkImage(value.photo),
+                                    backgroundColor: Colors.grey,
+                                    child: Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: ActionChip(
+                                            backgroundColor:
+                                                theme.colorScheme.primary,
+                                            label: Icon(Icons.edit_rounded,
+                                                size: 14,
+                                                color: theme
+                                                    .colorScheme.onPrimary),
+                                            shape: const CircleBorder(),
+                                            onPressed: () async {
+                                              final imageFile =
+                                                  await chooseImage(
+                                                      ImageSource.gallery);
+                                              if (imageFile != null) {
+                                                selectedImage.value = imageFile;
+                                              }
+                                            })));
+                              }
+                            }),
                         Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Form(
@@ -86,44 +142,50 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                 autovalidateMode: AutovalidateMode.always,
                                 child: Column(children: [
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10, bottom: 5),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Full Name',
-                                              style: theme
-                                                  .textTheme.labelLarge!
-                                                  .apply(fontWeightDelta: 1, fontSizeDelta: 2)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   TextFormField(
                                       controller: fullNameController,
                                       keyboardType: TextInputType.name,
                                       decoration: const InputDecoration(
-                                          suffixIcon: Icon(CupertinoIcons.person_alt),
+                                          suffixIcon:
+                                              Icon(CupertinoIcons.person_alt),
                                           hintText: 'Full Name'),
                                       validator: Validator.name),
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10, bottom: 5),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Username',
-                                              style: theme
-                                                  .textTheme.labelLarge!
-                                                  .apply(fontWeightDelta: 1, fontSizeDelta: 2)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   TextFormField(
                                       controller: userNameController,
                                       keyboardType: TextInputType.name,
                                       decoration: const InputDecoration(
-                                          suffixIcon:
-                                              Icon(CupertinoIcons.at),
+                                          suffixIcon: Icon(CupertinoIcons.at),
                                           hintText: 'Username'),
                                       validator: Validator.username),
                                   Padding(
-                                      padding: const EdgeInsets.only(top: 10, bottom: 5),
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 5),
                                       child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text('Phone Number',
-                                              style: theme
-                                                  .textTheme.labelLarge!
-                                                  .apply(fontWeightDelta: 1, fontSizeDelta: 2)))),
+                                              style: theme.textTheme.labelLarge!
+                                                  .apply(
+                                                      fontWeightDelta: 1,
+                                                      fontSizeDelta: 2)))),
                                   IntlPhoneField(
                                       validator: (phoneNumber) =>
                                           Validator.phoneNumber(
@@ -131,9 +193,10 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                       controller: phoneNumberController,
                                       disableLengthCheck: true,
                                       decoration: const InputDecoration(
-                                          hintText: 'Phone Number',
-                                          suffixIcon: Icon(CupertinoIcons.phone_fill),
-                                          ),
+                                        hintText: 'Phone Number',
+                                        suffixIcon:
+                                            Icon(CupertinoIcons.phone_fill),
+                                      ),
                                       initialCountryCode: 'GH')
                                 ]))),
                         Padding(
@@ -141,9 +204,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Date Of Birth',
-                                    style: theme
-                                        .textTheme.labelLarge!
-                                        .apply(fontWeightDelta: 1, fontSizeDelta: 2)))),
+                                    style: theme.textTheme.labelLarge!.apply(
+                                        fontWeightDelta: 1,
+                                        fontSizeDelta: 2)))),
                         TextFormField(
                             onTap: () => _selectDate(context),
                             readOnly: true,
@@ -165,15 +228,22 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                         return;
                                       }
                                       loading.value = true;
+                                      String? imageUrl;
+                                      imageUrl = selectedImage.value != null
+                                          ? await uploadImage(
+                                              selectedImage.value!)
+                                          : null;
                                       final updatedUserDetails = value.copyWith(
                                           phoneNumber:
-                                              '0${phoneNumberController.text}',
+                                              phoneNumberController.text,
                                           username: userNameController.text,
                                           dateOfBirth:
                                               DateFormatter.convertToDateTime(
                                                       dateOfBirthController
                                                           .text)
                                                   .toString(),
+                                          photo: imageUrl ??
+                                              localUserDetails.value.photo,
                                           fullName: fullNameController.text);
                                       if (mounted) {
                                         updateProfile(context,
@@ -190,7 +260,8 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> with UserLogic {
                                               : Text('Save',
                                                   style: theme
                                                       .textTheme.labelLarge!
-                                                      .apply(fontSizeDelta: 2,
+                                                      .apply(
+                                                          fontSizeDelta: 2,
                                                           color: theme
                                                               .colorScheme
                                                               .surface));
