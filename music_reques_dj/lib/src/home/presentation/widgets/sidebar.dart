@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:music_reques_dj/shared/presentation/ui/navigation_helper.dart';
 import 'package:music_reques_dj/src/home/presentation/widgets/about.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/user/domain/entities/user.dart';
+import 'side_bar_logic.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key, required this.user});
@@ -64,11 +64,12 @@ class _SideBarState extends State<SideBar> {
                                   style: const TextStyle(color: Colors.white))))
                     ]))
               ]),
-              const Padding(
-                  padding: EdgeInsets.only(top: 10),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10),
                   child: ListTile(
-                      title: Text('Download QR Code'),
-                      leading: Icon(CupertinoIcons.cloud_download_fill))),
+                      title: const Text('View Your QR Code'),
+                      onTap: () async => await generateAndSavePDF(qrData: widget.user.id),
+                      leading: const Icon(CupertinoIcons.eye_solid))),
               Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: ListTile(
@@ -123,43 +124,3 @@ class _SideBarState extends State<SideBar> {
   }
 }
 
-/// Send WhatsApp message
-Future<void> openWhatsApp({required String phoneNumber}) async {
-  String url =
-      'https://wa.me/$phoneNumber/?text=${Uri.encodeComponent('Hello👋,\n')}';
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-  } else {
-    throw 'Could not launch WhatsApp.';
-  }
-}
-
-/// Open Instagram
-Future<void> openInstagram({required String username}) async {
-  String url = 'https://www.instagram.com/$username/';
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-  } else {
-    throw 'Could not launch Instagram.';
-  }
-}
-
-/// Open GitHub
-Future<void> openGitHub({required String username}) async {
-  String url = 'https://github.com/$username';
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-  } else {
-    throw 'Could not launch GitHub.';
-  }
-}
-
-/// Open Twitter
-Future<void> openTwitter({required String username}) async {
-  String url = 'https://twitter.com/$username';
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-  } else {
-    throw 'Could not launch Twitter.';
-  }
-}

@@ -93,3 +93,5 @@ Future<void> downloadPdf(String qrData) async {
     await launch(pdfPath);
   }
 }
+
+
