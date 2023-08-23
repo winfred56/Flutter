@@ -13,6 +13,8 @@ class SearchResults extends StatelessWidget {
   final User dj;
 
   final bloc = sl<RequestBloc>();
+  /// Loading Notifier
+  final loading = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,9 @@ class SearchResults extends StatelessWidget {
               if (results.isEmpty) {
                 return const Center(child: Text('No results'));
               } else {
-                return ListTile(
+                return loading.value ? const CircularProgressIndicator() : ListTile(
                     onTap: () async {
+                      loading.value = true;
                       final request = Request.initial().copyWith(
                           song: results[index],
                           dj: dj,
@@ -34,9 +37,10 @@ class SearchResults extends StatelessWidget {
                           .request(request)
                           .then((value) => sl<PushNotification>()
                               .sendLocalNotification(
-                                  'You\'ve request ${results[index].songName} to be played for you.',
+                                  'You\'ve requested ${results[index].songName} to be played for you.',
                                   'Request Sent! 🎵🎉'))
                           .then((value) => Navigator.pop(context));
+                      loading.value = false;
                     },
                     leading: Image(
                         image: NetworkImage(results[index].songImage),
