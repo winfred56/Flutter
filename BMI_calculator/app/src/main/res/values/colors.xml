@@ -2,7 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="layout_background">#162023</color>
     <color name="card_background">#012A4A</color>
     <color name="text_hint">#5E656B</color>
+
+    <color name="under_weight">#C73F26</color>
+    <color name="normal">#59BA1B</color>
+    <color name="over_weight">#950039</color>
+    <color name="obese">#E80808</color>
+
+
 </resources>
