@@ -3,6 +3,7 @@ package com.example.audioapp
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.time.toDuration
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         val fabRewind = findViewById<FloatingActionButton>(R.id.fabRewind)
         val fabForward = findViewById<FloatingActionButton>(R.id.fabForward)
 
-        audioDuration.text = mediaPlayer!!.duration.toString()
+        val formatDurationTime = formatSecondsToTime((mediaPlayer!!.duration/1000))
+        audioDuration.text = formatDurationTime
         fabPlay.setOnClickListener{
             paused = !paused
             if(!paused){
@@ -39,5 +41,10 @@ class MainActivity : AppCompatActivity() {
         fabForward.setOnClickListener{
             mediaPlayer!!.seekTo(5000)
         }
+    }
+    private fun formatSecondsToTime(seconds: Int): String {
+        val minutes = seconds / 60
+        val remainingSeconds = seconds % 60
+        return String.format("%d:%02d", minutes, remainingSeconds)
     }
 }
