@@ -19,10 +19,11 @@ class MainActivity : AppCompatActivity() {
         fabBtn = findViewById(R.id.floatingActionButton)
         textCount = findViewById(R.id.tvCount)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-        textCount.text = viewModel.count.toString()
+        viewModel.count.observe(this) {
+            textCount.text = it.toString()
+        }
         fabBtn.setOnClickListener{
             viewModel.updateCount()
-            textCount.text = viewModel.count.toString()
         }
     }
 }
