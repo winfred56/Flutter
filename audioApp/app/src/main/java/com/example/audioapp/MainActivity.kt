@@ -5,21 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.SeekBar
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.concurrent.TimeUnit
 import kotlin.time.toDuration
 
 class MainActivity : AppCompatActivity() {
-    /// Instance of MediaPlayer
+    private lateinit var seekBar: SeekBar
     private var mediaPlayer: MediaPlayer? = null
     private val handler = Handler()
     private lateinit var timePlayed: TextView
+    private lateinit var runnable: Runnable
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         var paused = false
+        seekBar = findViewById(R.id.seekBar)
         mediaPlayer = MediaPlayer.create(this, R.raw.applaud)
         var audioDuration = findViewById<TextView>(R.id.tvDuration)
         timePlayed = findViewById(R.id.tvTimePlayed)
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 fabPlay.setImageResource(R.drawable.baseline_pause)
                 mediaPlayer!!.start()
                 handler.postDelayed(updateTimePlayed, 1000)
+                initializeSeekBar()
 
             }
         }
@@ -62,7 +66,9 @@ class MainActivity : AppCompatActivity() {
     }
     private val updateTimePlayed: Runnable = object : Runnable {
         override fun run() {
+            seekBar.max = mediaPlayer!!.duration
             val currentPosition = mediaPlayer!!.currentPosition
+            seekBar.progress = mediaPlayer!!.currentPosition
             val timePlayedInSeconds = TimeUnit.MILLISECONDS.toSeconds(currentPosition.toLong())
             val formattedTimePlayed = formatSecondsToTime(timePlayedInSeconds.toInt())
             timePlayed.text = formattedTimePlayed
@@ -79,5 +85,22 @@ class MainActivity : AppCompatActivity() {
         val minutes = seconds / 60
         val remainingSeconds = seconds % 60
         return String.format("%d:%02d", minutes, remainingSeconds)
+    }
+
+    private fun initializeSeekBar(){
+        seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if(fromUser) mediaPlayer!!.seekTo(progress)
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+
+        })
+
+
     }
 }
