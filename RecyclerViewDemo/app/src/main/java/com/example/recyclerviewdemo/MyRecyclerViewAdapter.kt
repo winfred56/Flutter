@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class MyRecyclerViewAdapter(private val names: List<String>) : RecyclerView.Adapter<MyRecyclerViewHolder>(){
+class MyRecyclerViewAdapter(private val names: List<Pupils>, private val myClickListener: (Pupils) -> Unit) : RecyclerView.Adapter<MyRecyclerViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,10 +21,16 @@ class MyRecyclerViewAdapter(private val names: List<String>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: MyRecyclerViewHolder, position: Int) {
-        holder.myTextView.text = names[position]
+        holder.bind(names[position], myClickListener)
     }
 }
 
 class MyRecyclerViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
-    val myTextView = view.findViewById<TextView >(R.id.tvName)
+    fun bind(pupils: Pupils, myClickListener: (Pupils) -> Unit){
+        val myTextView: TextView = view.findViewById(R.id.tvName)
+        myTextView.text = "${pupils.name} is ${pupils.age}"
+        view.setOnClickListener{
+            myClickListener(pupils)
+        }
+    }
 }
