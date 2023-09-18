@@ -25,73 +25,77 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FirstComposeProjTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Column(
-                        modifier = Modifier.safeContentPadding(),
-                        verticalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 8.dp)
-                                .height(100.dp), color = MaterialTheme.colorScheme.primary
-                        ) {
-
-                        }
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 8.dp)
-                                .height(100.dp), color = MaterialTheme.colorScheme.error
-                        ) {
-
-                        }
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 8.dp)
-                                .height(100.dp), color = MaterialTheme.colorScheme.primary
-                        ) {
-
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxHeight()
-                                .fillMaxWidth()
-                                .padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxHeight()
-                                    .width(125.dp),
-                                color = MaterialTheme.colorScheme.primary
-                            ) {}
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxHeight()
-                                    .width(125.dp),
-                                color = MaterialTheme.colorScheme.error
-                            ) {}
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxHeight()
-                                    .width(125.dp),
-                                color = MaterialTheme.colorScheme.primary
-                            ) {}
-                        }
-                    }
-
-                }
+            FirstComposeProjTheme{
+                ExpandableCard()
             }
+//            FirstComposeProjTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier
+//                        .fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    Column(
+//                        modifier = Modifier.safeContentPadding(),
+//                        verticalArrangement = Arrangement.SpaceBetween
+//                    ) {
+//                        Surface(
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .padding(top = 8.dp)
+//                                .height(100.dp), color = MaterialTheme.colorScheme.primary
+//                        ) {
+//
+//                        }
+//                        Surface(
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .padding(top = 8.dp)
+//                                .height(100.dp), color = MaterialTheme.colorScheme.error
+//                        ) {
+//
+//                        }
+//                        Surface(
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .padding(top = 8.dp)
+//                                .height(100.dp), color = MaterialTheme.colorScheme.primary
+//                        ) {
+//
+//                        }
+//
+//                        Row(
+//                            modifier = Modifier
+//                                .fillMaxHeight()
+//                                .fillMaxWidth()
+//                                .padding(top = 8.dp),
+//                            horizontalArrangement = Arrangement.SpaceBetween
+//                        ) {
+//                            Surface(
+//                                modifier = Modifier
+//                                    .fillMaxHeight()
+//                                    .width(125.dp),
+//                                color = MaterialTheme.colorScheme.primary
+//                            ) {}
+//                            Surface(
+//                                modifier = Modifier
+//                                    .fillMaxHeight()
+//                                    .width(125.dp),
+//                                color = MaterialTheme.colorScheme.error
+//                            ) {}
+//                            Surface(
+//                                modifier = Modifier
+//                                    .fillMaxHeight()
+//                                    .width(125.dp),
+//                                color = MaterialTheme.colorScheme.primary
+//                            ) {}
+//                        }
+//                    }
+//
+//                }
+//            }
         }
+
     }
 }
 
