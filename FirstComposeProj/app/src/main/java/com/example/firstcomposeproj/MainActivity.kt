@@ -82,6 +82,29 @@ fun GreetingPreview() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var textController by remember { mutableStateOf("Type your name") }
-        TextField(value = textController, onValueChange = { newText -> textController = newText })
+        TextField(
+            value = textController,
+            onValueChange = { newText -> textController = newText },
+            label = { Text("Email") },
+            modifier = Modifier.padding(top = 5.dp),
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Email, contentDescription = "Email")
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Send,
+                keyboardType = KeyboardType.Text,
+                autoCorrect = true
+            ),
+            keyboardActions = KeyboardActions(
+                onSend = {
+                    // Handle the send action
+                    Log.d("KEYBOARD_ACTION", "Send button clicked")
+                },
+                onDone = {
+                    // Handle the done action (optional)
+                    Log.d("KEYBOARD_ACTION", "Done button clicked")
+                }
+            )
+        )
     }
 }
