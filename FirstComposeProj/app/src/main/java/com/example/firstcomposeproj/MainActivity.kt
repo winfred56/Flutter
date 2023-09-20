@@ -40,6 +40,7 @@ class MainActivity : ComponentActivity() {
                     ExpandableCard()
                     CustomTextField()
                     CoilImage()
+                    PasswordTextField()
                 }
 
             }
