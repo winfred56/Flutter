@@ -34,15 +34,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.firstcomposeproj.model.Person
 
 @Composable
-fun CustomItem() {
+fun CustomItem(person:Person) {
     var clicked by rememberSaveable { mutableStateOf(false) }
     val rotationState by animateFloatAsState(targetValue = if(clicked) 180f else 0f, label = "")
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 24.dp, end = 24.dp, bottom = 10.dp)
+            .padding(start = 24.dp, end = 24.dp)
             .height(if (clicked) 80.dp else 50.dp)
             .background(color = Color.LightGray, shape = RoundedCornerShape(5.dp))
             .animateContentSize(
@@ -56,7 +57,7 @@ fun CustomItem() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "1",
+                text = person.id.toString(),
                 style = MaterialTheme.typography.headlineLarge.plus(TextStyle(fontWeight = FontWeight.Bold)),
                 modifier = Modifier
                     .padding(start = 10.dp)
@@ -64,7 +65,7 @@ fun CustomItem() {
             )
             Spacer(modifier = Modifier.width(15.dp))
             Text(
-                text = "Mike Dean",
+                text = "${person.firstName} ${person.lastName}",
                 modifier = Modifier.weight(4f),
                 style = MaterialTheme.typography.bodyMedium
             )
@@ -75,12 +76,14 @@ fun CustomItem() {
                 .rotate(rotationState)) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowDown,
-                    contentDescription = "down arrow"
+                    contentDescription = "Down Arrow"
                 )
             }
         }
         if (clicked)
-            Text(text = "down arrow", Modifier.padding(start = 15.dp), style = MaterialTheme.typography.bodySmall.plus(TextStyle(fontWeight = FontWeight.Light)))
+            Text(text = "${person.firstName} is ${person.age} years old", Modifier.padding(start = 15.dp), style = MaterialTheme.typography.bodySmall.plus(
+                TextStyle(fontWeight = FontWeight.Light)
+            ))
     }
 }
 
@@ -88,5 +91,5 @@ fun CustomItem() {
 @Composable
 @Preview
 private fun CustomItemPreview() {
-    CustomItem()
+    CustomItem(Person(1, "Mike", "Dean", 20))
 }
