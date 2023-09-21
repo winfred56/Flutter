@@ -29,6 +29,11 @@ class MainActivity : ComponentActivity() {
                     PasswordTextField()
                     GradientButton(text = "Save", gradient = Brush.horizontalGradient(colors = listOf(
                         Color.Red, Color.Green)))
+                    CustomItem()
+                    CustomItem()
+                    CustomItem()
+                    CustomItem()
+                    CustomItem()
                 }
 
             }
