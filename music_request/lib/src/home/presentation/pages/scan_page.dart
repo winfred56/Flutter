@@ -32,6 +32,7 @@ class _ScanPageState extends State<ScanPage> {
       loading.value = true;
 
       /// Retrieve the DJ Info
+      print('============================  ${scanData.code}');
       await bloc.retrieve(scanData.code!).then((value) => NavigationHelper.push(context, RequestPage(dj: value)));
       loading.value = false;
       controller.resumeCamera();

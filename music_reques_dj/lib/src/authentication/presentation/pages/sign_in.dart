@@ -78,7 +78,7 @@ class SignInPage extends StatelessWidget with AuthLogic {
                                           },
                                           child: value
                                               ? const CircularProgressIndicator(color: Colors.white)
-                                              : Text('Sign Up',
+                                              : Text('Sign in',
                                               style: theme
                                                   .textTheme.bodyMedium!
                                                   .apply(

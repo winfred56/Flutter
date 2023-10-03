@@ -96,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> with AuthLogic {
                                     child: value
                                         ? const CircularProgressIndicator(
                                         color: Colors.white)
-                                        : Text('LOGIN',
+                                        : Text('Register',
                                         style: theme.textTheme.bodyMedium!
                                             .apply(
                                             color: theme

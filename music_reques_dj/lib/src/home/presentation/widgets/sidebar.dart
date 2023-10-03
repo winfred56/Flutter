@@ -5,6 +5,8 @@ import 'package:music_reques_dj/shared/presentation/ui/navigation_helper.dart';
 import 'package:music_reques_dj/src/home/presentation/widgets/about.dart';
 
 import '../../../../core/user/domain/entities/user.dart';
+import '../../../../injection_container.dart';
+import '../bloc/home_bloc.dart';
 import 'side_bar_logic.dart';
 
 class SideBar extends StatefulWidget {
@@ -16,9 +18,21 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
+  /// Bloc
+  final bloc = sl<HomeBloc>();
+  /// Current User
+  User user = User.initial();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+            (_) async => user = await bloc.getAuthenticatedUser());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
+    print('======= ${widget.user}');
     final media = MediaQuery.of(context);
     return SafeArea(
         child: Drawer(
@@ -68,7 +82,10 @@ class _SideBarState extends State<SideBar> {
                   padding: const EdgeInsets.only(top: 10),
                   child: ListTile(
                       title: const Text('View Your QR Code'),
-                      onTap: () async => await generateAndSavePDF(qrData: widget.user.id),
+                      onTap: () async {
+                        print('====================== ${widget.user.id}');
+                        await generateAndSavePDF(qrData: widget.user.id);
+                      },
                       leading: const Icon(CupertinoIcons.eye_solid))),
               Padding(
                   padding: const EdgeInsets.only(top: 10),
