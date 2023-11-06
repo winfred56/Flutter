@@ -13,7 +13,7 @@ Future<void> main() async {
             locale: DevicePreview.locale(context),
             // useInheritedMediaQuery: true,
             builder: DevicePreview.appBuilder,
-            home: const HomePage(),
+            home: WordSearchGame(), //const HomePage(),
 
             themeMode: ThemeMode.light,
             // theme: CustomTheme.darkTheme,
