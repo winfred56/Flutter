@@ -27,6 +27,7 @@ class EmailPage extends StatelessWidget {
           const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
           TextFormField(
             controller: emailController,
+            keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
               hintText: 'Enter your email address',
             ),

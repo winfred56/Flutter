@@ -26,6 +26,7 @@ class NamePage extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
           TextFormField(
+            keyboardType: TextInputType.name,
             controller: nameController,
             decoration: const InputDecoration(
               hintText: 'Enter your full name',

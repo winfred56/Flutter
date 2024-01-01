@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:untitled_botr/shared/presentation/router.dart';
 import 'package:untitled_botr/src/profile/birthdayPage.dart';
 
 import 'emailPage.dart';
 import 'genderPage.dart';
 import 'namePage.dart';
+import 'whereDoYouWorshipPage.dart';
 
 class TellUsAboutYou extends StatefulWidget {
   const TellUsAboutYou({super.key});
@@ -60,7 +62,7 @@ class _TellUsAboutYouState extends State<TellUsAboutYou> {
                   curve: Curves.fastOutSlowIn);
             }),
             GenderPage(onNextPressed: () {
-              // Handle the last page or navigate to the next screen.
+              Navigator.push(context, CustomPageRouteBuilder(const WhereDoYouWorshipPage()));
             }),
           ],
         ),
