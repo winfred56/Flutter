@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ColorScheme lightColorScheme = ColorScheme.fromSeed(
@@ -24,6 +25,7 @@ ThemeData lightTheme = ThemeData(
   primaryTextTheme: GoogleFonts.montserratTextTheme(),
 
   appBarTheme: AppBarTheme(
+    systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor:  Color.fromRGBO(54,32,93, .7)),
     titleTextStyle: GoogleFonts.montserrat(
         color: const Color.fromRGBO(0, 0, 0, 1), fontWeight: FontWeight.w600, fontSize: 16),
     color: Colors.transparent,
@@ -53,6 +55,7 @@ ThemeData lightTheme = ThemeData(
         enableFeedback: true,
         side: const BorderSide(width: 0, color: Colors.transparent)),
   ),
+
 
   textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
