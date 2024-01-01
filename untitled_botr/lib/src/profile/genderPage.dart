@@ -47,7 +47,8 @@ class _GenderPageState extends State<GenderPage> {
           width: double.infinity,
           child: ElevatedButton(
               onPressed: widget.onNextPressed, child: const Text('Next')),
-        )
+        ),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 4))
       ],
     );
   }

@@ -21,6 +21,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
   @override
   void dispose() {
     _isButtonEnabled.dispose();
+    _isLoading.dispose();
     super.dispose();
   }
 
@@ -126,6 +127,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                           child: const Text('Validate')));
                 },
               ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 4))
             ],
           ),
         ),

@@ -90,13 +90,15 @@ class _OtpPageState extends State<OtpPage> {
                     _isLoading.value = true;
                     await Future.delayed(const Duration(seconds: 2));
                     _isLoading.value = false;
-                    if (mounted)
+                    if (mounted) {
                       Navigator.push(context,
                           CustomPageRouteBuilder(const TellUsAboutYou()));
+                    }
                   },
                   isLoading: _isLoading,
                   child: const Text('Verify phone number')),
-            )
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 4))
           ],
         ),
       ),

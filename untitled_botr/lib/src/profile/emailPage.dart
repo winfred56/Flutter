@@ -46,7 +46,8 @@ class EmailPage extends StatelessWidget {
               onPressed: onNextPressed,
               child: const Text('Next'),
             ),
-          )
+          ),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 4))
         ],
       ),
     );

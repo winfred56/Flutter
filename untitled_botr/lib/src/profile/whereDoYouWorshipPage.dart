@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled_botr/shared/presentation/router.dart';
+
+import 'congratsPage.dart';
 
 class WhereDoYouWorshipPage extends StatefulWidget {
   const WhereDoYouWorshipPage({super.key});
@@ -56,17 +59,22 @@ class _WhereDoYouWorshipPageState extends State<WhereDoYouWorshipPage> {
                       onPressed: () {
                         showBottomSheet<void>(
                             context: context,
+                            backgroundColor: Colors.transparent,
                             builder: (BuildContext context) {
                               return DraggableScrollableSheet(
                                 builder: (BuildContext context,
                                     ScrollController scrollController) {
-                                  return Container(color: Colors.purple.shade100,
+                                  return Container(
+                                    color: Colors.white,
                                     child: ListView.builder(
                                       controller: scrollController,
                                       itemCount: 25,
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return ListTile(
+                                          onTap: () {
+                                            Navigator.push(context, CustomPageRouteBuilder(const CongratsPage()));
+                                          },
                                             title: Text('Branch $index'));
                                       },
                                     ),
